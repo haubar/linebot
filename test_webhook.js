@@ -51,7 +51,7 @@ app.post('/webhook/', line.validator.validateSignature(), (req, res, next) => {
         messages: [
           {
             type: 'text',
-            text: event.message.text
+            text: '你為何要跟我說'+event.message.text+'我不想聽!!'
           }
         ]
       })
