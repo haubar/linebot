@@ -48,16 +48,28 @@ app.post('/webhook/', line.validator.validateSignature(), (req, res, next) => {
       // do something when your bot account is added as a friend
       return Promise.resolve()
     } else if (event.type === 'message') {
-    return line.client
-      .replyMessage({
-        replyToken: event.replyToken,
-        messages: [
-          {
-            type: 'text',
-            text: '你為何要跟我說'+event.message.text+'我不想聽!!'
-          }
-        ]
-      })
+      if(!!!event.message.text)
+      return line.client
+        .replyMessage({
+          replyToken: event.replyToken,
+          messages: [
+            {
+              type: 'text',
+              text: '你為何要跟我說'+event.message.text+'我不想聽!!'
+            }
+          ]
+        })
+       if(!!!event.message.image) 
+       return line.client
+        .replyMessage({
+          replyToken: event.replyToken,
+          messages: [
+            {
+              type: 'text',
+              text: '你不要想色誘我，我可不是'+event.source.profile().displayName+'!!!'
+            }
+          ]
+        }) 
       return Promise.resolve()
     } else {
       
