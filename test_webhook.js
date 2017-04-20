@@ -48,7 +48,7 @@ app.post('/webhook/', line.validator.validateSignature(), (req, res, next) => {
       // do something when your bot account is added as a friend
       return Promise.resolve()
     } else if (event.type === 'message') {
-      if(event.message.text)
+      if(event.message.text!==undefined){
       return line.client
         .replyMessage({
           replyToken: event.replyToken,
@@ -59,7 +59,8 @@ app.post('/webhook/', line.validator.validateSignature(), (req, res, next) => {
             }
           ]
         })
-       if(event.message.image) 
+       } 
+       if(event.message.image!==undefined){ 
        return line.client
         .replyMessage({
           replyToken: event.replyToken,
@@ -70,6 +71,7 @@ app.post('/webhook/', line.validator.validateSignature(), (req, res, next) => {
             }
           ]
         }) 
+       }
       return Promise.resolve()
     } else {
       
