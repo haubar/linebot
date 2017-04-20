@@ -70,7 +70,7 @@ app.post('/webhook/', line.validator.validateSignature(), (req, res, next) => {
           messages: [
             {
               type: 'text',
-              text: dismas
+              text: dismes
             }
           ]
         })
