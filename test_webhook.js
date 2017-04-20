@@ -48,19 +48,7 @@ app.post('/webhook/', line.validator.validateSignature(), (req, res, next) => {
       // do something when your bot account is added as a friend
       return Promise.resolve()
     } else if (event.type === 'message') {
-      if(event.message.text!==undefined){
-      return line.client
-        .replyMessage({
-          replyToken: event.replyToken,
-          messages: [
-            {
-              type: 'text',
-              text: '你為何要跟我說'+event.message.text+'我不想聽!!'
-            }
-          ]
-        })
-       } 
-       if(event.message.image!==undefined){ 
+      if(event.message.image!==undefined){ 
        return line.client
         .replyMessage({
           replyToken: event.replyToken,
@@ -72,6 +60,20 @@ app.post('/webhook/', line.validator.validateSignature(), (req, res, next) => {
           ]
         }) 
        }
+
+     else if(event.message.text!==undefined){
+      return line.client
+        .replyMessage({
+          replyToken: event.replyToken,
+          messages: [
+            {
+              type: 'text',
+              text: '你為何要跟我說'+event.message.text+'我不想聽!!'
+            }
+          ]
+        })
+       } 
+       
       return Promise.resolve()
     } else {
       
