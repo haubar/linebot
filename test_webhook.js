@@ -55,7 +55,7 @@ app.post('/webhook/', line.validator.validateSignature(), (req, res, next) => {
           messages: [
             {
               type: 'text',
-              text: '你不要想色誘我，我可不是'+event.source.profile().displayName+'!!!'
+              text: '你不要想色誘我，我可不是!!!'
             }
           ]
         }) 
