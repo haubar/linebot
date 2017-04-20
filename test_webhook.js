@@ -61,10 +61,10 @@ app.post('/webhook/', line.validator.validateSignature(), (req, res, next) => {
             type: 'video',
             text: '我不會被你色誘的!!'
           },
-          {
-            type: 'location',
-            text: '這地方我很熟'+line.client.profile.displayName+'就在那邊~'
-          }
+          // {
+          //   type: 'location',
+          //   text: '這地方我很熟'+line.client.profile.displayName+'就在那邊~'
+          // }
 
         ]
       })
