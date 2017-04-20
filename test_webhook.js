@@ -57,11 +57,11 @@ app.post('/webhook/', line.validator.validateSignature(), (req, res, next) => {
            dismes =  '想色誘我嗎?太天真了!';
         break;
         case 'sticker':
-           dismes = '我不想看這個, 給'+event.source.profile.displayName+'看就好...';
+           dismes = 'Q口Q"';
         break;
-        // case 'location':
-        //    dismes = '我不想看這個, 給'+displayName+'看就好...';
-        // break;
+        case 'location':
+           dismes = '你有聽過路痴這個神祕的詞嗎...';
+        break;
         case 'audio':
            dismes = '拒絕肉片，你我有責!';
         break;
