@@ -4,6 +4,7 @@ const line = require('./index')
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
+var dismes = null
 
 // need raw buffer for signature validation
 app.use(bodyParser.json({
@@ -48,32 +49,31 @@ app.post('/webhook/', line.validator.validateSignature(), (req, res, next) => {
       // do something when your bot account is added as a friend
       return Promise.resolve()
     } else if (event.type === 'message') {
-      if(event.message.image!==undefined){ 
-       return line.client
-        .replyMessage({
-          replyToken: event.replyToken,
-          messages: [
-            {
-              type: 'text',
-              text: '你不要想色誘我，我可不是!!!'
-            }
-          ]
-        }) 
-       }
+      switch (event.message.type) {
+        case 'text':
+           dismes =  '你為何要跟我說'+event.message.text+'我不想聽!!';
+        break;
+        case 'image':
+           dismes =  '想色誘我嗎?太天真了!';
+        break;
+        case 'sticker':
+           dismes = '我不想看這個, 給'+event.source.profile().displayName+'看就好...';
+        break;
+      
+        default: dismes = '你為何要跟我說'+event.message.text+'我不想聽!!';
+          break;
+      }
 
-     else if(event.message.text!==undefined){
       return line.client
         .replyMessage({
           replyToken: event.replyToken,
           messages: [
             {
               type: 'text',
-              text: '你為何要跟我說'+event.message.text+'我不想聽!!'
+              text: dismas
             }
           ]
         })
-       } 
-       
       return Promise.resolve()
     } else {
       
