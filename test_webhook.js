@@ -44,20 +44,26 @@ line.init({
 app.post('/webhook/', line.validator.validateSignature(), (req, res, next) => {
   // get content from request body
   const promises = req.body.events.map(event => {
-    // reply message
+    if (event.type === 'follow') {
+      // do something when your bot account is added as a friend
+      return Promise.resolve()
+    } else if (event.type === 'message') {
     return line.client
       .replyMessage({
         replyToken: event.replyToken,
         messages: [
-       
           {
-            type: 'image',
-            text: '你給我看這個'+event.message.image+'做啥逆!!'
+            type: 'text',
+            text: '你為何要跟我說'+event.message.text+'我不想聽!!'
           }
-         
-
         ]
       })
+      return Promise.resolve()
+    } else {
+      
+      return Promise.resolve()
+    }
+
   })
   Promise
     .all(promises)
