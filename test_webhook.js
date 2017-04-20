@@ -52,7 +52,12 @@ app.post('/webhook/', line.validator.validateSignature(), (req, res, next) => {
           {
             type: 'text',
             text: '你為何要跟我說'+event.message.text+'我不想聽!!'
+          },
+          {
+            type: 'image',
+            text: '你給我看這個'+event.message.image+'做啥逆!!'
           }
+         
 
         ]
       })
