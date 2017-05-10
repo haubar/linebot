@@ -1,7 +1,8 @@
 const linebot = require('./index.js');
 
 const bot = linebot({
-	accessToken: process.env.accessToken,
+	channelId: process.env.channelId,
+	channelAccessToken: process.env.accessToken,
     channelSecret: process.env.channelSecret,
 	verify: true // default=true
 });
