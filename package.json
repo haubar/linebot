@@ -1,28 +1,45 @@
 {
-  "name": "node-line-bot-api",
-  "version": "0.1.4",
-  "description": "Node client for LINE Bot API",
+  "name": "linebot",
+  "version": "1.3.0",
+  "description": "Node.js SDK for the LINE Messaging API",
   "main": "index.js",
+  "files": [
+    "index.js",
+    "lib/**"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node examples/demo.js",
+    "pretest": "eslint index.js lib/**/*.js test/**/*.js",
+    "test": "mocha --timeout 5000",
+    "lint": "eslint index.js lib/**/*.js test/**/*.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tejitak/node-line-bot-api.git"
+    "url": "git+https://github.com/boybundit/linebot.git"
   },
-  "author": "tejitak",
-  "license": "ISC",
+  "keywords": [
+    "LINE",
+    "Messaging",
+    "API",
+    "chat",
+    "bot"
+  ],
+  "author": "Bundit Jitkongchuen",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tejitak/node-line-bot-api/issues"
+    "url": "https://github.com/boybundit/linebot/issues"
   },
-  "homepage": "https://github.com/tejitak/node-line-bot-api#readme",
+  "homepage": "https://github.com/boybundit/linebot#readme",
   "dependencies": {
-    "dotenv": "^2.0.0",
-    "linebot": "^1.3.0",
-    "superagent": "^2.3.0"
+    "body-parser": "^1.15.2",
+    "node-fetch": "^1.6.3"
   },
   "devDependencies": {
-    "body-parser": "^1.15.2",
-    "express": "^4.14.0"
+    "eslint": "^3.7.1",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-plugin-import": "^1.16.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.4.1",
+    "mocha": "^3.1.0"
   }
 }
