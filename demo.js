@@ -128,6 +128,6 @@ bot.on('beacon', function (event) {
 	event.reply('beacon: ' + event.beacon.hwid);
 });
 
-bot.listen('/linewebhook', process.env.PORT || 80, function () {
-	console.log('LineBot is running.');
-});
+bot.listen(process.env.PORT || 80, () => {
+  console.log('Example app listening on port 3333!')
+})
