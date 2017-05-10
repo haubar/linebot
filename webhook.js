@@ -128,6 +128,6 @@ bot.on('beacon', function (event) {
 	event.reply('beacon: ' + event.beacon.hwid);
 });
 
-bot.listen(process.env.PORT || 80, () => {
+bot.listen('/webhook', process.env.PORT || 3333, () => {
   console.log('Example app listening on port 3333!')
 })
