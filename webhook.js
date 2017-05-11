@@ -7,23 +7,24 @@ const bot = linebot({
 	verify: true // default=true
 });
 
- const imgur_options = {
+ const eat_options = {
 						method: 'GET',
 						uri: 'https://api.imgur.com/3/album/${album_id}/images',
 						headers: {
-						"Authorization": 'Client-ID process.env.client_id'
+						"Authorization": 'Client-ID '+process.env.client_id
 						},
 						json: true
 					};
 
-rp(imgur_options)
-.then(function (response){
-	var imagurs = []
-	response.data.forEach(function(items){
-        imagurs.push(items.link)
+function getImage(eat_options, album_id){
+	rp(eat_options).then(function (response){
+		var imagurs = []
+		response.data.forEach(function(items){
+			imagurs.push(items.link)
+		})
+		return imagurs[Math.floor(Math.random()*imagurs.length)]
 	})
-	var url_image = imagurs[Math.floor(Math.random()*imagurs.length)]
-})
+}
 
 
 bot.on('message', function (event) {
@@ -43,36 +44,24 @@ bot.on('message', function (event) {
 					});
 					break;
 				case '早餐':
-					if(event.message.text == '早餐' )
-					{
-						let imgur_options = {
-							method: 'GET',
-							uri: 'https://api.imgur.com/3/album/6YSY1/images',
-							headers: {
-							"Authorization": 'Client-ID process.env.client_id'
-							},
-							json: true
-						};
-
-					}
 					event.reply({
 						type: 'image',
-						originalContentUrl: 'https://d.line-scdn.net/stf/line-lp/family/en-US/190X190_line_me.png',
-						previewImageUrl: 'https://d.line-scdn.net/stf/line-lp/family/en-US/190X190_line_me.png'
+						originalContentUrl: getImage(eat_options, '6YSY1'),
+						previewImageUrl: getImage(eat_options, '6YSY1')
 					});
 					break;
 				case '午餐':
 					event.reply({
 						type: 'image',
-						originalContentUrl: 'https://d.line-scdn.net/stf/line-lp/family/en-US/190X190_line_me.png',
-						previewImageUrl: 'https://d.line-scdn.net/stf/line-lp/family/en-US/190X190_line_me.png'
+						originalContentUrl: getImage(eat_options, 'D4BDl'),
+						previewImageUrl: getImage(eat_options, 'D4BDl')
 					});
 					break;
 				case '晚餐':
 					event.reply({
 						type: 'image',
-						originalContentUrl: 'https://d.line-scdn.net/stf/line-lp/family/en-US/190X190_line_me.png',
-						previewImageUrl: 'https://d.line-scdn.net/stf/line-lp/family/en-US/190X190_line_me.png'
+						originalContentUrl: getImage(eat_options, 'zXNwB'),
+						previewImageUrl: getImage(eat_options, 'zXNwB')
 					});
 					break;	
 				case 'location':
