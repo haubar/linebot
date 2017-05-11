@@ -9,41 +9,6 @@ const bot = linebot({
 });
 
 
-// bot.on('message', function (event) {
-// 	switch (event.message.text) {
-// 		case '早餐':
-// 				var eat_options = {
-// 							method: 'GET',
-// 							uri: 'https://api.imgur.com/3/album/6YSY1/images',
-// 							headers: {
-// 							"Authorization": 'Client-ID '+process.env.client_id
-// 							},
-// 							json: true
-// 						};
-// 			break;
-// 		case '午餐':
-// 			var eat_options = {
-// 							method: 'GET',
-// 							uri: 'https://api.imgur.com/3/album/D4BDl/images',
-// 							headers: {
-// 							"Authorization": 'Client-ID '+process.env.client_id
-// 							},
-// 							json: true
-// 						};
-// 			break;
-// 		case '晚餐':
-// 			var eat_options = {
-// 							method: 'GET',
-// 							uri: 'https://api.imgur.com/3/album/zXNwB/images',
-// 							headers: {
-// 							"Authorization": 'Client-ID '+process.env.client_id
-// 							},
-// 							json: true
-// 						};
-// 			break;	
-
-// 	}
-// }
 
  			// var eat_options = {
 			// 			method: 'GET',
