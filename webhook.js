@@ -66,9 +66,8 @@ bot.on('message', function (event) {
 						response.data.forEach(function(items){
 							imagurs.push(items.link)
 						})
-						var url_image = imagurs[Math.floor(Math.random()*imagurs.length)].replace('http', 'https')
+						return imagurs[Math.floor(Math.random()*imagurs.length)].replace('http', 'https')
 		
-						return url_image
 					})
 					console.log(breakfast_img);
 					event.reply({
