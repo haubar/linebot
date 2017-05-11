@@ -92,7 +92,7 @@ bot.on('message', function (event) {
 							},
 							json: true
 						};
-					var dinner = getImage(eat_options)
+					var dinner_img = getImage(eat_options)
 					event.reply({
 						type: 'image',
 						originalContentUrl: dinner_img,
