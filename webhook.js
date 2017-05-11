@@ -26,9 +26,11 @@ function getImage(eat_options){
 		response.data.forEach(function(items){
 			imagurs.push(items.link)
 		})
-		var url_image = imagurs[Math.floor(Math.random()*imagurs.length)]
+		var url_image = imagurs[Math.floor(Math.random()*imagurs.length)].replace('http', 'https')
+		console.log(url_image)
+		
 		//置換https，否則line不會顯示
-		return url_image.replace('http', 'https')
+		return url_image
 	})
 }
 
@@ -60,8 +62,8 @@ bot.on('message', function (event) {
 						};
 					event.reply({
 						type: 'image',
-						originalContentUrl: 'https://i.imgur.com/VFgsWNL.jpg',//getImage(eat_options),
-						previewImageUrl: 'https://i.imgur.com/VFgsWNL.jpg'//getImage(eat_options)
+						originalContentUrl: getImage(eat_options),
+						previewImageUrl: getImage(eat_options)
 					});
 					break;
 				case '午餐':
