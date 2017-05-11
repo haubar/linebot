@@ -50,18 +50,18 @@ bot.on('message', function (event) {
 					});
 					break;
 				case '早餐':
-					var eat_options = {
-							method: 'GET',
-							uri: 'https://api.imgur.com/3/album/6YSY1/images',
-							headers: {
-							"Authorization": 'Client-ID '+process.env.client_id
-							},
-							json: true
-						};
+					// var eat_options = {
+					// 		method: 'GET',
+					// 		uri: 'https://api.imgur.com/3/album/6YSY1/images',
+					// 		headers: {
+					// 		"Authorization": 'Client-ID '+process.env.client_id
+					// 		},
+					// 		json: true
+					// 	};
 					event.reply({
 						type: 'image',
-						originalContentUrl: 'http://i.imgur.com/VFgsWNL.jpg',//getImage(eat_options),
-						previewImageUrl: 'http://i.imgur.com/VFgsWNL.jpg'//getImage(eat_options)
+						originalContentUrl: 'https://i.imgur.com/VFgsWNL.jpg',//getImage(eat_options),
+						previewImageUrl: 'https://i.imgur.com/VFgsWNL.jpg'//getImage(eat_options)
 					});
 					break;
 				case '午餐':
