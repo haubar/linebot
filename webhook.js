@@ -23,13 +23,13 @@ function getImage(eat_options){
    rp(eat_options).then(function (response){
 	
 		var imagurs = []
+		var imagur_url
 		response.data.forEach(function(items){
 			imagurs.push(items.link)
 		})
-		var url_image = imagurs[Math.floor(Math.random()*imagurs.length)].replace('http', 'https')
+		return imagur_url = imagurs[Math.floor(Math.random()*imagurs.length)].replace('http', 'https')
 		
 		//置換https，否則line不會顯示
-		return url_image
 	})
 }
 
