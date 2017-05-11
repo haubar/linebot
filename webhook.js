@@ -27,7 +27,6 @@ function getImage(eat_options){
 			imagurs.push(items.link)
 		})
 		var url_image = imagurs[Math.floor(Math.random()*imagurs.length)].replace('http', 'https')
-		console.log(url_image)
 		
 		//置換https，否則line不會顯示
 		return url_image
