@@ -60,10 +60,11 @@ bot.on('message', function (event) {
 							},
 							json: true
 						};
+					var breakfast_img = getImage(eat_options);
 					event.reply({
 						type: 'image',
-						originalContentUrl: getImage(eat_options),
-						previewImageUrl: getImage(eat_options)
+						originalContentUrl: breakfast_img,
+						previewImageUrl: breakfast_img
 					});
 					break;
 				case '午餐':
@@ -75,10 +76,11 @@ bot.on('message', function (event) {
 								},
 								json: true
 							};
+					var lunch_img = getImage(eat_options);		
 					event.reply({
 						type: 'image',
-						originalContentUrl: getImage(eat_options),
-						previewImageUrl: getImage(eat_options)
+						originalContentUrl: lunch_img,
+						previewImageUrl: lunch_img
 					});
 					break;
 				case '晚餐':
@@ -90,10 +92,11 @@ bot.on('message', function (event) {
 							},
 							json: true
 						};
+					var dinner = getImage(eat_options)
 					event.reply({
 						type: 'image',
-						originalContentUrl: getImage(eat_options),
-						previewImageUrl: getImage(eat_options)
+						originalContentUrl: dinner_img,
+						previewImageUrl: dinner_img
 					});
 					break;	
 				case 'location':
