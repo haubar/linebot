@@ -10,7 +10,7 @@ const bot = linebot({
 
  var eat_options = {
 						method: 'GET',
-						uri: 'https://api.imgur.com/3/album/'+album_id+'/images',
+						uri: 'https://api.imgur.com/3/album/${album_id}/images',
 						headers: {
 						"Authorization": 'Client-ID '+process.env.client_id
 						},
