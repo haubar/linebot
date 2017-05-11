@@ -19,7 +19,7 @@ const bot = linebot({
 			// 			json: true
 			// 		};
 
-function getImage(eat_options){
+function getImage(eat_options, event){
    rp(eat_options).then(function (response){
 	
 		var imagurs = []
@@ -63,8 +63,7 @@ bot.on('message', function (event) {
 							},
 							json: true
 						};
-					var breakfast_img = getImage(eat_options);
-d					
+					var breakfast_img = getImage(eat_options, event);
 					break;
 				case '午餐':
 					var eat_options = {
@@ -75,8 +74,7 @@ d
 								},
 								json: true
 							};
-					var lunch_img = getImage(eat_options);	
-d				
+					var lunch_img = getImage(eat_options, event);	
 					break;
 				case '晚餐':
 					var eat_options = {
@@ -87,7 +85,7 @@ d
 							},
 							json: true
 						};
-					var dinner_img = getImage(eat_options)
+					var dinner_img = getImage(eat_options, event)
 					
 					break;	
 				case 'location':
