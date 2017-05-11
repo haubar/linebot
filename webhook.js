@@ -7,18 +7,54 @@ const bot = linebot({
     channelSecret: process.env.channelSecret,
 	verify: true // default=true
 });
- var albumid = 0;
- var eat_options = {
-						method: 'GET',
-						uri: 'https://api.imgur.com/3/album/'+albumid+'/images',
-						headers: {
-						"Authorization": 'Client-ID '+process.env.client_id
-						},
-						json: true
-					};
 
-function getImage(eat_options, album_id){
-	console.log(eat_options.albumid = album_id);
+
+// bot.on('message', function (event) {
+// 	switch (event.message.text) {
+// 		case '早餐':
+// 				var eat_options = {
+// 							method: 'GET',
+// 							uri: 'https://api.imgur.com/3/album/6YSY1/images',
+// 							headers: {
+// 							"Authorization": 'Client-ID '+process.env.client_id
+// 							},
+// 							json: true
+// 						};
+// 			break;
+// 		case '午餐':
+// 			var eat_options = {
+// 							method: 'GET',
+// 							uri: 'https://api.imgur.com/3/album/D4BDl/images',
+// 							headers: {
+// 							"Authorization": 'Client-ID '+process.env.client_id
+// 							},
+// 							json: true
+// 						};
+// 			break;
+// 		case '晚餐':
+// 			var eat_options = {
+// 							method: 'GET',
+// 							uri: 'https://api.imgur.com/3/album/zXNwB/images',
+// 							headers: {
+// 							"Authorization": 'Client-ID '+process.env.client_id
+// 							},
+// 							json: true
+// 						};
+// 			break;	
+
+// 	}
+// }
+
+ 			// var eat_options = {
+			// 			method: 'GET',
+			// 			uri: 'https://api.imgur.com/3/album/'+album_id+'/images',
+			// 			headers: {
+			// 			"Authorization": 'Client-ID '+process.env.client_id
+			// 			},
+			// 			json: true
+			// 		};
+
+function getImage(eat_options){
    rp(eat_options).then(function (response){
 		var imagurs = []
 		response.data.forEach(function(items){
@@ -46,24 +82,48 @@ bot.on('message', function (event) {
 					});
 					break;
 				case '早餐':
+					var eat_options = {
+							method: 'GET',
+							uri: 'https://api.imgur.com/3/album/6YSY1/images',
+							headers: {
+							"Authorization": 'Client-ID '+process.env.client_id
+							},
+							json: true
+						};
 					event.reply({
 						type: 'image',
-						originalContentUrl: getImage(eat_options, '6YSY1'),
-						previewImageUrl: getImage(eat_options, '6YSY1')
+						originalContentUrl: getImage(eat_options),
+						previewImageUrl: getImage(eat_options)
 					});
 					break;
 				case '午餐':
+					var eat_options = {
+								method: 'GET',
+								uri: 'https://api.imgur.com/3/album/D4BDl/images',
+								headers: {
+								"Authorization": 'Client-ID '+process.env.client_id
+								},
+								json: true
+							};
 					event.reply({
 						type: 'image',
-						originalContentUrl: getImage(eat_options, 'D4BDl'),
-						previewImageUrl: getImage(eat_options, 'D4BDl')
+						originalContentUrl: getImage(eat_options),
+						previewImageUrl: getImage(eat_options)
 					});
 					break;
 				case '晚餐':
+					var eat_options = {
+							method: 'GET',
+							uri: 'https://api.imgur.com/3/album/zXNwB/images',
+							headers: {
+							"Authorization": 'Client-ID '+process.env.client_id
+							},
+							json: true
+						};
 					event.reply({
 						type: 'image',
-						originalContentUrl: getImage(eat_options, 'zXNwB'),
-						previewImageUrl: getImage(eat_options, 'zXNwB')
+						originalContentUrl: getImage(eat_options),
+						previewImageUrl: getImage(eat_options)
 					});
 					break;	
 				case 'location':
