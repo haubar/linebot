@@ -19,20 +19,20 @@ const bot = linebot({
 			// 			json: true
 			// 		};
 
-function getImage(eat_options){
-   rp(eat_options).then(function (response){
+// function getImage(eat_options){
+//    rp(eat_options).then(function (response){
 	
-		var imagurs = []
-		response.data.forEach(function(items){
-			imagurs.push(items.link)
-		})
-		var url_image = imagurs[Math.floor(Math.random()*imagurs.length)].replace('http', 'https')
-		// console.log(url_image)
+// 		var imagurs = []
+// 		response.data.forEach(function(items){
+// 			imagurs.push(items.link)
+// 		})
+// 		var url_image = imagurs[Math.floor(Math.random()*imagurs.length)].replace('http', 'https')
+// 		// console.log(url_image)
 		
-		//置換https，否則line不會顯示
-		return url_image
-	})
-}
+// 		//置換https，否則line不會顯示
+// 		return url_image
+// 	})
+// }
 
 
 bot.on('message', function (event) {
