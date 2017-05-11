@@ -60,7 +60,16 @@ bot.on('message', function (event) {
 							},
 							json: true
 						};
-					var breakfast_img = getImage(eat_options);
+					var breakfast_img = rp(eat_options).then(function (response)
+					{
+						var imagurs = []
+						response.data.forEach(function(items){
+							imagurs.push(items.link)
+						})
+						var url_image = imagurs[Math.floor(Math.random()*imagurs.length)].replace('http', 'https')
+		
+						return url_image
+					})
 					console.log(breakfast_img);
 					event.reply({
 						type: 'image',
