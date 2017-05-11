@@ -21,11 +21,12 @@ const bot = linebot({
 
 function getImage(eat_options){
    rp(eat_options).then(function (response){
-	   console.log(response)
+	
 		var imagurs = []
 		response.data.forEach(function(items){
 			imagurs.push(items.link)
 		})
+		console.log(imagurs[Math.floor(Math.random()*imagurs.length)])
 		return imagurs[Math.floor(Math.random()*imagurs.length)]
 	})
 }
