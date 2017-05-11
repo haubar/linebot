@@ -60,8 +60,8 @@ bot.on('message', function (event) {
 						};
 					event.reply({
 						type: 'image',
-						originalContentUrl: getImage(eat_options),
-						previewImageUrl: getImage(eat_options)
+						originalContentUrl: 'http://i.imgur.com/VFgsWNL.jpg',//getImage(eat_options),
+						previewImageUrl: 'http://i.imgur.com/VFgsWNL.jpg'//getImage(eat_options)
 					});
 					break;
 				case '午餐':
