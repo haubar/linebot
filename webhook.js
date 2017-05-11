@@ -60,6 +60,7 @@ bot.on('message', function (event) {
 							json: true
 						};
 					var breakfast_img = getImage(eat_options);
+					console.log(breakfast_img)
 					event.reply({
 						type: 'image',
 						originalContentUrl: breakfast_img,
