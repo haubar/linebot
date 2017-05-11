@@ -61,6 +61,7 @@ bot.on('message', function (event) {
 							json: true
 						};
 					var breakfast_img = getImage(eat_options);
+					console.log(breakfast_img);
 					event.reply({
 						type: 'image',
 						originalContentUrl: breakfast_img,
@@ -76,7 +77,8 @@ bot.on('message', function (event) {
 								},
 								json: true
 							};
-					var lunch_img = getImage(eat_options);		
+					var lunch_img = getImage(eat_options);	
+					console.log(lunch_img)	
 					event.reply({
 						type: 'image',
 						originalContentUrl: lunch_img,
