@@ -7,11 +7,30 @@ const bot = linebot({
 	verify: true // default=true
 });
 
+ const imgur_options = {
+						method: 'GET',
+						uri: 'https://api.imgur.com/3/album/${album_id}/images',
+						headers: {
+						"Authorization": 'Client-ID process.env.client_id'
+						},
+						json: true
+					};
+
+rp(imgur_options)
+.then(function (response){
+	var imagurs = []
+	response.data.forEach(function(items){
+        imagurs.push(items.link)
+	})
+	var url_image = imagurs[Math.floor(Math.random()*imagurs.length)]
+})
+
+
 bot.on('message', function (event) {
 	switch (event.message.type) {
 		case 'text':
 			switch (event.message.text) {
-				case 'me':
+				case '給我id':
 					event.source.profile().then(function (profile) {
 						return event.reply('嗨 ' + profile.displayName + ' 你要幹嘛!! ' + profile.userId);
 					});
@@ -23,6 +42,39 @@ bot.on('message', function (event) {
 						previewImageUrl: 'https://d.line-scdn.net/stf/line-lp/family/en-US/190X190_line_me.png'
 					});
 					break;
+				case '早餐':
+					if(event.message.text == '早餐' )
+					{
+						let imgur_options = {
+							method: 'GET',
+							uri: 'https://api.imgur.com/3/album/6YSY1/images',
+							headers: {
+							"Authorization": 'Client-ID process.env.client_id'
+							},
+							json: true
+						};
+
+					}
+					event.reply({
+						type: 'image',
+						originalContentUrl: 'https://d.line-scdn.net/stf/line-lp/family/en-US/190X190_line_me.png',
+						previewImageUrl: 'https://d.line-scdn.net/stf/line-lp/family/en-US/190X190_line_me.png'
+					});
+					break;
+				case '午餐':
+					event.reply({
+						type: 'image',
+						originalContentUrl: 'https://d.line-scdn.net/stf/line-lp/family/en-US/190X190_line_me.png',
+						previewImageUrl: 'https://d.line-scdn.net/stf/line-lp/family/en-US/190X190_line_me.png'
+					});
+					break;
+				case '晚餐':
+					event.reply({
+						type: 'image',
+						originalContentUrl: 'https://d.line-scdn.net/stf/line-lp/family/en-US/190X190_line_me.png',
+						previewImageUrl: 'https://d.line-scdn.net/stf/line-lp/family/en-US/190X190_line_me.png'
+					});
+					break;	
 				case 'location':
 					event.reply({
 						type: 'location',
@@ -32,15 +84,15 @@ bot.on('message', function (event) {
 						longitude: 100.5298698
 					});
 					break;
-				case 'push':
-					bot.push('U6350b7606935db981705282747c82ee1', ['Hey!', 'สวัสดี ' + String.fromCharCode(0xD83D, 0xDE01)]);
-					break;
-				case 'push2':
-					bot.push(['U6350b7606935db981705282747c82ee1', 'U6350b7606935db981705282747c82ee1'], ['Hey!', 'สวัสดี ' + String.fromCharCode(0xD83D, 0xDE01)]);
-					break;
-				case 'multicast':
-					bot.push(['U6350b7606935db981705282747c82ee1', 'U6350b7606935db981705282747c82ee1'], 'Multicast!');
-					break;
+				// case 'push':
+				// 	bot.push('U6350b7606935db981705282747c82ee1', ['Hey!', 'สวัสดี ' + String.fromCharCode(0xD83D, 0xDE01)]);
+				// 	break;
+				// case 'push2':
+				// 	bot.push(['U6350b7606935db981705282747c82ee1', 'U6350b7606935db981705282747c82ee1'], ['Hey!', 'สวัสดี ' + String.fromCharCode(0xD83D, 0xDE01)]);
+				// 	break;
+				// case 'multicast':
+				// 	bot.push(['U6350b7606935db981705282747c82ee1', 'U6350b7606935db981705282747c82ee1'], 'Multicast!');
+				// 	break;
 				case 'confirm':
 					event.reply({
 						type: 'template',
@@ -61,11 +113,11 @@ bot.on('message', function (event) {
 					});
 					break;
 				case 'mult':
-					return event.reply(['Line 1', 'Line 2', 'Line 3', 'Line 4', 'Line 5']);
+					event.reply(['Line 1', 'Line 2', 'Line 3', 'Line 4', 'Line 5']);
 					break;
-				case 'version':
-					event.reply('linebot@' + require('../package.json').version);
-					break;
+				// case 'version':
+				// 	event.reply('linebot@' + require('../package.json').version);
+				// 	break;
 				default:
 					event.reply(event.message.text).then(function (data) {
 						console.log('Success', data);
