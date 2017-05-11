@@ -8,7 +8,7 @@ const bot = linebot({
 	verify: true // default=true
 });
 
- const eat_options = {
+ var eat_options = {
 						method: 'GET',
 						uri: 'https://api.imgur.com/3/album/${album_id}/images',
 						headers: {
