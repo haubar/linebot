@@ -17,7 +17,7 @@ const bot = linebot({
 					};
 
 function getImage(eat_options, album_id){
-   new rp(eat_options).then(function (response){
+   rp(eat_options).then(function (response){
 		var imagurs = []
 		response.data.forEach(function(items){
 			imagurs.push(items.link)
