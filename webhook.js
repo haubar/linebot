@@ -66,15 +66,19 @@ bot.on('message', function (event) {
 						response.data.forEach(function(items){
 							imagurs.push(items.link)
 						})
-						return i_url = imagurs[Math.floor(Math.random()*imagurs.length)].replace('http', 'https')
-		
+						var breakfast_img = imagurs[Math.floor(Math.random()*imagurs.length)].replace('http', 'https')
+					return event.reply({
+							type: 'image',
+							originalContentUrl: breakfast_img,
+							previewImageUrl: breakfast_img
+						});
 					})
-					console.log(i_url);
-					event.reply({
-						type: 'image',
-						originalContentUrl: breakfast_img,
-						previewImageUrl: breakfast_img
-					});
+					
+					// event.reply({
+					// 	type: 'image',
+					// 	originalContentUrl: breakfast_img,
+					// 	previewImageUrl: breakfast_img
+					// });
 					break;
 				case '午餐':
 					var eat_options = {
