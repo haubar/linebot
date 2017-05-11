@@ -20,6 +20,8 @@ const bot = linebot({
 			// 		};
 
 function getImage(eat_options){
+	console.log(eat_options);
+	console.log('go');
    rp(eat_options).then(function (response){
 		var imagurs = []
 		response.data.forEach(function(items){
