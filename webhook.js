@@ -20,14 +20,13 @@ const bot = linebot({
 			// 		};
 
 function getImage(eat_options){
-	var imagur_url	
    rp(eat_options).then(function (response){
 	
 		var imagurs = []
 		response.data.forEach(function(items){
 			imagurs.push(items.link)
 		})
-		return imagur_url = imagurs[Math.floor(Math.random()*imagurs.length)]//.replace('http', 'https')
+		return imagurs[Math.floor(Math.random()*imagurs.length)]//.replace('http', 'https')
 		
 		//置換https，否則line不會顯示
 	})
