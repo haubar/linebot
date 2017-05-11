@@ -7,10 +7,10 @@ const bot = linebot({
     channelSecret: process.env.channelSecret,
 	verify: true // default=true
 });
-
+ var albumid = 0;
  var eat_options = {
 						method: 'GET',
-						uri: 'https://api.imgur.com/3/album/${album_id}/images',
+						uri: 'https://api.imgur.com/3/album/'+albumid+'/images',
 						headers: {
 						"Authorization": 'Client-ID '+process.env.client_id
 						},
@@ -18,7 +18,7 @@ const bot = linebot({
 					};
 
 function getImage(eat_options, album_id){
-	console.log(album_id);
+	console.log(eat_options.albumid = album_id);
    rp(eat_options).then(function (response){
 		var imagurs = []
 		response.data.forEach(function(items){
@@ -70,7 +70,7 @@ bot.on('message', function (event) {
 					event.reply({
 						type: 'location',
 						title: 'LINE Plus Corporation',
-						address: '1 Empire tower, Sathorn, Bangkok 10120, Thailand',
+						address: '別問我你在哪~~~',
 						latitude: 13.7202068,
 						longitude: 100.5298698
 					});
