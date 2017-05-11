@@ -1,4 +1,5 @@
 const linebot = require('./index.js');
+const rp = require('request-promise');
 
 const bot = linebot({
 	channelId: process.env.channelId,
