@@ -11,19 +11,19 @@ bot.on('message', function (event) {
 	switch (event.message.type) {
 		case 'text':
 			switch (event.message.text) {
-				case 'Me':
+				case 'me':
 					event.source.profile().then(function (profile) {
-						return event.reply('Hello ' + profile.displayName + ' ' + profile.userId);
+						return event.reply('嗨 ' + profile.displayName + ' 你要幹嘛!! ' + profile.userId);
 					});
 					break;
-				case 'Picture':
+				case 'picture':
 					event.reply({
 						type: 'image',
 						originalContentUrl: 'https://d.line-scdn.net/stf/line-lp/family/en-US/190X190_line_me.png',
 						previewImageUrl: 'https://d.line-scdn.net/stf/line-lp/family/en-US/190X190_line_me.png'
 					});
 					break;
-				case 'Location':
+				case 'location':
 					event.reply({
 						type: 'location',
 						title: 'LINE Plus Corporation',
@@ -32,16 +32,16 @@ bot.on('message', function (event) {
 						longitude: 100.5298698
 					});
 					break;
-				case 'Push':
+				case 'push':
 					bot.push('U6350b7606935db981705282747c82ee1', ['Hey!', 'สวัสดี ' + String.fromCharCode(0xD83D, 0xDE01)]);
 					break;
-				case 'Push2':
+				case 'push2':
 					bot.push(['U6350b7606935db981705282747c82ee1', 'U6350b7606935db981705282747c82ee1'], ['Hey!', 'สวัสดี ' + String.fromCharCode(0xD83D, 0xDE01)]);
 					break;
-				case 'Multicast':
+				case 'multicast':
 					bot.push(['U6350b7606935db981705282747c82ee1', 'U6350b7606935db981705282747c82ee1'], 'Multicast!');
 					break;
-				case 'Confirm':
+				case 'confirm':
 					event.reply({
 						type: 'template',
 						altText: 'this is a confirm template',
@@ -60,10 +60,10 @@ bot.on('message', function (event) {
 						}
 					});
 					break;
-				case 'Multiple':
+				case 'mult':
 					return event.reply(['Line 1', 'Line 2', 'Line 3', 'Line 4', 'Line 5']);
 					break;
-				case 'Version':
+				case 'version':
 					event.reply('linebot@' + require('../package.json').version);
 					break;
 				default:
