@@ -19,20 +19,23 @@ const bot = linebot({
 			// 			json: true
 			// 		};
 
-// function getImage(eat_options){
-//    rp(eat_options).then(function (response){
+function getImage(eat_options){
+   rp(eat_options).then(function (response){
 	
-// 		var imagurs = []
-// 		response.data.forEach(function(items){
-// 			imagurs.push(items.link)
-// 		})
-// 		var url_image = imagurs[Math.floor(Math.random()*imagurs.length)].replace('http', 'https')
-// 		// console.log(url_image)
+		var imagurs = []
+		response.data.forEach(function(items){
+			imagurs.push(items.link)
+		})
+		var url_image = imagurs[Math.floor(Math.random()*imagurs.length)].replace('http', 'https')
 		
-// 		//置換https，否則line不會顯示
-// 		return url_image
-// 	})
-// }
+		return event.reply({
+					type: 'image',
+					originalContentUrl: url_image,
+					previewImageUrl: url_image
+				});
+	
+	})
+}
 
 
 bot.on('message', function (event) {
@@ -60,25 +63,8 @@ bot.on('message', function (event) {
 							},
 							json: true
 						};
-					rp(eat_options).then(function (response)
-					{
-						var imagurs = []
-						response.data.forEach(function(items){
-							imagurs.push(items.link)
-						})
-						var breakfast_img = imagurs[Math.floor(Math.random()*imagurs.length)].replace('http', 'https')
-					return event.reply({
-							type: 'image',
-							originalContentUrl: breakfast_img,
-							previewImageUrl: breakfast_img
-						});
-					})
-					
-					// event.reply({
-					// 	type: 'image',
-					// 	originalContentUrl: breakfast_img,
-					// 	previewImageUrl: breakfast_img
-					// });
+					var breakfast_img = getImage(eat_options);
+d					
 					break;
 				case '午餐':
 					var eat_options = {
@@ -90,12 +76,7 @@ bot.on('message', function (event) {
 								json: true
 							};
 					var lunch_img = getImage(eat_options);	
-					console.log(lunch_img)	
-					event.reply({
-						type: 'image',
-						originalContentUrl: lunch_img,
-						previewImageUrl: lunch_img
-					});
+d				
 					break;
 				case '晚餐':
 					var eat_options = {
@@ -107,11 +88,7 @@ bot.on('message', function (event) {
 							json: true
 						};
 					var dinner_img = getImage(eat_options)
-					event.reply({
-						type: 'image',
-						originalContentUrl: dinner_img,
-						previewImageUrl: dinner_img
-					});
+					
 					break;	
 				case 'location':
 					event.reply({
