@@ -122,11 +122,11 @@ bot.on('message', function (event) {
 				// 	event.reply('linebot@' + require('../package.json').version);
 				// 	break;
 				default:
-					event.reply(event.message.text).then(function (data) {
-						console.log('Success', data);
-					}).catch(function (error) {
-						console.log('Error', error);
-					});
+					// event.reply(event.message.text).then(function (data) {
+					// 	console.log('Success', data);
+					// }).catch(function (error) {
+					// 	console.log('Error', error);
+					// });
 					break;
 			}
 			break;
