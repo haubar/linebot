@@ -79,16 +79,11 @@ bot.on('message', function(event) {
 
                     break;
                 case '測試圖':
-                    var eat_options = {
-                        method: 'GET',
-                        // uri: 'https://api.imgur.com/3/album/zXNwB/images',
-                        uri: 'https://imgur.com/SyB21fs',
-                        headers: {
-                            "Authorization": 'Client-ID ' + process.env.client_id
-                        },
-                        json: true
-                    };
-                    var dinner_img = getImage(eat_options, event)
+                    event.reply({
+                        type: 'image',
+                        originalContentUrl: 'https://imgur.com/787fqTE',
+                        previewImageUrl: 'https://imgur.com/787fqTE'
+                    });
 
                     break;
                 case 'location':
