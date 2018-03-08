@@ -17,7 +17,7 @@ function getImage(eat_options, event) {
             imagurs.push(items.link)
         })
         var url_image = imagurs[Math.floor(Math.random() * imagurs.length)].replace('http', 'https')
-
+        return url_image;
         return event.reply({
             type: 'image',
             originalContentUrl: url_image,
@@ -79,11 +79,15 @@ bot.on('message', function(event) {
 
                     break;
                 case '測試圖':
-                    event.reply({
-                        type: 'image',
-                        originalContentUrl: 'https://imgur.com/787fqTE',
-                        previewImageUrl: 'https://imgur.com/787fqTE'
-                    });
+                    var eat_options = {
+                        method: 'GET',
+                        uri: 'https://api.imgur.com/3/album/zXNwB/images',
+                        headers: {
+                            "Authorization": 'Client-ID ' + process.env.client_id
+                        },
+                        json: true
+                    };
+                    var test_img = getImage(eat_options, event)
 
                     break;
                 case 'location':
