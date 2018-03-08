@@ -17,7 +17,7 @@ function getImage(eat_options, event) {
             imagurs.push(items.link)
         })
         var url_image = imagurs[Math.floor(Math.random() * imagurs.length)].replace('http', 'https')
-        return url_image;
+        return event.reply(url_image);
         // return event.reply({
         //     type: 'image',
         //     originalContentUrl: url_image,
