@@ -129,7 +129,13 @@ bot.on('message', function(event) {
                     });
                     break;
                 case 'mult':
-                    event.reply(['Line 1', 'Line 2', 'Line 3', 'Line 4', 'Line 5']);
+                    event.reply(['星星', '月亮', '太陽', '工啥小']);
+                    break;
+                    // case 'version':
+                    // 	event.reply('linebot@' + require('../package.json').version);
+                    // 	break;
+                case 'help':
+                    event.reply(['picture', '早餐', '午餐', '晚餐', '測試圖', 'location', 'confirm', 'mult']);
                     break;
                     // case 'version':
                     // 	event.reply('linebot@' + require('../package.json').version);
