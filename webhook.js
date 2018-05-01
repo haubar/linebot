@@ -129,7 +129,7 @@ bot.on('message', function(event) {
                     });
                     break;
                 case '指令':
-                    event.reply(['星星', '月亮', '太陽', '工啥小']);
+                    event.reply(['picture', '早餐', '午餐', '晚餐', '測試圖', 'location', 'confirm', 'mult']);
                     break;
                     // case 'version':
                     // 	event.reply('linebot@' + require('../package.json').version);
@@ -141,7 +141,7 @@ bot.on('message', function(event) {
                     // 	event.reply('linebot@' + require('../package.json').version);
                     // 	break;
                 default:
-                    event.reply(['picture', '早餐', '午餐', '晚餐', '測試圖', 'location', 'confirm', 'mult']);
+                    event.reply(['星星', '月亮', '太陽', '工啥小']);
                     // event.reply(event.message.text).then(function (data) {
                     // 	console.log('Success', data);
                     // }).catch(function (error) {
