@@ -134,7 +134,7 @@ bot.on('message', function(event) {
                     // case 'version':
                     // 	event.reply('linebot@' + require('../package.json').version);
                     // 	break;
-                case '!help':
+                case '指令':
                     event.reply(['picture', '早餐', '午餐', '晚餐', '測試圖', 'location', 'confirm', 'mult']);
                     break;
                     // case 'version':
