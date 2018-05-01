@@ -128,7 +128,7 @@ bot.on('message', function(event) {
                         }
                     });
                     break;
-                case 'mult':
+                case '指令':
                     event.reply(['星星', '月亮', '太陽', '工啥小']);
                     break;
                     // case 'version':
