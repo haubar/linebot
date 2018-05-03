@@ -141,7 +141,7 @@ bot.on('message', function(event) {
                     // 	event.reply('linebot@' + require('../package.json').version);
                     // 	break;
                 default:
-                    event.reply(['星星', '月亮', '太陽', '工啥小']);
+                    // event.reply(['星星', '月亮', '太陽', '工啥小']);
                     // event.reply(event.message.text).then(function (data) {
                     // 	console.log('Success', data);
                     // }).catch(function (error) {
