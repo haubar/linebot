@@ -8,6 +8,11 @@ const bot = linebot({
     verify: true // default=true
 });
 
+const Data_ig = function (data) {
+    this.max_image = data.thumbnail_src
+    this.mini_image = data.thumbnail_resources[1]
+}
+
 
 function getImage(eat_options, event) {
     rp(eat_options).then(function(response) {
@@ -32,7 +37,7 @@ function getigImage(ig_options, event) {
         // response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges.node[Math.floor(Math.random() * 9)].forEach(function(items) {
         response.graphgl.hashtag.edge_hashtag_to_top_posts.edges.forEach(function(items) {
             // ig_image.concat(items.node)
-            let item = new Data(items.node)
+            let item = new Data_ig(items.node)
             list.push(item)
         })
         return event.reply('74894984') 
