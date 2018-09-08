@@ -39,7 +39,7 @@ function getigImage(ig_options, event) {
         for (let origin of response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
             // ig_image.concat(item.node)
             let item = new Data_ig(origin.node)
-            list.push(item)
+            ig_image.push(item)
         }    
         return event.reply('74894984') 
         var random_val = [Math.floor(Math.random() * ig_image.length)]
