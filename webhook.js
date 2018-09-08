@@ -17,6 +17,7 @@ const Data_ig = function (data) {
 function getImage(eat_options, event) {
     rp(eat_options).then(function(response) {
         var imagurs = []
+        return event.reply(JSON.stringify(response)) 
         response.data.forEach(function(items) {
             imagurs.push(items.link)
         })
