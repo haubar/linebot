@@ -172,11 +172,11 @@ bot.on('message', function(event) {
                     var encode_tag = encodeURIComponent(event.message.text) 
                     var ig_options = {
                         method: 'GET',
-                        uri: 'https://www.instagram.com/explore/tags/'+ encode_tag +'?__a=1'
-                        // headers: {
-                        //     "Authorization": 'Client-ID ' + process.env.client_id
-                        // },
-                        // json: true
+                        uri: 'https://www.instagram.com/explore/tags/'+ encode_tag +'?__a=1',
+                        headers: {
+                            "Authorization": 'Client-ID ' + process.env.client_id
+                        },
+                        json: true
                     };
                     var get_ig_image = getigImage(ig_options, event);
                     // event.reply([encode_tag]);
