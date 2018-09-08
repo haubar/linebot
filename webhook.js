@@ -30,14 +30,17 @@ function getIgimage(ig_options, event) {
     rp(ig_options).then(function(response) {
 
         var ig_image = []
-        response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges.node[Math.floor(Math.random() * 9)].forEach(function(items) {
-            ig_image.push(items.display_url)
+        // response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges.node[Math.floor(Math.random() * 9)].forEach(function(items) {
+        response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges.forEach(function(items) {
+            ig_image.push(items.node)
         })
-        var url_image = ig_image
+        var random_val = [Math.floor(Math.random() * ig_image.length)]
+        var url_image_m = ig_image[random_val].thumbnail_src
+        var url_image_s = ig_image[random_val].thumbnail_resources[1].src
         return event.reply({
             type: 'image',
-            originalContentUrl: url_image,
-            previewImageUrl: url_image
+            originalContentUrl: url_image_m,
+            previewImageUrl: url_image_s
         });
 
     })
