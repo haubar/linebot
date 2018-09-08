@@ -33,7 +33,7 @@ function getImage(eat_options, event) {
 function getigImage(ig_options, event) {
     rp(ig_options).then(function(response) {
         var ig_image = []
-        // return event.reply('74894984') 
+        return event.reply(response) 
         // response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges.node[Math.floor(Math.random() * 9)].forEach(function(items) {
         response.forEach(function(items) {
             // for (let origin of response) {
