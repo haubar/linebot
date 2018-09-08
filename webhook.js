@@ -28,12 +28,12 @@ function getImage(eat_options, event) {
 
 function getigImage(ig_options, event) {
     rp(ig_options).then(function(response) {
-       if (response!= '') {
-        return event.reply(JSON.stringify(response))
-        // return event.reply(['99999',])
-       } else {
-        return event.reply(['6666666'])
-       }
+    //    if (response!= '') {
+    //     return event.reply(JSON.stringify(response))
+    //     // return event.reply(['99999',])
+    //    } else {
+    //     return event.reply(['6666666'])
+    //    }
       
      
         var ig_image = []
@@ -46,11 +46,11 @@ function getigImage(ig_options, event) {
         var url_image_s = ig_image[random_val].thumbnail_resources[1].src
 
         // return ig_image[random_val] 
-        // return event.reply({
-        //     type: 'image',
-        //     originalContentUrl: url_image_m,
-        //     previewImageUrl: url_image_s
-        // });
+        return event.reply({
+            type: 'image',
+            originalContentUrl: url_image_m,
+            previewImageUrl: url_image_s
+        });
 
     })
 }
