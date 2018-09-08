@@ -13,7 +13,7 @@ function getImage(eat_options, event) {
     rp(eat_options).then(function(response) {
         if (response) {
             // return event.reply(JSON.stringify(response))
-            return event.reply([response])
+            return event.reply(response.data)
            } else {
             return event.reply(['6666666'])
            }
