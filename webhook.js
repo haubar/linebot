@@ -11,17 +11,18 @@ const bot = linebot({
 
 function getImage(eat_options, event) {
     rp(eat_options).then(function(response) {
-        if (response) {
-            // return event.reply(JSON.stringify(response))
-            return event.reply(response.data)
-           } else {
-            return event.reply(['6666666'])
-           }
+        
         var imagurs = []
         response.data.forEach(function(items) {
             imagurs.push(items.link)
         })
         var url_image = imagurs[Math.floor(Math.random() * imagurs.length)]
+        if (response) {
+            // return event.reply(JSON.stringify(response))
+            return event.reply([url_image])
+           } else {
+            return event.reply(['6666666'])
+           }
         return event.reply({
             type: 'image',
             originalContentUrl: url_image,
