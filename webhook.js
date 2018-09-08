@@ -19,7 +19,7 @@ function getImage(eat_options, event) {
         var url_image = imagurs[Math.floor(Math.random() * imagurs.length)]
         if (response) {
             // return event.reply(JSON.stringify(response))
-            return event.reply([url_image])
+            return event.reply(['url_image'])
            } else {
             return event.reply(['6666666'])
            }
