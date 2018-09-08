@@ -33,10 +33,10 @@ function getImage(eat_options, event) {
 function getigImage(ig_options, event) {
     rp(ig_options).then(function(response) {
         var ig_image = []
-        for (let origin of response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
-            let item = new Data_ig(origin.node)
-            ig_image.push(item)
-        }    
+        // for (let origin of response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
+        //     let item = new Data_ig(origin.node)
+        //     ig_image.push(item)
+        // }    
       
         var random_val = 0
             random_val = [Math.floor(Math.random() * ig_image.length)]
