@@ -35,11 +35,12 @@ function getigImage(ig_options, event) {
         var ig_image = []
         // return event.reply('74894984') 
         // response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges.node[Math.floor(Math.random() * 9)].forEach(function(items) {
-        response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges.forEach(function(items) {
-            // ig_image.concat(items.node)
-            let item = new Data_ig(items.node)
+        // response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges.forEach(function(items) {
+        for (let origin of response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
+            // ig_image.concat(item.node)
+            let item = new Data_ig(origin.node)
             list.push(item)
-        })
+        }    
         return event.reply('74894984') 
         var random_val = [Math.floor(Math.random() * ig_image.length)]
         var url_image_m = ig_image[random_val].thumbnail_src
