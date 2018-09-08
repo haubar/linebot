@@ -9,8 +9,8 @@ const bot = linebot({
 });
 
 var Data_ig = function (data) {
-    this.thumbnail_src = data.thumbnail_src
-    // this.mini_image = data.thumbnail_resources[1]
+    this.max_image = data.thumbnail_src
+    this.mini_image = data.thumbnail_resources[1]
 }
 
 
@@ -35,14 +35,14 @@ function getigImage(ig_options, event) {
         var ig_image = []
         // return event.reply(response.graphql.hashtag.edge_hashtag_to_top_posts.edges.toString()) 
         // for (let origin of response.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
-        for (let origin of response.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
-            let item = new Data_ig(origin.node)
-            // ig_image.push(item)
-        }
-        // response.graphgl.hashtag.edge_hashtag_to_top_posts.edges.forEach(function(items) {
+        // for (let origin of response.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
+        //     let item = new Data_ig(origin.node)
+        //     ig_image.push(item)
+        // }
+        response.graphgl.hashtag.edge_hashtag_to_top_posts.edges.forEach(function(items) {
         //     let item = new Data_ig(items.node)
         //     ig_image.push(item)
-        // })    
+        })    
         return event.reply(response.graphql.hashtag.edge_hashtag_to_top_posts.edges.toString())  
         var random_val = [Math.floor(Math.random() * ig_image.length)]
         var url_image_m = ig_image[random_val].thumbnail_src
