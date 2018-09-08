@@ -44,10 +44,10 @@ function getigImage(ig_options, event) {
         //     ig_image.push(item)
         // })
         
-        for (items in response.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
+        // for (items in response.graphgl.hashtag.edge_hashtag_to_top_posts.edges.node) {
             // let item = new Data_ig(response.graphgl.hashtag.edge_hashtag_to_top_posts.edges[items])
             // ig_image.push(item)
-        }
+        // }
         return event.reply(response.graphql.hashtag.edge_hashtag_to_top_posts.edges.toString())  
         var random_val = [Math.floor(Math.random() * ig_image.length)]
         var url_image_m = ig_image[random_val].thumbnail_src
