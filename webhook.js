@@ -172,11 +172,12 @@ bot.on('message', function(event) {
                         json: true
                     };
                     var breakfast_img = getIgimage(ig_options, event);
-                    event.reply(breakfast_img).then(function (data) {
-                    	console.log('Success', data);
-                    }).catch(function (error) {
-                    	console.log('Error', error);
-                    });
+                    event.reply(breakfast_img);
+                    // event.reply(breakfast_img).then(function (data) {
+                    // 	console.log('Success', data);
+                    // }).catch(function (error) {
+                    // 	console.log('Error', error);
+                    // });
                     break;
             }
             break;
@@ -228,10 +229,6 @@ bot.on('leave', function(event) {
 
 bot.on('postback', function(event) {
     event.reply('postback: ' + event.postback.data);
-});
-
-bot.on('beacon', function(event) {
-    event.reply('beacon: ' + event.beacon.hwid);
 });
 
 bot.listen('/webhook', process.env.PORT || 3333, () => {
