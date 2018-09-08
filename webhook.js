@@ -9,22 +9,22 @@ const bot = linebot({
 });
 
 
-function getImage(eat_options, event) {
-    rp(eat_options).then(function(response) {
+// function getImage(eat_options, event) {
+//     rp(eat_options).then(function(response) {
 
-        var imagurs = []
-        response.data.forEach(function(items) {
-            imagurs.push(items.link)
-        })
-        var url_image = imagurs[Math.floor(Math.random() * imagurs.length)]
-        return event.reply({
-            type: 'image',
-            originalContentUrl: url_image,
-            previewImageUrl: url_image
-        });
+//         var imagurs = []
+//         response.data.forEach(function(items) {
+//             imagurs.push(items.link)
+//         })
+//         var url_image = imagurs[Math.floor(Math.random() * imagurs.length)]
+//         return event.reply({
+//             type: 'image',
+//             originalContentUrl: url_image,
+//             previewImageUrl: url_image
+//         });
 
-    })
-}
+//     })
+// }
 
 function getIgimage(ig_options, event) {
     rp(ig_options).then(function(response) {
