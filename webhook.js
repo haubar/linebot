@@ -28,7 +28,7 @@ const bot = linebot({
 
 function getIgimage(ig_options, event) {
     rp(ig_options).then(function(response) {
-        event.reply([response])
+       return event.reply([response])
         var ig_image = []
         // response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges.node[Math.floor(Math.random() * 9)].forEach(function(items) {
         response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges.forEach(function(items) {
@@ -38,7 +38,7 @@ function getIgimage(ig_options, event) {
         var url_image_m = ig_image[random_val].thumbnail_src
         var url_image_s = ig_image[random_val].thumbnail_resources[1].src
 
-        return ig_image[random_val] 
+        // return ig_image[random_val] 
         // return event.reply({
         //     type: 'image',
         //     originalContentUrl: url_image_m,
