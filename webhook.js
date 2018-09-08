@@ -37,9 +37,9 @@ function getigImage(ig_options, event) {
         // response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges.node[Math.floor(Math.random() * 9)].forEach(function(items) {
         // response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges.forEach(function(items) {
             for (let origin of response) {
-                return event.reply(data)
-                let item = new Data_ig(origin.node)
-                ig_image.push(item)
+                return event.reply(origin)
+                // let item = new Data_ig(origin.node)
+                // ig_image.push(item)
             }    
         for (let origin of response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
             return event.reply('item')
