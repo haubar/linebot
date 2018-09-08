@@ -36,6 +36,7 @@ function getigImage(ig_options, event) {
         var url_image_m = ig_image[random_val].thumbnail_src
         var url_image_s = ig_image[random_val].thumbnail_resources[1].src
         // return event.reply(['url_image_m'])
+        return event.reply('74894984') 
         return event.reply([random_val]) 
         return event.reply({
             type: 'image',
