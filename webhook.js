@@ -33,7 +33,7 @@ function getImage(eat_options, event) {
 function getigImage(ig_options, event) {
     rp(ig_options).then(function(response) {
         var ig_image = []
-        return event.reply([null]) 
+        return event.reply(ig_options) 
         // response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges.node[Math.floor(Math.random() * 9)].forEach(function(items) {
         response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges.forEach(function(items) {
             // for (let origin of response) {
@@ -184,6 +184,7 @@ bot.on('message', function(event) {
                         json: true
                     };
                     var get_ig_image = getigImage(ig_options, event);
+                    // var test_img = getImage(eat_options, event)
                     // event.reply([encode_tag]);
                     // event.reply(breakfast_img).then(function (data) {
                     // 	console.log('Success', data);
