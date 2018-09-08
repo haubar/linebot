@@ -10,7 +10,7 @@ const bot = linebot({
 
 var Data_ig = function (data) {
     this.max_image = data.thumbnail_src
-    this.mini_image = data.thumbnail_resources[1]
+    // this.mini_image = data.thumbnail_resources[1]
 }
 
 
@@ -35,8 +35,8 @@ function getigImage(ig_options, event) {
         var ig_image = []
         // return event.reply(response.graphql.hashtag.edge_hashtag_to_top_posts.edges.toString()) 
         // for (let origin of response.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
-        for (let origin of []) {
-            // let item = new Data_ig(origin.node)
+        for (let origin of response.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
+            let item = new Data_ig(origin.node)
             // ig_image.push(item)
         }
         // response.graphgl.hashtag.edge_hashtag_to_top_posts.edges.forEach(function(items) {
