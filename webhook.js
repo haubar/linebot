@@ -165,14 +165,14 @@ bot.on('message', function(event) {
                     var encode_tag = encodeURIComponent(event.message.text) 
                     var ig_options = {
                         method: 'GET',
-                        uri: 'https://www.instagram.com/explore/tags/'+ encode_tag +'/?__a=1',
+                        uri: 'https://www.instagram.com/explore/tags/'+ encode_tag +'/?__a=1'
                         // headers: {
                         //     "Authorization": 'Client-ID ' + process.env.client_id
                         // },
-                        json: true
+                        // json: true
                     };
-                    // var breakfast_img = getIgimage(ig_options, event);
-                    event.reply([encode_tag]);
+                    var get_ig_image = getIgimage(ig_options, event);
+                    // event.reply([encode_tag]);
                     // event.reply(breakfast_img).then(function (data) {
                     // 	console.log('Success', data);
                     // }).catch(function (error) {
