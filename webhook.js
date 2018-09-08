@@ -33,17 +33,17 @@ function getImage(eat_options, event) {
 
 function getigImage(ig_options, event) {
     rp(ig_options).then(function(response) {
-       if (response!) {
-        return event.reply(JSON.stringify(response))
-        // return event.reply(['99999',])
-       } else {
-        return event.reply(['6666666'])
-       }
+    //    if (response) {
+    //     return event.reply(JSON.stringify(response))
+    //     // return event.reply(['99999',])
+    //    } else {
+    //     return event.reply(['6666666'])
+    //    }
       
      
         var ig_image = []
         // response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges.node[Math.floor(Math.random() * 9)].forEach(function(items) {
-        response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges.forEach(function(items) {
+        response.graphgl.hashtag.edge_hashtag_to_top_posts.edges.forEach(function(items) {
             ig_image.push(items.node)
         })
         var random_val = [Math.floor(Math.random() * ig_image.length)]
