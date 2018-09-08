@@ -42,7 +42,7 @@ function getigImage(ig_options, event) {
             ig_image.push(item)
         }    
         // })
-        return event.reply(JSON.stringify(ig_image))   
+        return event.reply((ig_image))   
         for (let origin of response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
             return event.reply('item')
             let item = new Data_ig(origin.node)
