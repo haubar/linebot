@@ -37,11 +37,13 @@ function getIgimage(ig_options, event) {
         var random_val = [Math.floor(Math.random() * ig_image.length)]
         var url_image_m = ig_image[random_val].thumbnail_src
         var url_image_s = ig_image[random_val].thumbnail_resources[1].src
-        return event.reply({
-            type: 'image',
-            originalContentUrl: url_image_m,
-            previewImageUrl: url_image_s
-        });
+
+        return ig_image[random_val] 
+        // return event.reply({
+        //     type: 'image',
+        //     originalContentUrl: url_image_m,
+        //     previewImageUrl: url_image_s
+        // });
 
     })
 }
@@ -170,11 +172,11 @@ bot.on('message', function(event) {
                         json: true
                     };
                     var breakfast_img = getIgimage(ig_options, event);
-                    // event.reply(event.message.text).then(function (data) {
-                    // 	console.log('Success', data);
-                    // }).catch(function (error) {
-                    // 	console.log('Error', error);
-                    // });
+                    event.reply(breakfast_img).then(function (data) {
+                    	console.log('Success', data);
+                    }).catch(function (error) {
+                    	console.log('Error', error);
+                    });
                     break;
             }
             break;
