@@ -17,8 +17,23 @@ function getImage(eat_options, event) {
             imagurs.push(items.link)
         })
         var url_image = imagurs[Math.floor(Math.random() * imagurs.length)]
+        return event.reply({
+            type: 'image',
+            originalContentUrl: url_image,
+            previewImageUrl: url_image
+        });
 
+    })
+}
 
+function getIgimage(ig_options, event) {
+    rp(ig_options).then(function(response) {
+
+        var ig_image = []
+        response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges.node.forEach(function(items) {
+            ig_image.push(items.display_url)
+        })
+        var url_image = ig_image[Math.floor(Math.random() * ig_image.length)]
         return event.reply({
             type: 'image',
             originalContentUrl: url_image,
@@ -142,7 +157,16 @@ bot.on('message', function(event) {
                     // 	event.reply('linebot@' + require('../package.json').version);
                     // 	break;
                 default:
-                    // event.reply(['星星', '月亮', '太陽', '工啥小']);
+                    var encode_tag = encodeURIComponent(event.message.text) 
+                    var ig_options = {
+                        method: 'GET',
+                        uri: 'https://www.instagram.com/explore/tags/'+ encode_tag +'/?__a=1',
+                        // headers: {
+                        //     "Authorization": 'Client-ID ' + process.env.client_id
+                        // },
+                        json: true
+                    };
+                    var breakfast_img = getIgimage(ig_options, event);
                     // event.reply(event.message.text).then(function (data) {
                     // 	console.log('Success', data);
                     // }).catch(function (error) {
