@@ -40,6 +40,7 @@ function getigImage(ig_options, event) {
       
         var random_val = 0
             random_val = [Math.floor(Math.random() * ig_image.length)]
+            return event.reply(random_val)
         var url_image_m = ig_image[random_val].thumbnail_src
         var url_image_s = ig_image[random_val].thumbnail_resources[1].src
         return event.reply(random_val)
