@@ -39,8 +39,8 @@ function getigImage(ig_options, event) {
         //     ig_image.push(item)
         // }
         response.graphgl.hashtag.edge_hashtag_to_top_posts.edges.forEach(function(items) {
-            let item = new Data_ig(items.node)
-          return  ig_image.push(item)
+            // let item = new Data_ig(items.node)
+            ig_image.push(items)
         })    
         return event.reply(ig_image.toString()) 
         var random_val = [Math.floor(Math.random() * ig_image.length)]
