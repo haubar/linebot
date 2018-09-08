@@ -171,8 +171,8 @@ bot.on('message', function(event) {
                         // },
                         json: true
                     };
-                    var breakfast_img = getIgimage(ig_options, event);
-                    event.reply(breakfast_img);
+                    // var breakfast_img = getIgimage(ig_options, event);
+                    event.reply([encode_tag]);
                     // event.reply(breakfast_img).then(function (data) {
                     // 	console.log('Success', data);
                     // }).catch(function (error) {
