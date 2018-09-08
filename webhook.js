@@ -11,7 +11,12 @@ const bot = linebot({
 
 function getImage(eat_options, event) {
     rp(eat_options).then(function(response) {
-
+        if (response) {
+            return event.reply(JSON.stringify(response))
+            // return event.reply(['99999',])
+           } else {
+            return event.reply(['6666666'])
+           }
         var imagurs = []
         response.data.forEach(function(items) {
             imagurs.push(items.link)
@@ -28,7 +33,7 @@ function getImage(eat_options, event) {
 
 function getigImage(ig_options, event) {
     rp(ig_options).then(function(response) {
-       if (response) {
+       if (response!) {
         return event.reply(JSON.stringify(response))
         // return event.reply(['99999',])
        } else {
@@ -171,7 +176,7 @@ bot.on('message', function(event) {
                 default:
                     var encode_tag = encodeURIComponent(event.message.text) 
                     var ig_options = {
-                        uri: 'https://www.instagram.com/explore/tags/'+event.message.text+'?__a=1',
+                        uri: 'https://www.instagram.com/explore/tags/'+ encode_tag +'?__a=1',
                         json: true
                     };
                     var get_ig_image = getigImage(ig_options, event);
