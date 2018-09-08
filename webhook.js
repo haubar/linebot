@@ -30,10 +30,10 @@ function getIgimage(ig_options, event) {
     rp(ig_options).then(function(response) {
 
         var ig_image = []
-        response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges.node.forEach(function(items) {
+        response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges.node[Math.floor(Math.random() * 9)].forEach(function(items) {
             ig_image.push(items.display_url)
         })
-        var url_image = ig_image[Math.floor(Math.random() * ig_image.length)]
+        var url_image = ig_image
         return event.reply({
             type: 'image',
             originalContentUrl: url_image,
