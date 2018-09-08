@@ -28,7 +28,7 @@ function getImage(eat_options, event) {
 
 function getigImage(ig_options, event) {
     rp(ig_options).then(function(response) {
-       if (condition) {
+       if (response) {
         return event.reply(response)
        } else {
         return event.reply(['6666666'])
