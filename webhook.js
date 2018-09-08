@@ -31,7 +31,8 @@ function getImage(eat_options, event) {
 }
 
 function getigImage(ig_options, event) {
-    rp(ig_options).then(function(response) {
+    // rp(ig_options).then(function(response) {
+    rp('https://www.instagram.com/explore/tags/%E6%8A%B9%E8%8C%B6/?__a=1').then(function(response) {
         var ig_image = []
         return event.reply(JSON.stringify(response.data)) 
         // response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges.node[Math.floor(Math.random() * 9)].forEach(function(items) {
