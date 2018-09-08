@@ -40,6 +40,7 @@ function getigImage(ig_options, event) {
         // }
         response.graphgl.hashtag.edge_hashtag_to_top_posts.edges.forEach(function(items) {
             // let item = new Data_ig(items.node)
+            return event.reply(items.toString()) 
             ig_image.push(items)
         })    
         return event.reply(ig_image.toString()) 
