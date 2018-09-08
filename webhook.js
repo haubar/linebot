@@ -33,17 +33,17 @@ function getImage(eat_options, event) {
 function getigImage(ig_options, event) {
     rp(ig_options).then(function(response) {
         var ig_image = []
-        // for (let origin of response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
-        //     let item = new Data_ig(origin.node)
-        //     ig_image.push(item)
-        // }    
-        return event.reply(ig_image.length.toString())
-        var random_val = 0
-            random_val = [Math.floor(Math.random() * ig_image.length)]
-            return event.reply(random_val)
+        for (let origin of response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
+            let item = new Data_ig(origin.node)
+            ig_image.push(item)
+        }    
+        return event.reply(ig_image.toString()) 
+        var random_val = [Math.floor(Math.random() * ig_image.length)]
         var url_image_m = ig_image[random_val].thumbnail_src
         var url_image_s = ig_image[random_val].thumbnail_resources[1].src
-        return event.reply(random_val)
+        // return event.reply(['url_image_m'])
+        return event.reply('74894984') 
+        return event.reply([random_val]) 
         return event.reply({
             type: 'image',
             originalContentUrl: url_image_m,
