@@ -33,8 +33,8 @@ function getImage(eat_options, event) {
 function getigImage(ig_options, event) {
     rp(ig_options).then(function(response) {
         var ig_image = []
-        return event.reply(response.data.toString()) 
-        for (let origin of response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
+        return event.reply(response.graphgl.hashtag.edge_hashtag_to_top_posts.edges.toString()) 
+        for (let origin of response.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
             let item = new Data_ig(origin.node)
             ig_image.push(item)
         }    
