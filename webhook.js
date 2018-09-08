@@ -41,6 +41,7 @@ function getigImage(ig_options, event) {
                 // let item = new Data_ig(origin.node)
                 // ig_image.push(item)
             }    
+            return event.reply('4564655')
         for (let origin of response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
             return event.reply('item')
             let item = new Data_ig(origin.node)
