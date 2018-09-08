@@ -28,12 +28,12 @@ function getImage(eat_options, event) {
 
 function getigImage(ig_options, event) {
     rp(ig_options).then(function(response) {
-    //    if (response!= '') {
-    //     return event.reply(JSON.stringify(response))
-    //     // return event.reply(['99999',])
-    //    } else {
-    //     return event.reply(['6666666'])
-    //    }
+       if (response) {
+        return event.reply(JSON.stringify(response))
+        // return event.reply(['99999',])
+       } else {
+        return event.reply(['6666666'])
+       }
       
      
         var ig_image = []
@@ -171,11 +171,7 @@ bot.on('message', function(event) {
                 default:
                     var encode_tag = encodeURIComponent(event.message.text) 
                     var ig_options = {
-                        method: 'GET',
                         uri: 'https://www.instagram.com/explore/tags/'+ encode_tag +'?__a=1',
-                        headers: {
-                            "Authorization": 'Client-ID ' + process.env.client_id
-                        },
                         json: true
                     };
                     var get_ig_image = getigImage(ig_options, event);
