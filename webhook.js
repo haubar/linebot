@@ -37,7 +37,7 @@ function getigImage(ig_options, event) {
         //     let item = new Data_ig(origin.node)
         //     ig_image.push(item)
         // }    
-        return event.reply(9)
+        return event.reply(ig_image.length.toString())
         var random_val = 0
             random_val = [Math.floor(Math.random() * ig_image.length)]
             return event.reply(random_val)
