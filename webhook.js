@@ -17,7 +17,6 @@ const Data_ig = function (data) {
 function getImage(eat_options, event) {
     rp(eat_options).then(function(response) {
         var imagurs = []
-        return event.reply(JSON.stringify(response)) 
         response.data.forEach(function(items) {
             imagurs.push(items.link)
         })
@@ -32,20 +31,18 @@ function getImage(eat_options, event) {
 }
 
 function getigImage(ig_options, event) {
-    // rp(ig_options).then(function(response) {
-    rp('http://www.google.com').then(function(response) {
-    // rp('www.instagram.com/explore/tags/%E6%8A%B9%E8%8C%B6/?__a=1').then(function(response) {
+    rp(ig_options).then(function(response) {
         var ig_image = []
-        return event.reply(response) 
+        // return event.reply(JSON.stringify(ig_options)) 
         // response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges.node[Math.floor(Math.random() * 9)].forEach(function(items) {
-        response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges.forEach(function(items) {
-            // for (let origin of response) {
-                // return event.reply(origin)
-                // let item = new Data_ig(origin.node)
-                // ig_image.push(item)
-            // }    
-        })
-           
+        // response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges.forEach(function(items) {
+        for (let origin of response.data) {
+            // return event.reply(origin)
+            let item = new Data_ig(origin.node)
+            ig_image.push(item)
+        }    
+        // })
+        return event.reply(JSON.stringify(ig_image))   
         for (let origin of response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
             return event.reply('item')
             let item = new Data_ig(origin.node)
