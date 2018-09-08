@@ -33,16 +33,16 @@ function getImage(eat_options, event) {
 function getigImage(ig_options, event) {
     rp(ig_options).then(function(response) {
         var ig_image = []
-        return response 
+        return event.reply(response.data.length) 
         // response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges.node[Math.floor(Math.random() * 9)].forEach(function(items) {
-        response.forEach(function(items) {
+        response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges.forEach(function(items) {
             // for (let origin of response) {
                 // return event.reply(origin)
                 // let item = new Data_ig(origin.node)
                 // ig_image.push(item)
             // }    
         })
-            return event.reply('4564655')
+           
         for (let origin of response.data.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
             return event.reply('item')
             let item = new Data_ig(origin.node)
