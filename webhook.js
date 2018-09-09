@@ -10,7 +10,7 @@ const bot = linebot({
 
 var Data_ig = function (data) {
     this.max_image = data.thumbnail_src
-    this.mini_image = data.thumbnail_resources[1].src
+    this.mini_image = data.thumbnail_resources[0].src
 }
 
 
@@ -33,42 +33,16 @@ function getImage(eat_options, event) {
 function getigImage(ig_options, event) {
     rp(ig_options).then(function(response) {
         var ig_image = []
-        var test_obj = [{}]
         var array_top_posts = response.graphql.hashtag.edge_hashtag_to_top_posts.edges
-        // var array_top_posts = Object.values(response.graphql.hashtag.edge_hashtag_to_top_posts.edges)
-        // return event.reply(response.graphql.hashtag.edge_hashtag_to_top_posts.edges.toString()) 
-        // for (let origin of response.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
         for (let origin of array_top_posts) {
             let item = new Data_ig(origin.node)
             ig_image.push(item)
         }
-        // array_top_posts.forEach(function(items) {
-        
-        // })
-        // Object.keys(response.graphgl.hashtag.edge_hashtag_to_top_posts).map(function(objectKey, index) {
-            // var value = object[objectKey];
-            // console.log(value);
-        // })
-        // Object.keys(response.graphgl.hashtag.edge_hashtag_to_top_posts.edges[0]).forEach(function(key) {
-            // var val = o[key];
-            // logic();
-        // })
-        
-        // for (items in response.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
-        //     for (key in items) {
-        //         let item = new Data_ig(key)
-        //         ig_image.push(item)
-        //     }
-        // }
-        // return event.reply(array_top_posts.toString())  
-        // return event.reply(ig_image.length)  
-        // return event.reply(array_top_posts.length.toString() + response.graphql.hashtag.edge_hashtag_to_top_posts.toString())  
-        // return event.reply(response.graphql.hashtag.edge_hashtag_to_top_posts.edges.toString())  
+
         var random_val = [Math.floor(Math.random() * 9)]
         var url_image_m = ig_image[random_val].max_image
         var url_image_s = ig_image[random_val].mini_image
-        // return event.reply(['url_image_m'])
-    
+       
         return event.reply({
             type: 'image',
             originalContentUrl: url_image_m,
@@ -180,7 +154,6 @@ bot.on('message', function(event) {
                     break;
                 case '指令':
                     event.reply(['早餐', '午餐', '晚餐', '測試圖']);
-                    // event.reply(['!picture', '!早餐', '!午餐', '!晚餐', '!測試圖', '!location', '!confirm', '!mult']);
                     break;
                     // case 'version':
                     // 	event.reply('linebot@' + require('../package.json').version);
@@ -198,13 +171,6 @@ bot.on('message', function(event) {
                         json: true
                     };
                     var get_ig_image = getigImage(ig_options, event);
-                    // var test_img = getImage(eat_options, event)
-                    // event.reply([encode_tag]);
-                    // event.reply(breakfast_img).then(function (data) {
-                    // 	console.log('Success', data);
-                    // }).catch(function (error) {
-                    // 	console.log('Error', error);
-                    // });
                     break;
             }
             break;
