@@ -13,7 +13,6 @@ var Data_ig = function (data) {
     this.mini_image = data.thumbnail_resources[0].src
 }
 
-
 function getImage(eat_options, event) {
     rp(eat_options).then(function(response) {
         var imagurs = []
@@ -124,15 +123,6 @@ bot.on('message', function(event) {
                         longitude: 100.5298698
                     });
                     break;
-                    // case 'push':
-                    // 	bot.push('U6350b7606935db981705282747c82ee1', ['Hey!', 'สวัสดี ' + String.fromCharCode(0xD83D, 0xDE01)]);
-                    // 	break;
-                    // case 'push2':
-                    // 	bot.push(['U6350b7606935db981705282747c82ee1', 'U6350b7606935db981705282747c82ee1'], ['Hey!', 'สวัสดี ' + String.fromCharCode(0xD83D, 0xDE01)]);
-                    // 	break;
-                    // case 'multicast':
-                    // 	bot.push(['U6350b7606935db981705282747c82ee1', 'U6350b7606935db981705282747c82ee1'], 'Multicast!');
-                    // 	break;
                 case 'confirm':
                     event.reply({
                         type: 'template',
