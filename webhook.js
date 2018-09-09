@@ -40,7 +40,7 @@ function getigImage(ig_options, event) {
         // for (let origin of response.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
         for (let origin of array_top_posts) {
             let item = new Data_ig(origin.node)
-        //     ig_image.push(item)
+            ig_image.push(item)
         }
         // array_top_posts.forEach(function(items) {
         
@@ -61,6 +61,7 @@ function getigImage(ig_options, event) {
         //     }
         // }
         return event.reply(array_top_posts.toString())  
+        return event.reply(ig_image.toString())  
         return event.reply(array_top_posts.length.toString() + response.graphql.hashtag.edge_hashtag_to_top_posts.toString())  
         // return event.reply(response.graphql.hashtag.edge_hashtag_to_top_posts.edges.toString())  
         var random_val = [Math.floor(Math.random() * ig_image.length)]
