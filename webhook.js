@@ -39,7 +39,8 @@ function getigImage(ig_options, event) {
         //     let item = new Data_ig(origin.node)
         //     ig_image.push(item)
         // }
-        response.graphgl.hashtag.edge_hashtag_to_top_posts.edges.forEach(function(items) {
+        // response.graphgl.hashtag.edge_hashtag_to_top_posts.edges.forEach(function(items) {
+        ig_image.forEach(function(items) {
             // let item = new Data_ig(items.node)
             // ig_image.push(item)
         })
