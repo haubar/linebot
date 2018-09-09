@@ -41,10 +41,12 @@ function getigImage(ig_options, event) {
         //     ig_image.push(item)
         // }
         // response.graphgl.hashtag.edge_hashtag_to_top_posts.edges.forEach(function(items) {
-        test_obj.forEach(function(items) {
-            // let item = new Data_ig(items.node)
-            // ig_image.push(item)
-        })
+        
+
+        Object.keys(test_obj).map(function(objectKey, index) {
+            // var value = object[objectKey];
+            // console.log(value);
+        });
         
         // for (items in response.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
         //     for (key in items) {
