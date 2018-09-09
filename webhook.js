@@ -33,6 +33,7 @@ function getImage(eat_options, event) {
 function getigImage(ig_options, event) {
     rp(ig_options).then(function(response) {
         var ig_image = []
+        var test_obj = {}
         // return event.reply(response.graphql.hashtag.edge_hashtag_to_top_posts.edges.toString()) 
         // for (let origin of response.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
         // for (let origin of response.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
@@ -40,7 +41,7 @@ function getigImage(ig_options, event) {
         //     ig_image.push(item)
         // }
         // response.graphgl.hashtag.edge_hashtag_to_top_posts.edges.forEach(function(items) {
-        ig_image.forEach(function(items) {
+        test_obj.forEach(function(items) {
             // let item = new Data_ig(items.node)
             // ig_image.push(item)
         })
