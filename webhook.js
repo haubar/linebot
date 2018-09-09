@@ -43,7 +43,7 @@ function getigImage(ig_options, event) {
         // response.graphgl.hashtag.edge_hashtag_to_top_posts.edges.forEach(function(items) {
         
 
-        Object.keys(test_obj).map(function(objectKey, index) {
+        Object.keys(response.graphgl.hashtag.edge_hashtag_to_top_posts.edges).map(function(objectKey, index) {
             // var value = object[objectKey];
             // console.log(value);
         });
