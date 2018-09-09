@@ -33,7 +33,7 @@ function getImage(eat_options, event) {
 function getigImage(ig_options, event) {
     rp(ig_options).then(function(response) {
         var ig_image = []
-        var test_obj = {}
+        var test_obj = [{}]
         // return event.reply(response.graphql.hashtag.edge_hashtag_to_top_posts.edges.toString()) 
         // for (let origin of response.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
         // for (let origin of response.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
@@ -47,8 +47,7 @@ function getigImage(ig_options, event) {
             // var value = object[objectKey];
             // console.log(value);
         // });
-        Object.keys(response.graphgl.hashtag.edge_hashtag_to_top_posts.edges).forEach(function(key) {
-            return event.reply(typeof key) 
+        Object.keys(test_obj).forEach(function(key) {
             // var val = o[key];
             // logic();
         });
@@ -59,7 +58,7 @@ function getigImage(ig_options, event) {
         //         ig_image.push(item)
         //     }
         // }
-        return event.reply(typeof response.graphql.hashtag.edge_hashtag_to_top_posts.edges)  
+        return event.reply(typeof response.graphql.hashtag.edge_hashtag_to_top_posts)  
         // return event.reply(response.graphql.hashtag.edge_hashtag_to_top_posts.edges.toString())  
         var random_val = [Math.floor(Math.random() * ig_image.length)]
         var url_image_m = ig_image[random_val].thumbnail_src
