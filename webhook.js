@@ -45,7 +45,7 @@ function getigImage(ig_options, event) {
         // })
         
         for (items in response.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
-            for (key in [items]) {
+            for (key in items) {
                 let item = new Data_ig(key)
                 ig_image.push(item)
             }
