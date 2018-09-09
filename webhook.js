@@ -10,7 +10,7 @@ const bot = linebot({
 
 var Data_ig = function (data) {
     this.max_image = data.thumbnail_src
-    this.mini_image = data.thumbnail_resources[1]
+    this.mini_image = data.thumbnail_resources[1].src
 }
 
 
