@@ -60,7 +60,7 @@ function getigImage(ig_options, event) {
         //         ig_image.push(item)
         //     }
         // }
-        return event.reply(array_top_posts.toString())  
+        // return event.reply(array_top_posts.toString())  
         return event.reply(ig_image.toString())  
         return event.reply(array_top_posts.length.toString() + response.graphql.hashtag.edge_hashtag_to_top_posts.toString())  
         // return event.reply(response.graphql.hashtag.edge_hashtag_to_top_posts.edges.toString())  
