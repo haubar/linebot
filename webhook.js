@@ -43,10 +43,14 @@ function getigImage(ig_options, event) {
         // response.graphgl.hashtag.edge_hashtag_to_top_posts.edges.forEach(function(items) {
         
 
-        Object.keys(response.graphgl.hashtag.edge_hashtag_to_top_posts.edges).map(function(objectKey, index) {
+        // Object.keys(response.graphgl.hashtag.edge_hashtag_to_top_posts.edges).map(function(objectKey, index) {
             // var value = object[objectKey];
             // console.log(value);
-        });
+        // });
+        Object.keys(response.graphgl.hashtag.edge_hashtag_to_top_posts.edges).forEach(function(key) {
+            // var val = o[key];
+            // logic();
+          });
         
         // for (items in response.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
         //     for (key in items) {
