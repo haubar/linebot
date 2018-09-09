@@ -43,7 +43,13 @@ function getigImage(ig_options, event) {
         //     let item = new Data_ig(items.node)
         //     ig_image.push(item)
         // })
-        
+        for (items in []) {
+            return event.reply(items.toString())  
+        //     for (key in items) {
+        //         let item = new Data_ig(key)
+        //         ig_image.push(item)
+        //     }
+        } 
         for (items in response.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
             return event.reply(items.toString())  
         //     for (key in items) {
