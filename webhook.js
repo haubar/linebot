@@ -58,7 +58,7 @@ function getigImage(ig_options, event) {
         //         ig_image.push(item)
         //     }
         // }
-        return event.reply(response.graphql.hashtag.edge_hashtag_to_top_posts.edges.toString())  
+        return event.reply(response.graphql.hashtag.edge_hashtag_to_top_posts.edges[0].toString())  
         return event.reply(response.graphql.hashtag.edge_hashtag_to_top_posts.toString())  
         // return event.reply(response.graphql.hashtag.edge_hashtag_to_top_posts.edges.toString())  
         var random_val = [Math.floor(Math.random() * ig_image.length)]
