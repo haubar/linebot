@@ -39,24 +39,17 @@ function getigImage(ig_options, event) {
         //     let item = new Data_ig(origin.node)
         //     ig_image.push(item)
         // }
-        // response.graphgl.hashtag.edge_hashtag_to_top_posts.edges.forEach(function(key, items) {
-        //     let item = new Data_ig(items.node)
-        //     ig_image.push(item)
-        // })
-        for (items in []) {
-            return event.reply(items.toString())  
+        response.graphgl.hashtag.edge_hashtag_to_top_posts.edges.forEach(function(key, items) {
+            // let item = new Data_ig(items.node)
+            // ig_image.push(item)
+        })
+        
+        // for (items in response.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
         //     for (key in items) {
         //         let item = new Data_ig(key)
         //         ig_image.push(item)
         //     }
-        } 
-        for (items in response.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
-            return event.reply(items.toString())  
-        //     for (key in items) {
-        //         let item = new Data_ig(key)
-        //         ig_image.push(item)
-        //     }
-        }
+        // }
         return event.reply(response.graphql.hashtag.edge_hashtag_to_top_posts.edges.toString())  
         var random_val = [Math.floor(Math.random() * ig_image.length)]
         var url_image_m = ig_image[random_val].thumbnail_src
