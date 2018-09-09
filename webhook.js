@@ -34,7 +34,8 @@ function getigImage(ig_options, event) {
     rp(ig_options).then(function(response) {
         var ig_image = []
         var test_obj = [{}]
-        var array_top_posts = Object.keys(response.graphql.hashtag.edge_hashtag_to_top_posts.edges)
+        // var array_top_posts = Object.keys(response.graphql.hashtag.edge_hashtag_to_top_posts.edges)
+        var array_top_posts = Object.values(response.graphql.hashtag.edge_hashtag_to_top_posts.edges)
         // return event.reply(response.graphql.hashtag.edge_hashtag_to_top_posts.edges.toString()) 
         // for (let origin of response.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
         // for (let origin of response.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
