@@ -46,11 +46,11 @@ function getigImage(ig_options, event) {
         // Object.keys(response.graphgl.hashtag.edge_hashtag_to_top_posts).map(function(objectKey, index) {
             // var value = object[objectKey];
             // console.log(value);
-        // });
-        Object.keys(response.graphgl.hashtag.edge_hashtag_to_top_posts).forEach(function(key) {
+        // })
+        // Object.keys(response.graphgl.hashtag.edge_hashtag_to_top_posts).forEach(function(key) {
             // var val = o[key];
             // logic();
-        });
+        // })
         
         // for (items in response.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
         //     for (key in items) {
@@ -58,6 +58,7 @@ function getigImage(ig_options, event) {
         //         ig_image.push(item)
         //     }
         // }
+        return event.reply(response.graphql.hashtag.edge_hashtag_to_top_posts.edges.node.toString())  
         return event.reply(response.graphql.hashtag.edge_hashtag_to_top_posts.toString())  
         // return event.reply(response.graphql.hashtag.edge_hashtag_to_top_posts.edges.toString())  
         var random_val = [Math.floor(Math.random() * ig_image.length)]
