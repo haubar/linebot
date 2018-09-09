@@ -50,7 +50,7 @@ function getigImage(ig_options, event) {
         Object.keys(response.graphgl.hashtag.edge_hashtag_to_top_posts.edges).forEach(function(key) {
             // var val = o[key];
             // logic();
-          });
+        });
         
         // for (items in response.graphgl.hashtag.edge_hashtag_to_top_posts.edges) {
         //     for (key in items) {
