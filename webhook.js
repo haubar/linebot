@@ -48,6 +48,7 @@ function getigImage(ig_options, event) {
             // console.log(value);
         // });
         Object.keys(response.graphgl.hashtag.edge_hashtag_to_top_posts.edges).forEach(function(key) {
+            return event.reply(typeof key) 
             // var val = o[key];
             // logic();
         });
