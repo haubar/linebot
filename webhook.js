@@ -155,7 +155,7 @@ bot.on('message', function(event) {
                     // 	event.reply('linebot@' + require('../package.json').version);
                     // 	break;
                 default:
-                    var encode_tag = encodeURIComponent(event.message.text) 
+                    var encode_tag = encodeURIComponent(event.message.text.trim()) 
                     var ig_options = {
                         uri: 'https://www.instagram.com/explore/tags/'+ encode_tag +'?__a=1',
                         json: true
