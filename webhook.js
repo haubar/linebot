@@ -102,18 +102,18 @@ bot.on('message', function(event) {
                     var dinner_img = getImage(eat_options, event)
 
                     break;
-                case '測試圖':
-                    var eat_options = {
-                        method: 'GET',
-                        uri: 'https://api.imgur.com/3/album/zXNwB/images',
-                        headers: {
-                            "Authorization": 'Client-ID ' + process.env.client_id
-                        },
-                        json: true
-                    };
-                    var test_img = getImage(eat_options, event)
+                // case '測試圖':
+                //     var eat_options = {
+                //         method: 'GET',
+                //         uri: 'https://api.imgur.com/3/album/zXNwB/images',
+                //         headers: {
+                //             "Authorization": 'Client-ID ' + process.env.client_id
+                //         },
+                //         json: true
+                //     };
+                //     var test_img = getImage(eat_options, event)
 
-                    break;
+                //     break;
                 case 'location':
                     event.reply({
                         type: 'location',
@@ -164,30 +164,30 @@ bot.on('message', function(event) {
                     break;
             }
             break;
-        case 'image':
-            event.message.content().then(function(data) {
-                const s = data.toString('base64').substring(0, 30);
-                return event.reply('Nice picture! ' + s);
-            }).catch(function(err) {
-                return event.reply(err.toString());
-            });
-            break;
+        // case 'image':
+        //     event.message.content().then(function(data) {
+        //         const s = data.toString('base64').substring(0, 30);
+        //         return event.reply('Nice picture! ' + s);
+        //     }).catch(function(err) {
+        //         return event.reply(err.toString());
+        //     });
+        //     break;
         case 'video':
             event.reply('Nice movie!');
             break;
         case 'audio':
             event.reply('Nice song!');
             break;
-        case 'location':
-            event.reply(['That\'s a good location!', 'Lat:' + event.message.latitude, 'Long:' + event.message.longitude]);
-            break;
-        case 'sticker':
-            event.reply({
-                type: 'sticker',
-                packageId: 1,
-                stickerId: 1
-            });
-            break;
+        // case 'location':
+        //     event.reply(['That\'s a good location!', 'Lat:' + event.message.latitude, 'Long:' + event.message.longitude]);
+        //     break;
+        // case 'sticker':
+        //     event.reply({
+        //         type: 'sticker',
+        //         packageId: 1,
+        //         stickerId: 1
+        //     });
+        //     break;
         default:
             event.reply('Unknow message: ' + JSON.stringify(event));
             break;
