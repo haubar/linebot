@@ -164,30 +164,30 @@ bot.on('message', function(event) {
                     break;
             }
             break;
-        // case 'image':
+        case 'image':
         //     event.message.content().then(function(data) {
         //         const s = data.toString('base64').substring(0, 30);
         //         return event.reply('Nice picture! ' + s);
         //     }).catch(function(err) {
         //         return event.reply(err.toString());
         //     });
-        //     break;
+            break;
         case 'video':
             event.reply('Nice movie!');
             break;
         case 'audio':
             event.reply('Nice song!');
             break;
-        // case 'location':
+        case 'location':
         //     event.reply(['That\'s a good location!', 'Lat:' + event.message.latitude, 'Long:' + event.message.longitude]);
-        //     break;
-        // case 'sticker':
+            break;
+        case 'sticker':
         //     event.reply({
         //         type: 'sticker',
         //         packageId: 1,
         //         stickerId: 1
         //     });
-        //     break;
+            break;
         default:
             event.reply('Unknow message: ' + JSON.stringify(event));
             break;
