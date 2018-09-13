@@ -56,7 +56,7 @@ bot.on('message', function(event) {
     switch (event.message.type) {
         case 'text':
             if (event.message.text.substr(0,1) == '#') {
-                var encode_tag = encodeURIComponent(event.message.text.trim()) 
+                var encode_tag = encodeURIComponent(event.message.text.substr(1).trim()) 
                     var ig_options = {
                         uri: 'https://www.instagram.com/explore/tags/'+ encode_tag +'?__a=1',
                         json: true
