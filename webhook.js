@@ -55,96 +55,105 @@ function getigImage(ig_options, event) {
 bot.on('message', function(event) {
     switch (event.message.type) {
         case 'text':
-            switch (event.message.text) {
-                case '給我id':
-                    event.source.profile().then(function(profile) {
-                        return event.reply('嗨 ' + profile.displayName + ' 你要幹嘛!! ' + profile.userId);
-                    });
-                    break;
-                case 'picture':
-                    event.reply({
-                        type: 'image',
-                        originalContentUrl: 'https://d.line-scdn.net/stf/line-lp/family/en-US/190X190_line_me.png',
-                        previewImageUrl: 'https://d.line-scdn.net/stf/line-lp/family/en-US/190X190_line_me.png'
-                    });
-                    break;
-                case '早餐':
-                    var eat_options = {
-                        method: 'GET',
-                        uri: 'https://api.imgur.com/3/album/6YSY1/images',
-                        headers: {
-                            "Authorization": 'Client-ID ' + process.env.client_id
-                        },
+            if (event.message.text.substr(0,1) == '#') {
+                var encode_tag = encodeURIComponent(event.message.text.trim()) 
+                    var ig_options = {
+                        uri: 'https://www.instagram.com/explore/tags/'+ encode_tag +'?__a=1',
                         json: true
                     };
-                    var breakfast_img = getImage(eat_options, event);
-                    break;
-                case '午餐':
-                    var eat_options = {
-                        method: 'GET',
-                        uri: 'https://api.imgur.com/3/album/D4BDl/images',
-                        headers: {
-                            "Authorization": 'Client-ID ' + process.env.client_id
-                        },
-                        json: true
-                    };
-                    var lunch_img = getImage(eat_options, event);
-                    break;
-                case '晚餐':
-                    var eat_options = {
-                        method: 'GET',
-                        uri: 'https://api.imgur.com/3/album/zXNwB/images',
-                        headers: {
-                            "Authorization": 'Client-ID ' + process.env.client_id
-                        },
-                        json: true
-                    };
-                    var dinner_img = getImage(eat_options, event)
+                    var get_ig_image = getigImage(ig_options, event);
+            } else {
+                switch (event.message.text) {
+                    case '給我id':
+                        event.source.profile().then(function(profile) {
+                            return event.reply('嗨 ' + profile.displayName + ' 你要幹嘛!! ' + profile.userId);
+                        });
+                        break;
+                    case 'picture':
+                        event.reply({
+                            type: 'image',
+                            originalContentUrl: 'https://d.line-scdn.net/stf/line-lp/family/en-US/190X190_line_me.png',
+                            previewImageUrl: 'https://d.line-scdn.net/stf/line-lp/family/en-US/190X190_line_me.png'
+                        });
+                        break;
+                    case 'location':
+                        event.reply({
+                            type: 'location',
+                            title: 'LINE Plus Corporation',
+                            address: '別問我你在哪~~~',
+                            latitude: 13.7202068,
+                            longitude: 100.5298698
+                        });
+                        break;
+                    case 'confirm':
+                        event.reply({
+                            type: 'template',
+                            altText: 'this is a confirm template',
+                            template: {
+                                type: 'confirm',
+                                text: 'Are you sure?',
+                                actions: [{
+                                    type: 'message',
+                                    label: 'Yes',
+                                    text: 'yes'
+                                }, {
+                                    type: 'message',
+                                    label: 'No',
+                                    text: 'no'
+                                }]
+                            }
+                        });
+                        break;
+                    case '指令':
+                        event.reply(['早餐', '午餐', '晚餐', '測試圖']);
+                        break;
+                    //case '早餐':
+                    //     var eat_options = {
+                    //         method: 'GET',
+                    //         uri: 'https://api.imgur.com/3/album/6YSY1/images',
+                    //         headers: {
+                    //             "Authorization": 'Client-ID ' + process.env.client_id
+                    //         },
+                    //         json: true
+                    //     };
+                    //     var breakfast_img = getImage(eat_options, event);
+                    //     break;
+                    // case '午餐':
+                    //     var eat_options = {
+                    //         method: 'GET',
+                    //         uri: 'https://api.imgur.com/3/album/D4BDl/images',
+                    //         headers: {
+                    //             "Authorization": 'Client-ID ' + process.env.client_id
+                    //         },
+                    //         json: true
+                    //     };
+                    //     var lunch_img = getImage(eat_options, event);
+                    //     break;
+                    // case '晚餐':
+                    //     var eat_options = {
+                    //         method: 'GET',
+                    //         uri: 'https://api.imgur.com/3/album/zXNwB/images',
+                    //         headers: {
+                    //             "Authorization": 'Client-ID ' + process.env.client_id
+                    //         },
+                    //         json: true
+                    //     };
+                    //     var dinner_img = getImage(eat_options, event)
 
-                    break;
-                // case '測試圖':
-                //     var eat_options = {
-                //         method: 'GET',
-                //         uri: 'https://api.imgur.com/3/album/zXNwB/images',
-                //         headers: {
-                //             "Authorization": 'Client-ID ' + process.env.client_id
-                //         },
-                //         json: true
-                //     };
-                //     var test_img = getImage(eat_options, event)
+                    //     break;
+                    // case '測試圖':
+                    //     var eat_options = {
+                    //         method: 'GET',
+                    //         uri: 'https://api.imgur.com/3/album/zXNwB/images',
+                    //         headers: {
+                    //             "Authorization": 'Client-ID ' + process.env.client_id
+                    //         },
+                    //         json: true
+                    //     };
+                    //     var test_img = getImage(eat_options, event)
 
-                //     break;
-                case 'location':
-                    event.reply({
-                        type: 'location',
-                        title: 'LINE Plus Corporation',
-                        address: '別問我你在哪~~~',
-                        latitude: 13.7202068,
-                        longitude: 100.5298698
-                    });
-                    break;
-                case 'confirm':
-                    event.reply({
-                        type: 'template',
-                        altText: 'this is a confirm template',
-                        template: {
-                            type: 'confirm',
-                            text: 'Are you sure?',
-                            actions: [{
-                                type: 'message',
-                                label: 'Yes',
-                                text: 'yes'
-                            }, {
-                                type: 'message',
-                                label: 'No',
-                                text: 'no'
-                            }]
-                        }
-                    });
-                    break;
-                case '指令':
-                    event.reply(['早餐', '午餐', '晚餐', '測試圖']);
-                    break;
+                    //     break;
+                
                     // case 'version':
                     // 	event.reply('linebot@' + require('../package.json').version);
                     // 	break;
@@ -154,14 +163,9 @@ bot.on('message', function(event) {
                     // case 'version':
                     // 	event.reply('linebot@' + require('../package.json').version);
                     // 	break;
-                default:
-                    var encode_tag = encodeURIComponent(event.message.text.trim()) 
-                    var ig_options = {
-                        uri: 'https://www.instagram.com/explore/tags/'+ encode_tag +'?__a=1',
-                        json: true
-                    };
-                    var get_ig_image = getigImage(ig_options, event);
-                    break;
+                    default:
+                        break;
+                }
             }
             break;
         case 'image':
