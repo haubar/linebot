@@ -38,7 +38,7 @@ function getigImage(ig_options, event) {
             ig_image.push(item)
         }
 
-        var random_val = [Math.floor(Math.random() * 9)]
+        var random_val = [Math.floor(Math.random() * ig_image.length)]
         var url_image_m = ig_image[random_val].max_image
         var url_image_s = ig_image[random_val].mini_image
        
