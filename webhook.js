@@ -97,8 +97,7 @@ bot.on('message', function(event) {
                         uri: 'https://www.googleapis.com/youtube/v3/search?'+'key='+process.env.youtubeToken+'&q='+encode_keyword+'&type=video'+'&part=snippet',
                         json: true
                     };
-                    return event.reply(encode_keyword);
-                    return event.reply(encode_keyword);
+                    return event.reply(yt_options);
                     var get_youtube_video = getYoutube(yt_options, event);
             } else {
                 switch (event.message.text) {
