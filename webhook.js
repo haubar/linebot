@@ -98,7 +98,7 @@ bot.on('message', function(event) {
                              '&key='+process.env.youtube_token+
                              '&q='+encode_keyword+
                              '&type=video'+
-                             '?part=snippet',
+                             '&part=snippet',
                         json: true
                     };
                     var get_youtube_video = getYoutube(ig_options, event)
