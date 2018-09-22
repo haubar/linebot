@@ -208,6 +208,7 @@ bot.on('message', function(event) {
                     // 	event.reply('linebot@' + require('../package.json').version);
                     // 	break;
                     default:
+                        event.reply(event.message.text.substr(0,2))
                         break;
                 }
             }
