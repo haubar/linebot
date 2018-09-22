@@ -88,7 +88,7 @@ bot.on('message', function(event) {
                         uri: 'https://www.instagram.com/explore/tags/'+ encode_tag +'?__a=1',
                         json: true
                     };
-                    var get_ig_image = getigImage(ig_options, event)
+                    var get_ig_image = getigImage(ig_options, event);
             }  
             else if (event.message.text.substr(0,2) == 'yt') {
                 var encode_keyword = encodeURIComponent(event.message.text.substr(2).trim()) 
@@ -101,7 +101,7 @@ bot.on('message', function(event) {
                              '&part=snippet',
                         json: true
                     };
-                    var get_youtube_video = getYoutube(ig_options, event)
+                    var get_youtube_video = getYoutube(ig_options, event);
             } else {
                 switch (event.message.text) {
                     case '給我id':
