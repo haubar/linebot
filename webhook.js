@@ -72,8 +72,13 @@ function getYoutube(yt_options, event) {
        
 
         return event.reply({
-            type: 'text',
-            text: url_video
+            type: 'action',
+            text: url_image,
+            actions: [{
+                type: "uri",
+                label: '......',
+                uri: url_video
+            }]
         });
         // return event.reply({
         //     type: 'video',
