@@ -90,8 +90,8 @@ bot.on('message', function(event) {
                         json: true
                     };
                     var get_ig_image = getigImage(ig_options, event);
-            } 
-            if (event.message.text.substr(0,2) == 'yt') {
+            }
+            else if (event.message.text.substr(0,2) == 'yt') {
                 var encode_keyword = event.message.text.substr(2).trim() 
                     var yt_options = {
                         uri: 'https://www.googleapis.com/youtube/v3/search?'+'key='+process.env.youtubeToken+'&q='+encode_keyword+'&type=video'+'&part=snippet',
@@ -204,7 +204,7 @@ bot.on('message', function(event) {
                     // 	event.reply('linebot@' + require('../package.json').version);
                     // 	break;
                     default:
-                        event.reply(event.message.text.substr(0,2))
+                        // event.reply(event.message.text.substr(0,2))
                         break;
                 }
             }
