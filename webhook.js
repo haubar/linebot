@@ -150,7 +150,7 @@ bot.on('message', function(event) {
                         event.reply(['早餐', '午餐', '晚餐', '測試圖']);
                         break;
                     case '幹':
-                        event.reply('....請冷靜 '+String.valueOf(Character.toChars(Integer.decode("0x10007B"))));
+                        event.reply('....請冷靜 '+0x10007B);
                         break;
                     //case '早餐':
                     //     var eat_options = {
