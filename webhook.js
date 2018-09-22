@@ -58,11 +58,11 @@ function getigImage(ig_options, event) {
 
 function getYoutube(yt_options, event) {
     rp(yt_options).then(function(response) {
-        return event.replay(yt.yt_options.uri)
+        // return event.replay(yt.yt_options)
         var video = []
         var array_video_data = response.items
         for (let origin of array_video_data) {
-            let item = new Data_youtube(origin.node)
+            let item = new Data_youtube(origin)
             video.push(item)
         }
 
@@ -72,11 +72,11 @@ function getYoutube(yt_options, event) {
        
 
         
-        // return event.reply({
-        //     type: 'video',
-        //     originalContentUrl: url_video,
-        //     previewImageUrl: url_image
-        // });
+        return event.reply({
+            type: 'video',
+            originalContentUrl: url_video,
+            previewImageUrl: url_image
+        });
         
     })
 }
