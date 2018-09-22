@@ -71,22 +71,52 @@ function getYoutube(yt_options, event) {
         var url_image = video[random_val].video_image_url
        
 
-        return event.reply({
-            type: 'action',
-            imageUrl: url_image,
-            action: {
-                type: "uri",
-                label: '......',
-                uri: url_video
-            }
-        })
+        // return event.reply({
+        //     type: 'action',
+        //     imageUrl: url_image,
+        //     action: {
+        //         type: "uri",
+        //         label: '......',
+        //         uri: url_video
+        //     }
+        // })
         // return event.reply({
         //     type: 'video',
         //     originalContentUrl: url_video,
         //     previewImageUrl: url_image
         // });
-        
-    })
+
+        return event.reply({
+                "type": "imagemap",
+                "baseUrl": url_image,
+                "altText": '........',
+                "baseSize": {
+                    "width": 320,
+                    "height": 180
+                },
+                "actions": [
+                    {
+                        "type": "uri",
+                        "linkUri": url_video,
+                        "area": {
+                            "x": 0,
+                            "y": 0,
+                            "width": 320,
+                            "height": 180
+                        }
+                    }
+                    // {
+                    //     "type": "message",
+                    //     "text": "Hello",
+                    //     "area": {
+                    //         "x": 520,
+                    //         "y": 0,
+                    //         "width": 520,
+                    //         "height": 1040
+                    //     }
+                    // }
+                ]
+        })
 }
 
 
