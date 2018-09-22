@@ -70,7 +70,7 @@ function getYoutube(yt_options, event) {
         var url_image = video[random_val].video_image_url
        
 
-        return event.replay('55688')
+        return event.replay([response])
         // return event.reply({
         //     type: 'video',
         //     originalContentUrl: url_video,
