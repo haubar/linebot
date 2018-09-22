@@ -13,6 +13,11 @@ var Data_ig = function (data) {
     this.mini_image = data.thumbnail_resources[0].src
 }
 
+var Data_youtube = function (data) {
+    this.video_id = data.id.videoId
+    this.video_image_url = data.snippet.thumbnails.default.url
+}
+
 function getImage(eat_options, event) {
     rp(eat_options).then(function(response) {
         var imagurs = []
@@ -48,6 +53,28 @@ function getigImage(ig_options, event) {
             previewImageUrl: url_image_s
         });
 
+    })
+}
+
+function getYoutube(options, event) {
+    rp(options).then(function(response) {
+        var video = []
+        var array_video_data = response.items
+        for (let origin of array_video_data) {
+            let item = new Data_ig(origin.node)
+            video.push(item)
+        }
+
+        var random_val = [Math.floor(Math.random() * video.length)]
+        var url_video = 'https://www.youtube.com/watch?v='+video[random_val].video_id
+        var url_image = video[random_val].video_image_url
+       
+        // return event.reply({
+        //     type: 'video',
+        //     originalContentUrl: url_video,
+        //     previewImageUrl: url_image
+        // });
+        return event.replay(url_image)
     })
 }
 
