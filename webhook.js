@@ -61,7 +61,7 @@ function getYoutube(yt_options, event) {
         var video = []
         var array_video_data = response.items
         for (let origin of array_video_data) {
-            let item = new Data_ig(origin.node)
+            let item = new Data_youtube(origin.node)
             video.push(item)
         }
 
