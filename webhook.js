@@ -29,7 +29,7 @@ function getImage(eat_options, event) {
             type: 'image',
             originalContentUrl: url_image,
             previewImageUrl: url_image
-        });
+        })
 
     })
 }
@@ -51,7 +51,7 @@ function getigImage(ig_options, event) {
             type: 'image',
             originalContentUrl: url_image_m,
             previewImageUrl: url_image_s
-        });
+        })
 
     })
 }
