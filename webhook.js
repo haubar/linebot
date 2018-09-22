@@ -57,8 +57,8 @@ function getigImage(ig_options, event) {
 }
 
 function getYoutube(options, event) {
-    return event.replay('9999')
     rp(options).then(function(response) {
+        return event.replay(response.kind)
         var video = []
         var array_video_data = response.items
         for (let origin of array_video_data) {
@@ -75,7 +75,7 @@ function getYoutube(options, event) {
         //     originalContentUrl: url_video,
         //     previewImageUrl: url_image
         // });
-        return event.replay({video})
+        
     })
 }
 
@@ -92,12 +92,11 @@ bot.on('message', function(event) {
                     var get_ig_image = getigImage(ig_options, event);
             }
             else if (event.message.text.substr(0,2) == 'yt') {
-                var encode_keyword = event.message.text.substr(2).trim() 
+                var encode_keyword = encodeURIComponent(event.message.text.substr(2).trim()) 
                     var yt_options = {
                         uri: 'https://www.googleapis.com/youtube/v3/search?'+'key='+process.env.youtubeToken+'&q='+encode_keyword+'&type=video'+'&part=snippet',
                         json: true
                     };
-                    return event.reply(yt_options.uri);
                     var get_youtube_video = getYoutube(yt_options, event);
             } else {
                 switch (event.message.text) {
