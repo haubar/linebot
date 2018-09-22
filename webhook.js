@@ -94,8 +94,8 @@ bot.on('message', function(event) {
                 var encode_keyword = encodeURIComponent(event.message.text.substr(2).trim()) 
                     var ig_options = {
                         // uri: 'https://www.instagram.com/explore/tags/'+ encode_keyword +'?__a=1',
-                        uri: 'https://www.googleapis.com/youtube/v3/search?'+ encode_keyword +
-                             '&key='+process.env.youtube_token+
+                        uri: 'https://www.googleapis.com/youtube/v3/search?'+
+                             'key='+process.env.youtubeToken+
                              '&q='+encode_keyword+
                              '&type=video'+
                              '&part=snippet',
