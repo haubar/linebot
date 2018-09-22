@@ -89,7 +89,7 @@ bot.on('message', function(event) {
                         json: true
                     };
                     var get_ig_image = getigImage(ig_options, event);
-            }  
+            }
             // else if (event.message.text.substr(0,2) == 'yt') {
             //     var encode_keyword = encodeURIComponent(event.message.text.substr(2).trim()) 
             //         var ig_options = {
