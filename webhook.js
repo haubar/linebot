@@ -88,7 +88,8 @@ function getYoutube(yt_options, event) {
 
         return event.reply({
                 "type": "imagemap",
-                "baseUrl": url_image,
+                // "baseUrl": url_image,
+                "baseUrl": 'https://i.ytimg.com/vi/tp1Yfk2QCak/default.jpg',
                 "altText": '........',
                 "baseSize": {
                     "width": 320,
