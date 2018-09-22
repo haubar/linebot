@@ -73,8 +73,7 @@ function getYoutube(yt_options, event) {
 
         return event.reply({
             type: 'text',
-            originalContentUrl: url_video,
-            previewImageUrl: url_image
+            text: url_video
         });
         // return event.reply({
         //     type: 'video',
