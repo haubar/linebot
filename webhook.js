@@ -74,12 +74,12 @@ function getYoutube(yt_options, event) {
         return event.reply({
             type: 'action',
             imageUrl: url_image,
-            action: [{
+            action: {
                 type: "uri",
                 label: '......',
                 uri: url_video
-            }]
-        });
+            }
+        })
         // return event.reply({
         //     type: 'video',
         //     originalContentUrl: url_video,
