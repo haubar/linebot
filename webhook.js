@@ -91,8 +91,8 @@ function getYoutube(yt_options, event) {
                 "baseUrl": url_image+'?', //防呆line網址縮圖
                 "altText": '........',
                 "baseSize": {
-                    "width": 320,
-                    "height": 180
+                    "width": 120,
+                    "height": 90
                 },
                 "actions": [
                     {
@@ -101,8 +101,8 @@ function getYoutube(yt_options, event) {
                         "area": {
                             "x": 0,
                             "y": 0,
-                            "width": 320,
-                            "height": 180
+                            "width": 120,
+                            "height": 90
                         }
                     }
                     // {
