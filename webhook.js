@@ -101,6 +101,7 @@ bot.on('message', function(event) {
                              '&part=snippet',
                         json: true
                     };
+                    event.reply(encode_keyword);
                     var get_youtube_video = getYoutube(yt_options, event);
             } else {
                 switch (event.message.text) {
