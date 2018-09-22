@@ -69,12 +69,12 @@ function getYoutube(options, event) {
         var url_video = 'https://www.youtube.com/watch?v='+video[random_val].video_id
         var url_image = video[random_val].video_image_url
        
-        return event.reply({
-            type: 'video',
-            originalContentUrl: url_video,
-            previewImageUrl: url_image
-        });
-
+        // return event.reply({
+        //     type: 'video',
+        //     originalContentUrl: url_video,
+        //     previewImageUrl: url_image
+        // });
+        return event.replay(url_image)
     })
 }
 
