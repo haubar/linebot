@@ -59,7 +59,7 @@ function getigImage(ig_options, event) {
 function getYoutube(options, event) {
     rp(options).then(function(response) {
         var video = []
-        var array_video_data = response.item
+        var array_video_data = response.items
         for (let origin of array_video_data) {
             let item = new Data_ig(origin.node)
             video.push(item)
