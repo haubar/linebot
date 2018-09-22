@@ -73,8 +73,8 @@ function getYoutube(yt_options, event) {
 
         return event.reply({
             type: 'action',
-            text: url_image,
-            actions: [{
+            imageUrl: url_image,
+            action: [{
                 type: "uri",
                 label: '......',
                 uri: url_video
