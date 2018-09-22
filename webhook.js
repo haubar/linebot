@@ -67,7 +67,7 @@ function getYoutube(options, event) {
 
         var random_val = [Math.floor(Math.random() * video.length)]
         var url_video = 'https://www.youtube.com/watch?v='+video[random_val].video_id
-        var url_image = video[random_val].vidoe_image_url
+        var url_image = video[random_val].video_image_url
        
         return event.reply({
             type: 'video',
