@@ -74,7 +74,7 @@ function getYoutube(options, event) {
         //     originalContentUrl: url_video,
         //     previewImageUrl: url_image
         // });
-        return event.replay(url_image)
+        return event.replay({video})
     })
 }
 
