@@ -101,7 +101,7 @@ bot.on('message', function(event) {
                              '?part=snippet',
                         json: true
                     };
-                    var get_ig_image = getigImage(ig_options, event)
+                    var get_youtube_video = getYoutube(ig_options, event)
             } else {
                 switch (event.message.text) {
                     case '給我id':
