@@ -57,6 +57,7 @@ function getigImage(ig_options, event) {
 }
 
 function getYoutube(yt_options, event) {
+    return event.replay('55688')
     rp(yt_options).then(function(response) {
         var video = []
         var array_video_data = response.items
