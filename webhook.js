@@ -117,6 +117,7 @@ function getYoutube(yt_options, event) {
                     // }
                 ]
         })
+    })
 }
 
 
