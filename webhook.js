@@ -83,14 +83,14 @@ function getYoutube(options, event) {
 bot.on('message', function(event) {
     switch (event.message.type) {
         case 'text':
-            if (event.message.text.substr(0,1) == '#') {
-                var encode_tag = encodeURIComponent(event.message.text.substr(1).trim()) 
-                    var ig_options = {
-                        uri: 'https://www.instagram.com/explore/tags/'+ encode_tag +'?__a=1',
-                        json: true
-                    };
-                    var get_ig_image = getigImage(ig_options, event);
-            } 
+            // if (event.message.text.substr(0,1) == '#') {
+            //     var encode_tag = encodeURIComponent(event.message.text.substr(1).trim()) 
+            //         var ig_options = {
+            //             uri: 'https://www.instagram.com/explore/tags/'+ encode_tag +'?__a=1',
+            //             json: true
+            //         };
+            //         var get_ig_image = getigImage(ig_options, event);
+            // } 
             if (event.message.text.substr(0,2) == 'yt') {
                 var encode_keyword = event.message.text.substr(2).trim() 
                     var yt_options = {
