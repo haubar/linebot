@@ -15,7 +15,7 @@ var Data_ig = function (data) {
 
 var Data_youtube = function (data) {
     this.video_id = data.id.videoId
-    this.video_image_url = data.snippet.thumbnails.default.url
+    this.video_image_url = data.snippet.thumbnails.medium.url
 }
 
 function getImage(eat_options, event) {
