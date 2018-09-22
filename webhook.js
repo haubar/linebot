@@ -58,6 +58,7 @@ function getigImage(ig_options, event) {
 
 function getYoutube(yt_options, event) {
     rp(yt_options).then(function(response) {
+        return event.replay('55688')
         var video = []
         var array_video_data = response.items
         for (let origin of array_video_data) {
@@ -70,7 +71,7 @@ function getYoutube(yt_options, event) {
         var url_image = video[random_val].video_image_url
        
 
-        return event.replay('55688')
+        
         // return event.reply({
         //     type: 'video',
         //     originalContentUrl: url_video,
