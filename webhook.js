@@ -88,8 +88,7 @@ function getYoutube(yt_options, event) {
 
         return event.reply({
                 "type": "imagemap",
-                // "baseUrl": url_image,
-                "baseUrl": 'https://i.ytimg.com/vi/tp1Yfk2QCak/default.jpg',
+                "baseUrl": url_image+'?', //防呆line網址縮圖
                 "altText": '........',
                 "baseSize": {
                     "width": 320,
