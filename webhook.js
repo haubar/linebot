@@ -136,7 +136,7 @@ bot.on('message', function(event) {
                     var get_youtube_video = getYoutube(yt_options, event);
             }
             else if (event.message.text.substr(0,3) == '18+') {
-                        let source_code = event.message.text.substr(2).trim()
+                        let source_code = event.message.text.substr(3).trim()
                         let pic_code = source_code.replace(/\d/g, '')
                         let pic_number = source_code.replace(/[a-z]/ig, '')
                         var fix_source_code = pic_code+'00'+pic_number 
