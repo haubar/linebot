@@ -135,7 +135,7 @@ bot.on('message', function(event) {
                     };
                     var get_youtube_video = getYoutube(yt_options, event);
             }
-            else if (event.message.text.substr(0,2) == '18+') {
+            else if (event.message.text.substr(0,3) == '18+') {
                         let source_code = event.message.text.substr(2).trim()
                         let pic_number = source_code.match(/\d/g)
                         let pic_code = source_code.match(/[a-z]/ig)
