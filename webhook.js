@@ -107,7 +107,6 @@ function getYoutube(yt_options, event) {
 function getR18Image(dmm_options, event) {
     var url_image_small = dmm_options.small
     var url_image_large = dmm_options.large
-    return event.reply(url_image_large)
     return event.reply({
         type: 'image',
         originalContentUrl: url_image_large,
@@ -137,8 +136,8 @@ bot.on('message', function(event) {
             }
             else if (event.message.text.substr(0,3) == '18+') {
                         let source_code = event.message.text.substr(2).trim()
-                        let pic_number = source_code.match(/\d/g)
-                        let pic_code = source_code.match(/[a-z]/ig)
+                        let pic_number = source_code.match(/\d/)
+                        let pic_code = source_code.match(/[a-z]/)
                         var fix_source_code = pic_code+'00'+pic_number 
                             var dmm_options = {
                                 small: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'/'+fix_source_code+'ps.jpg',
