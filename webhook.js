@@ -92,7 +92,7 @@ function getYoutube(yt_options, event) {
                 "altText": '........',
                 "baseSize": {
                     "width": 400,
-                    "height": 200
+                    "height": 300
                 },
                 "actions": [
                     {
