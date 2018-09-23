@@ -91,8 +91,8 @@ function getYoutube(yt_options, event) {
                 "baseUrl": url_image+'?', //防呆line網址縮圖
                 "altText": '........',
                 "baseSize": {
-                    "width": 120,
-                    "height": 90
+                    "width": 320,
+                    "height": 180
                 },
                 "actions": [
                     {
