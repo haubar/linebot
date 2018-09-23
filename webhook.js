@@ -69,22 +69,6 @@ function getYoutube(yt_options, event) {
         var random_val = [Math.floor(Math.random() * video.length)]
         var url_video = 'https://www.youtube.com/watch?v='+video[random_val].video_id
         var url_image = video[random_val].video_image_url
-       
-
-        // return event.reply({
-        //     type: 'action',
-        //     imageUrl: url_image,
-        //     action: {
-        //         type: "uri",
-        //         label: '......',
-        //         uri: url_video
-        //     }
-        // })
-        // return event.reply({
-        //     type: 'video',
-        //     originalContentUrl: url_video,
-        //     previewImageUrl: url_image
-        // });
 
         return event.reply({
                 "type": "imagemap",
@@ -120,6 +104,16 @@ function getYoutube(yt_options, event) {
     })
 }
 
+function getR18Image(dmm_options, event) {
+    var url_image_small = dmm_options.small
+    var url_image_large = dmm_options.large
+    return event.reply({
+        type: 'image',
+        originalContentUrl: url_image_large,
+        previewImageUrl: url_image_small
+    })
+}
+
 
 bot.on('message', function(event) {
     switch (event.message.type) {
@@ -139,6 +133,18 @@ bot.on('message', function(event) {
                         json: true
                     };
                     var get_youtube_video = getYoutube(yt_options, event);
+            }
+            else if (event.message.text.substr(0,2) == '18+') {
+                        let source_code = event.message.text.substr(2).trim()
+                        let pic_number = source_code.match(/\d/g)
+                        let pic_code = source_code.match(/[a-z]/ig)
+                        var fix_source_code = pic_code+'00'+pic_number 
+                            var dmm_options = {
+                                small: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'/'+fix_source_code+'ps.jpg',
+                                large: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'/'+fix_source_code+'pl.jpg',
+                                json: true
+                            };
+                            var get_r18_image = getR18Image(dmm_options, event);
             } else {
                 switch (event.message.text) {
                     case '給我id':
