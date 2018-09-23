@@ -102,7 +102,7 @@ function getYoutube(yt_options, event) {
                             "x": 0,
                             "y": 0,
                             "width": 400,
-                            "height": 200
+                            "height": 300
                         }
                     }
                     // {
