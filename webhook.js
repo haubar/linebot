@@ -101,8 +101,8 @@ function getYoutube(yt_options, event) {
                         "area": {
                             "x": 0,
                             "y": 0,
-                            "width": 120,
-                            "height": 90
+                            "width": 400,
+                            "height": 200
                         }
                     }
                     // {
