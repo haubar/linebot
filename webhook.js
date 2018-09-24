@@ -105,12 +105,17 @@ function getYoutube(yt_options, event) {
 }
 
 function getR18Image(dmm_options, event) {
-    var url_image_small = dmm_options.small
-    var url_image_large = dmm_options.large
-    return event.reply({
-        type: 'image',
-        originalContentUrl: url_image_large,
-        previewImageUrl: url_image_small
+    rp(yt_options).then(function(response) {
+
+        var url_image_small = dmm_options.small
+        var url_image_large = dmm_options.large
+        return event.reply({
+            type: 'image',
+            originalContentUrl: url_image_large,
+            previewImageUrl: url_image_small
+        })
+    }).catch(function (err) {
+        return event.reply('歹勢啦~我的資料裡沒這張圖~')
     })
 }
 
@@ -140,6 +145,7 @@ bot.on('message', function(event) {
                         let pic_number = source_code.replace(/[a-z]/ig, '')
                         var fix_source_code = pic_code+'00'+pic_number 
                             var dmm_options = {
+                                uri: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'/'+fix_source_code+'ps.jpg',
                                 small: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'/'+fix_source_code+'ps.jpg',
                                 large: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'/'+fix_source_code+'pl.jpg',
                                 json: true
