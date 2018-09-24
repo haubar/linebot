@@ -143,12 +143,12 @@ bot.on('message', function(event) {
             else if (event.message.text.substr(0,3) == '18+') {
                         let source_code = event.message.text.substr(3).trim()
                         let pic_number = source_code.match(/\d/g).join('')
-                        let pic_code = source_code.match(/[a-z]/ig).join('').toUpperCase()
-                        var fix_source_code = pic_code+'-'+pic_number 
+                        let pic_code = source_code.match(/[a-z]/ig).join('')
+                        var fix_source_code = pic_code+'00'+pic_number 
                             var dmm_options = {
-                                uri: 'https://img2.av-channel.com/pict/S/'+fix_source_code+'/P/pac_r.jpg',
-                                small: 'https://img2.av-channel.com/pict/S/'+fix_source_code+'P/pac_l.jpg',
-                                large: 'https://img2.av-channel.com/pict/S/'+fix_source_code+'/P/pac_a.jpg',
+                                uri: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'/'+fix_source_code+'ps.jpg',
+                                small: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'/'+fix_source_code+'ps.jpg',
+                                large: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'/'+fix_source_code+'pl.jpg',
                                 resolveWithFullResponse: true,
                                 followRedirect: false
                             };
