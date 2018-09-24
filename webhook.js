@@ -105,7 +105,7 @@ function getYoutube(yt_options, event) {
 }
 
 function getR18Image(dmm_options, event) {
-    rp(dmm_options).then(function(response) {
+    rp(dmm_options.small).then(function(response) {
         return event.reply(response.length)
         var url_image_small = dmm_options.small
         var url_image_large = dmm_options.large
@@ -145,7 +145,6 @@ bot.on('message', function(event) {
                         let pic_number = source_code.replace(/[a-z]/ig, '')
                         var fix_source_code = pic_code+'00'+pic_number 
                             var dmm_options = {
-                                uri: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'/'+fix_source_code+'ps.jpg',
                                 small: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'/'+fix_source_code+'ps.jpg',
                                 large: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'/'+fix_source_code+'pl.jpg',
                                 json: true
