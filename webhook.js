@@ -143,7 +143,7 @@ bot.on('message', function(event) {
             else if (event.message.text.substr(0,3) == '18+') {
                         let source_code = event.message.text.substr(3).trim()
                         let pic_number = source_code.match(/\d/g).join('')
-                        let pic_code = source_code.match(/[a-z]/ig).join('')
+                        let pic_code = source_code.match(/[a-z]/ig).join('').toUpperCase()
                         var fix_source_code = pic_code+'-'+pic_number 
                             var dmm_options = {
                                 https://img2.av-channel.com/pict/S/scr-160/P/pac_r.jpg
