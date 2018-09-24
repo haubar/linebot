@@ -142,13 +142,14 @@ bot.on('message', function(event) {
             }
             else if (event.message.text.substr(0,3) == '18+') {
                         let source_code = event.message.text.substr(3).trim()
-                        let pic_code = source_code.replace(/\d/g, '')
-                        let pic_number = source_code.replace(/[a-z]/ig, '')
-                        var fix_source_code = pic_code+'00'+pic_number 
+                        let pic_number = source_code.match(/\d/g).join('')
+                        let pic_code = source_code.match(/[a-z]/ig).join('')
+                        var fix_source_code = pic_code+'-'+pic_number 
                             var dmm_options = {
-                                uri: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'/'+fix_source_code+'ps.jpg',
-                                small: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'/'+fix_source_code+'ps.jpg',
-                                large: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'/'+fix_source_code+'pl.jpg',
+                                https://img2.av-channel.com/pict/S/scr-160/P/pac_r.jpg
+                                uri: 'https://img2.av-channel.com/pict/S/'+fix_source_code+'/P/pac_r.jpg',
+                                small: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'P/pac_l.jpg',
+                                large: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'/P/pac_a.jpg',
                                 resolveWithFullResponse: true,
                                 followRedirect: false
                             };
