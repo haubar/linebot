@@ -147,8 +147,8 @@ bot.on('message', function(event) {
                         var fix_source_code = pic_code+'-'+pic_number 
                             var dmm_options = {
                                 uri: 'https://img2.av-channel.com/pict/S/'+fix_source_code+'/P/pac_r.jpg',
-                                small: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'P/pac_l.jpg',
-                                large: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'/P/pac_a.jpg',
+                                small: 'https://img2.av-channel.com/pict/S/'+fix_source_code+'P/pac_l.jpg',
+                                large: 'https://img2.av-channel.com/pict/S/'+fix_source_code+'/P/pac_a.jpg',
                                 resolveWithFullResponse: true,
                                 followRedirect: false
                             };
