@@ -146,7 +146,6 @@ bot.on('message', function(event) {
                         let pic_code = source_code.match(/[a-z]/ig).join('').toUpperCase()
                         var fix_source_code = pic_code+'-'+pic_number 
                             var dmm_options = {
-                                https://img2.av-channel.com/pict/S/scr-160/P/pac_r.jpg
                                 uri: 'https://img2.av-channel.com/pict/S/'+fix_source_code+'/P/pac_r.jpg',
                                 small: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'P/pac_l.jpg',
                                 large: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'/P/pac_a.jpg',
