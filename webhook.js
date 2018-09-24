@@ -106,7 +106,7 @@ function getYoutube(yt_options, event) {
 
 function getR18Image(dmm_options, event) {
     rp(dmm_options.small).then(function(response) {
-        return event.reply(response.length)
+        return event.reply(response.size())
         var url_image_small = dmm_options.small
         var url_image_large = dmm_options.large
         return event.reply({
