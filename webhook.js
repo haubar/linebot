@@ -109,7 +109,7 @@ function getR18Image(dmm_options, event) {
         // return event.reply(response.size())
         var url_image_small = dmm_options.small
         var url_image_large = dmm_options.large
-        return event.reply(response)
+        return event.reply(response.headers['content-type'])
         return event.reply({
             type: 'image',
             originalContentUrl: url_image_large,
@@ -149,6 +149,7 @@ bot.on('message', function(event) {
                                 uri: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'/'+fix_source_code+'ps.jpg',
                                 // small: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'/'+fix_source_code+'ps.jpg',
                                 // large: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'/'+fix_source_code+'pl.jpg'
+                                resolveWithFullResponse: true
                             };
                             var get_r18_image = getR18Image(dmm_options, event);
             } else {
