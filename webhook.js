@@ -109,7 +109,7 @@ function getR18Image(dmm_options, event) {
         // return event.reply(response.size())
         var url_image_small = dmm_options.small
         var url_image_large = dmm_options.large
-        return event.reply(response.headers['Location'])
+        return event.reply(response.headers['X-Cache-Status'])
         return event.reply({
             type: 'image',
             originalContentUrl: url_image_large,
