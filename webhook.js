@@ -153,7 +153,7 @@ bot.on('message', function(event) {
                         } else {
                             pic_number = '00'+pic_number
                         }
-                        var filekey = dataflit(pic_code.toLowerCase())
+                        var filekey = new dataflit(pic_code.toLowerCase())
                         var fix_source_code = filekey.filename()+pic_number 
                         return event.reply(fix_source_code)
                             var dmm_options = {
