@@ -154,7 +154,9 @@ bot.on('message', function(event) {
                             pic_number = '00'+pic_number
                         }
                         var filekey = dataflit(pic_code.toLowerCase())
+                        console.log(filekey)
                         var fix_source_code = filekey.filename()+pic_number 
+                        console.log(fix_source_code)
                         return event.reply(fix_source_code)
                             var dmm_options = {
                                 uri: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'/'+fix_source_code+'ps.jpg',
