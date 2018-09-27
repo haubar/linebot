@@ -1,4 +1,5 @@
 const linebot = require('./index.js');
+const dataflit = require('./lib/dataflit');
 const rp = require('request-promise');
 
 const bot = linebot({
@@ -17,6 +18,8 @@ var Data_youtube = function (data) {
     this.video_id = data.id.videoId
     this.video_image_url = data.snippet.thumbnails.default.url
 }
+
+
 
 function getImage(eat_options, event) {
     rp(eat_options).then(function(response) {
@@ -144,7 +147,12 @@ bot.on('message', function(event) {
                         let source_code = event.message.text.substr(3).trim()
                         let pic_number = source_code.match(/\d/g).join('')
                         let pic_code = source_code.match(/[a-z]/ig).join('')
-                        var fix_source_code = pic_code.toLowerCase()+'00'+pic_number 
+                        if (pic_number.length > 3 ) {
+                            pic_number = '0'+pic_number
+                        } else {
+                            pic_number = '00'+pic_number
+                        }
+                        var fix_source_code = new dataflit(pic_code.toLowerCase())+pic_number 
                             var dmm_options = {
                                 uri: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'/'+fix_source_code+'ps.jpg',
                                 small: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'/'+fix_source_code+'ps.jpg',
