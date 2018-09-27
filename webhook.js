@@ -1,5 +1,5 @@
 const linebot = require('./index.js');
-// const dataflit = require('./lib/dataflit');
+const dataflit = require('./lib/dataflit');
 const rp = require('request-promise');
 
 const bot = linebot({
@@ -381,8 +381,8 @@ bot.on('message', function(event) {
                         } else {
                             pic_number = '00'+pic_number
                         }
-                        var fix_source_code = new data_r18(pic_code.toLowerCase())+pic_number 
-                        return event.reply(fix_source_code.result)
+                        var fix_source_code = new dataflit(pic_code.toLowerCase())+pic_number 
+                        return event.reply(fix_source_code)
                             var dmm_options = {
                                 uri: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'/'+fix_source_code+'ps.jpg',
                                 small: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'/'+fix_source_code+'ps.jpg',
