@@ -153,7 +153,7 @@ bot.on('message', function(event) {
                             pic_number = '00'+pic_number
                         }
                         var fix_source_code = new dataflit(pic_code.toLowerCase())+pic_number 
-                        return event.reply(fix_source_code)
+                        return event.reply(fix_source_code.result)
                             var dmm_options = {
                                 uri: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'/'+fix_source_code+'ps.jpg',
                                 small: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'/'+fix_source_code+'ps.jpg',
