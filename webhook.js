@@ -153,7 +153,7 @@ bot.on('message', function(event) {
                         } else {
                             pic_number = '00'+pic_number
                         }
-                        var fix_source_code = new dataflit(pic_code.toLowerCase()).filename()+pic_number 
+                        var fix_source_code = new dataflit(pic_code.toLowerCase()).filename+pic_number 
                         return event.reply(fix_source_code)
                             var dmm_options = {
                                 uri: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'/'+fix_source_code+'ps.jpg',
