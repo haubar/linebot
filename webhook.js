@@ -1,5 +1,5 @@
 const linebot = require('./index.js');
-const dataflit = require('./lib/dataflit');
+// const dataflit = require('./lib/dataflit');
 const rp = require('request-promise');
 
 const bot = linebot({
