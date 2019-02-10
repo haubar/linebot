@@ -330,18 +330,18 @@ bot.on('unfollow', function(event) {
 
 bot.on('join', function(event) {
     if (!!event.source.groupId) {
-        let joinid = event.source.groupId
+        var joinid = event.source.groupId
     } else {
-        let joinid = event.source.roomId
+        var joinid = event.source.roomId
     }
     event.reply('join: ' + joinid);
 });
 
 bot.on('leave', function(event) {
     if (!!event.source.groupId) {
-        let leaveid = event.source.groupId
+        var leaveid = event.source.groupId
     } else {
-        let leaveid = event.source.roomId
+        var leaveid = event.source.roomId
     }
     event.reply('leave: ' + leaveid);
 });
