@@ -179,7 +179,7 @@ bot.on('message', function(event) {
                         break;    
                     case 'out':
                         // event.leaveGroup('C1d7387c6a22732d99b21822d2145384f');
-                        return this.post('/group/' + groupId + '/leave/').then(function (res) {
+                        return this.post('/group/' + 'C1d7387c6a22732d99b21822d2145384f' + '/leave/').then(function (res) {
                             return res.json();
                         });
                         // bot.on('leave', function(event) {
