@@ -171,6 +171,9 @@ bot.on('message', function(event) {
                             return event.reply('嗨 ' + profile.displayName + ' 你要幹嘛!! ' + profile.userId);
                         });
                         break;
+                    case '給我info':
+                        event.reply(JSON.stringify(event.source));
+                        break;    
                     case 'picture':
                         event.reply({
                             type: 'image',
