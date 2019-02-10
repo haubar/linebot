@@ -175,7 +175,7 @@ bot.on('message', function(event) {
                         event.reply(JSON.stringify(event.source));
                         break;
                     case '給我group':
-                        event.reply(JSON.stringify(event.source.groupId));
+                        event.reply((event.source.groupId));
                         break;    
                     case 'out':
                         event.leaveGroup(event.source.groupId);
