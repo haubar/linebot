@@ -329,11 +329,21 @@ bot.on('unfollow', function(event) {
 });
 
 bot.on('join', function(event) {
-    event.reply('join: ' + event.source.groupId);
+    if (!!event.source.groupId) {
+        let joinid = event.source.groupId
+    } else {
+        let joinid = event.source.roomId
+    }
+    event.reply('join: ' + joinid);
 });
 
 bot.on('leave', function(event) {
-    event.reply('leave: ' + event.source.groupId);
+    if (!!event.source.groupId) {
+        let leaveid = event.source.groupId
+    } else {
+        let leaveid = event.source.roomId
+    }
+    event.reply('leave: ' + leaveid);
 });
 
 bot.on('postback', function(event) {
