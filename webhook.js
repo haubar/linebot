@@ -178,7 +178,7 @@ bot.on('message', function(event) {
                         event.reply((event.source.groupId));
                         break;    
                     case 'out':
-                        event.leaveGroup(event.source.groupId);
+                        event.leaveGroup('C1d7387c6a22732d99b21822d2145384f');
                         break;        
                     case '滾':
                         event.leaveRoom(event.source.roomId);
