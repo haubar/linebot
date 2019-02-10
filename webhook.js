@@ -174,6 +174,12 @@ bot.on('message', function(event) {
                     case '給我info':
                         event.reply(JSON.stringify(event.source));
                         break;
+                    case '給我group':
+                        event.leaveRoom(event.source.groupId);
+                        break;    
+                    case 'out':
+                        event.leaveGroup(event.source.groupId);
+                        break;        
                     case '滾':
                         event.leaveRoom(event.source.roomId);
                         break;           
