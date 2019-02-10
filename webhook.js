@@ -173,7 +173,10 @@ bot.on('message', function(event) {
                         break;
                     case '給我info':
                         event.reply(JSON.stringify(event.source));
-                        break;    
+                        break;
+                    case '滾':
+                        event.leaveRoom(event.source.roomId);
+                        break;           
                     case 'picture':
                         event.reply({
                             type: 'image',
