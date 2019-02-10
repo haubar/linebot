@@ -174,20 +174,18 @@ bot.on('message', function(event) {
                     case '給我info':
                         event.reply(JSON.stringify(event.source));
                         break;
-                    case '給我group':
-                        event.reply((event.source.groupId));
-                        break;    
-                    case 'out':
-                        // event.leaveGroup('C1d7387c6a22732d99b21822d2145384f');
-                        return this.post('/group/' + 'C1d7387c6a22732d99b21822d2145384f' + '/leave/').then(function (res) {
-                            return res.json();
-                        });
-                        // bot.on('leave', function(event) {
-                        //     event.reply('leave: ' + event.source.groupId);
-                        // });
-                        break;        
-                    case '滾':
-                        event.leaveRoom(event.source.roomId);
+                    case 'bot滾':
+                        if (!!event.source.roomId){
+                            let roomId = event.source.roomId;
+                            return this.post('/room/' + roomId + '/leave/').then(function (res) {
+                                return res.json();
+                            });
+                        } else {
+                            let groupId = event.source.groupId;
+                            return this.post('/group/' + groupId + '/leave/').then(function (res) {
+                                return res.json();
+                            });
+                        }
                         break;           
                     case 'picture':
                         event.reply({
