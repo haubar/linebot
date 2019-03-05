@@ -143,7 +143,7 @@ bot.on('message', function(event) {
             if (event.message.text.substr(0,1) == '#') {
                 let ig_keyword = event.message.text.substr(1).trim()
                 firedb.ref("getmessage/").push(ig_keyword);
-                var encode_tag = encodeURIComponent() 
+                var encode_tag = encodeURIComponent(ig_keyword) 
                     var ig_options = {
                         uri: 'https://www.instagram.com/explore/tags/'+ encode_tag +'?__a=1',
                         json: true
