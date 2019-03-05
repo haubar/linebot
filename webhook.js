@@ -1,6 +1,7 @@
 const linebot = require('./index.js');
 const dataflit = require('./lib/dataflit');
 const rp = require('request-promise');
+const firebase = require("firebase");
 
 const bot = linebot({
     channelId: process.env.channelId,
@@ -8,6 +9,17 @@ const bot = linebot({
     channelSecret: process.env.channelSecret,
     verify: true // default=true
 });
+
+const firebase_config = {
+    apiKey: process.env.apiKey,
+    authDomain: process.env.authDomain,
+    databaseURL: process.env.databaseURL,
+    storageBucket: process.env.storageBucket,
+};
+ 
+firebase.initializeApp(firebase_config);
+ 
+const firedb = firebase.database();
 
 var Data_ig = function (data) {
     this.max_image = data.thumbnail_src
@@ -128,6 +140,7 @@ function getR18Image(dmm_options, event) {
 bot.on('message', function(event) {
     switch (event.message.type) {
         case 'text':
+            firedb.ref("getmessage/").push(event.message.text);
             if (event.message.text.substr(0,1) == '#') {
                 var encode_tag = encodeURIComponent(event.message.text.substr(1).trim()) 
                     var ig_options = {
