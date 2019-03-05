@@ -32,10 +32,10 @@
   "homepage": "https://github.com/boybundit/linebot#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "firebase": "^5.8.5",
     "node-fetch": "^1.6.3",
     "request": "^2.81.0",
-    "request-promise": "^4.2.1",
-    "firebase": "^5.8.5"
+    "request-promise": "^4.2.1"
   },
   "devDependencies": {
     "eslint": "^3.7.1",
