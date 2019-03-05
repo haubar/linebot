@@ -140,9 +140,10 @@ function getR18Image(dmm_options, event) {
 bot.on('message', function(event) {
     switch (event.message.type) {
         case 'text':
-            firedb.ref("getmessage/").push(event.message.text);
             if (event.message.text.substr(0,1) == '#') {
-                var encode_tag = encodeURIComponent(event.message.text.substr(1).trim()) 
+                let ig_keyword = event.message.text.substr(1).trim()
+                firedb.ref("getmessage/").push(ig_keyword);
+                var encode_tag = encodeURIComponent() 
                     var ig_options = {
                         uri: 'https://www.instagram.com/explore/tags/'+ encode_tag +'?__a=1',
                         json: true
@@ -150,7 +151,9 @@ bot.on('message', function(event) {
                     var get_ig_image = getigImage(ig_options, event);
             }
             else if (event.message.text.substr(0,2) == 'yt') {
-                var encode_keyword = encodeURIComponent(event.message.text.substr(2).trim()) 
+                let yt_keyword = event.message.text.substr(2).trim()
+                firedb.ref("getmessage/").push(yt_keyword);
+                var encode_keyword = encodeURIComponent(yt_keyword) 
                     var yt_options = {
                         uri: 'https://www.googleapis.com/youtube/v3/search?'+'key='+process.env.youtubeToken+'&q='+encode_keyword+'&type=video'+'&part=snippet',
                         json: true
@@ -159,6 +162,7 @@ bot.on('message', function(event) {
             }
             else if (event.message.text.substr(0,3) == '18+') {
                         let source_code = event.message.text.substr(3).trim()
+                        firedb.ref("getmessage/").push(source_code);
                         let pic_number = source_code.match(/\d/g).join('')
                         let pic_code = source_code.match(/[a-z]/ig).join('')
                         if (pic_number.length > 3 ) {
@@ -236,10 +240,10 @@ bot.on('message', function(event) {
                         });
                         break;
                     case '指令':
-                        event.reply(['早餐', '午餐', '晚餐', '測試圖']);
+                        event.reply(['#關鍵字', 'yt關鍵字', '18+番號', '其它...']);
                         break;
                     case '幹':
-                        event.reply('....請冷靜 '+String.fromCharCode(0x10007B));
+                        event.reply('....請冷靜 '+ String.fromCharCode('0x10007B') );
                         break;
                     //case '早餐':
                     //     var eat_options = {
