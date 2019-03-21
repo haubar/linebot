@@ -105,16 +105,6 @@ function getYoutube(yt_options, event) {
                             "height": 300
                         }
                     }
-                    // {
-                    //     "type": "message",
-                    //     "text": "Hello",
-                    //     "area": {
-                    //         "x": 520,
-                    //         "y": 0,
-                    //         "width": 520,
-                    //         "height": 1040
-                    //     }
-                    // }
                 ]
         })
     })
@@ -122,7 +112,6 @@ function getYoutube(yt_options, event) {
 
 function getR18Image(dmm_options, event) {
     rp(dmm_options).then(function(response) {
-        // return event.reply(response.size())
         var url_image_small = dmm_options.small
         var url_image_large = dmm_options.large
 
@@ -245,91 +234,17 @@ bot.on('message', function(event) {
                     case '幹':
                         event.reply('....請冷靜 '+ String.fromCharCode('0x10007B') );
                         break;
-                    //case '早餐':
-                    //     var eat_options = {
-                    //         method: 'GET',
-                    //         uri: 'https://api.imgur.com/3/album/6YSY1/images',
-                    //         headers: {
-                    //             "Authorization": 'Client-ID ' + process.env.client_id
-                    //         },
-                    //         json: true
-                    //     };
-                    //     var breakfast_img = getImage(eat_options, event);
-                    //     break;
-                    // case '午餐':
-                    //     var eat_options = {
-                    //         method: 'GET',
-                    //         uri: 'https://api.imgur.com/3/album/D4BDl/images',
-                    //         headers: {
-                    //             "Authorization": 'Client-ID ' + process.env.client_id
-                    //         },
-                    //         json: true
-                    //     };
-                    //     var lunch_img = getImage(eat_options, event);
-                    //     break;
-                    // case '晚餐':
-                    //     var eat_options = {
-                    //         method: 'GET',
-                    //         uri: 'https://api.imgur.com/3/album/zXNwB/images',
-                    //         headers: {
-                    //             "Authorization": 'Client-ID ' + process.env.client_id
-                    //         },
-                    //         json: true
-                    //     };
-                    //     var dinner_img = getImage(eat_options, event)
-
-                    //     break;
-                    // case '測試圖':
-                    //     var eat_options = {
-                    //         method: 'GET',
-                    //         uri: 'https://api.imgur.com/3/album/zXNwB/images',
-                    //         headers: {
-                    //             "Authorization": 'Client-ID ' + process.env.client_id
-                    //         },
-                    //         json: true
-                    //     };
-                    //     var test_img = getImage(eat_options, event)
-
-                    //     break;
-                
-                    // case 'version':
-                    // 	event.reply('linebot@' + require('../package.json').version);
-                    // 	break;
-                    // case '指令':
-                    //     event.reply(['picture', '早餐', '午餐', '晚餐', '測試圖', 'location', 'confirm', 'mult']);
-                    //     break;
-                    // case 'version':
-                    // 	event.reply('linebot@' + require('../package.json').version);
-                    // 	break;
                     default:
                         // event.reply(event.message.text.substr(0,2))
                         break;
                 }
             }
             break;
-        case 'image':
-        //     event.message.content().then(function(data) {
-        //         const s = data.toString('base64').substring(0, 30);
-        //         return event.reply('Nice picture! ' + s);
-        //     }).catch(function(err) {
-        //         return event.reply(err.toString());
-        //     });
-            break;
         case 'video':
             event.reply('Nice movie!');
             break;
         case 'audio':
             event.reply('Nice song!');
-            break;
-        case 'location':
-        //     event.reply(['That\'s a good location!', 'Lat:' + event.message.latitude, 'Long:' + event.message.longitude]);
-            break;
-        case 'sticker':
-        //     event.reply({
-        //         type: 'sticker',
-        //         packageId: 1,
-        //         stickerId: 1
-        //     });
             break;
         default:
             event.reply('Unknow message: ' + JSON.stringify(event));
