@@ -246,6 +246,18 @@ bot.on('message', function(event) {
         case 'audio':
             event.reply('Nice song!');
             break;
+         case 'image':
+            break;
+        case 'video':
+            event.reply('Nice movie!');
+            break;
+        case 'audio':
+            event.reply('Nice song!');
+            break;
+        case 'location':
+            break;
+        case 'sticker':
+            break;
         default:
             event.reply('Unknow message: ' + JSON.stringify(event));
             break;
