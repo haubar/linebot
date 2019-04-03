@@ -128,7 +128,7 @@ function getR18Image(dmm_options, event) {
 function getWeather(weather_options, event) {
     rp(weather_options).then(function(response) {
         var w_temp = response.current.temp_c
-        var w_icon = response.current.condition.icon
+        var w_icon = 'https://'+response.current.condition.icon.substr(0,2).trim()
         var w_status = response.current.condition.text
 
         return event.reply({
