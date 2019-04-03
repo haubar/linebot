@@ -127,9 +127,9 @@ function getR18Image(dmm_options, event) {
 
 function getWeather(weather_options, event) {
     rp(weather_options).then(function(response) {
-        var w_temp = weather_options.current.temp_c
-        var w_icon = weather_options.current.condition.icon
-        var w_status = weather_options.current.condition.text
+        var w_temp = response.current.temp_c
+        var w_icon = response.current.condition.icon
+        var w_status = response.current.condition.text
 
         return event.reply({
             type: 'image',
