@@ -125,6 +125,18 @@ function getR18Image(dmm_options, event) {
     })
 }
 
+function getWeather(weather_options, event) {
+    rp(weather_options).then(function(response) {
+     
+
+        return event.reply({
+          
+        })
+    }).catch(function (err) {
+        return event.reply('歹勢啦~我沒有你輸入的地區資料')
+    })
+}
+
 
 bot.on('message', function(event) {
     switch (event.message.type) {
@@ -148,6 +160,16 @@ bot.on('message', function(event) {
                         json: true
                     };
                     var get_youtube_video = getYoutube(yt_options, event);
+            }
+            else if (event.message.text.substr(0,2) == '天氣') {
+                let w_keyword = event.message.text.substr(2).trim()
+                firedb.ref("getmessage/").push(w_keyword);
+                    var weather_options = {
+                        area: w_keyword,
+                        uri: '',
+                        json: true
+                    };
+//                     var get_weather_data = getWeather(weather_options, event);
             }
             else if (event.message.text.substr(0,3) == '18+') {
                         let source_code = event.message.text.substr(3).trim()
