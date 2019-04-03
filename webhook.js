@@ -127,10 +127,14 @@ function getR18Image(dmm_options, event) {
 
 function getWeather(weather_options, event) {
     rp(weather_options).then(function(response) {
-     
+        var w_temp = weather_options.current.temp_c
+        var w_icon = weather_options.current.condition.icon
+        var w_status = weather_options.current.condition.text
 
         return event.reply({
-          
+            type: 'image',
+            originalContentUrl: w_icon,
+            previewImageUrl: w_icon
         })
     }).catch(function (err) {
         return event.reply('歹勢啦~我沒有你輸入的地區資料')
@@ -166,10 +170,10 @@ bot.on('message', function(event) {
                 firedb.ref("getmessage/").push(w_keyword);
                     var weather_options = {
                         area: w_keyword,
-                        uri: '',
+                        uri: 'https://api.apixu.com/v1/current.json?key='+process.env.weatherKey+'&q='+w_keyword,
                         json: true
                     };
-//                     var get_weather_data = getWeather(weather_options, event);
+                    var get_weather_data = getWeather(weather_options, event);
             }
             else if (event.message.text.substr(0,3) == '18+') {
                         let source_code = event.message.text.substr(3).trim()
