@@ -131,12 +131,12 @@ function getWeather(weather_options, event) {
         var w_temp = response.current.temp_c
         var w_icon = 'https:'+response.current.condition.icon.replace(/64x64/,'128x128')
         var w_status = response.current.condition.text
-        return event.reply(weather_options.en_area)
-        #return event.reply({
-        #    type: 'image',
-        #    originalContentUrl: w_icon,
-        #    previewImageUrl: w_icon
-        #})
+        
+        return event.reply({
+            type: 'image',
+            originalContentUrl: w_icon,
+            previewImageUrl: w_icon
+        })
     }).catch(function (err) {
         return event.reply('歹勢啦~我沒有你輸入的地區資料')
     })
@@ -146,7 +146,7 @@ function trans_lang(text) {
     translate(text, {to: 'en'}).then(res => {
         return res.text
     }).catch(err => {
-        return err
+        console.log(err)
     });
 }
 
