@@ -2,7 +2,7 @@ const linebot = require('./index.js');
 const dataflit = require('./lib/dataflit');
 const rp = require('request-promise');
 const firebase = require("firebase");
-const translate = require('google-translate-api');
+
 
 const bot = linebot({
     channelId: process.env.channelId,
@@ -142,12 +142,12 @@ function getWeather(weather_options, event) {
     })
 }
 
-function trans_lang(text) {
-    translate(text, {to: 'en'}).then(res => {
-        return res.text
-    }).catch(err => {
-        console.log(err)
-    });
+function trans_lang(options) {
+    rp(options).then(function(response) { 
+       return response.text
+    }).catch(function (err) {
+        return err
+    })
 }
 
 
@@ -176,6 +176,11 @@ bot.on('message', function(event) {
             }
             else if (event.message.text.substr(0,2) == '天氣') {
                 let w_keyword = event.message.text.substr(2).trim()
+                var lang_options = {
+                        text: encodeURIComponent(w_keyword),
+                        key: process.env.yandexKey,
+                        lang: 'zh-en'
+                    };
                 let en_area = trans_lang(w_keyword)
                     var weather_options = {
                         area: en_area,
