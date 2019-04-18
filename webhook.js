@@ -177,6 +177,7 @@ bot.on('message', function(event) {
             }
             else if (event.message.text.substr(0,2) == '天氣') {
                 var w_keyword = event.message.text.substr(2).trim()
+                return event.reply(w_keyword);
                 var lang_options = {
                         uri: 'https://translate.yandex.net/api/v1.5/tr.json/translate?key='+process.env.yandexKey+'&lang=zh-en&text='+encodeURIComponent(w_keyword),
                         text: encodeURIComponent(w_keyword),
