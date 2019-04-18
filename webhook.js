@@ -185,7 +185,7 @@ bot.on('message', function(event) {
                         lang: 'zh-en',
                         json: true
                     };
-                return event.reply(lang_options);
+                return event.reply(JSON.stringify(lang_options));
                 let en_area = trans_lang(lang_options)
                     var weather_options = {
                         area: en_area,
