@@ -143,9 +143,7 @@ function getWeather(weather_options, event) {
 
 function transLang(lang_options, event) {
     rp(lang_options).then(function(response) { 
-//         return response.text
-       return event.reply(response.text[0])
-//         return 'taipei'
+        return response.text[0]
     }).catch(function (err) {
         return event.reply('抓不到語言')
     })
@@ -176,7 +174,7 @@ bot.on('message', function(event) {
                     var get_youtube_video = getYoutube(yt_options, event);
             }
             else if (event.message.text.substr(0,2) == '天氣') {
-                var w_keyword = event.message.text.substr(2).trim()
+                let w_keyword = event.message.text.substr(2).trim()
                 
                 var lang_options = {
                         uri: 'https://translate.yandex.net/api/v1.5/tr.json/translate?key='+process.env.yandexKey+'&lang=zh-en&text='+encodeURIComponent(w_keyword),
@@ -186,14 +184,14 @@ bot.on('message', function(event) {
                         json: true
                     };
 
-                    var en_area = transLang(lang_options, event)
+                    let en_area = transLang(lang_options, event)
                    
                     var weather_options = {
                         area: en_area,
                         uri: 'https://api.apixu.com/v1/current.json?key='+process.env.weatherKey+'&q='+en_area,
                         json: true
                     };
-//                     var get_weather_data = getWeather(weather_options, event)
+                    var get_weather_data = getWeather(weather_options, event)
             }
             else if (event.message.text.substr(0,3) == '18+') {
                         let source_code = event.message.text.substr(3).trim()
