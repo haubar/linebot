@@ -142,14 +142,14 @@ function getWeather(weather_options, event) {
     })
 }
 
-function trans_lang(lang_options) {
-    rp(lang_options).finally(function(response) { 
-//         var area = reponst.text
-       return event.reply(response.text)
+async function trans_lang(lang_options) {
+   await rp(lang_options).then(function(response) { 
+        return response.text
+//        return event.reply(response.text)
 //         return 'taipei'
     }).catch(function (err) {
 //         return event.reply(JSON.stringify(lang_options))
-//         return err
+        return err
     })
 }
 
