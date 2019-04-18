@@ -144,7 +144,7 @@ function getWeather(weather_options, event) {
 function transLang(lang_options, event) {
     rp(lang_options).then(function(response) { 
 //         return response.text
-       return event.reply(response['text'])
+       return event.reply(response)
 //         return 'taipei'
     }).catch(function (err) {
         return event.reply('抓不到語言')
