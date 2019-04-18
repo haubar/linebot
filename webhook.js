@@ -142,11 +142,11 @@ function getWeather(weather_options, event) {
     })
 }
 
-function trans_lang(lang_options) {
+function transLang(lang_options, event) {
     rp(lang_options).then(function(response) { 
 //         return response.text
-//        return event.reply(response.text)
-        return 'taipei'
+       return event.reply(response.text)
+//         return 'taipei'
     }).catch(function (err) {
         return event.reply(JSON.stringify(lang_options))
     })
@@ -187,7 +187,7 @@ bot.on('message', function(event) {
                         json: true
                     };
 
-                    var en_area = trans_lang(lang_options)
+                    var en_area = transLang(lang_options, event)
                     return event.reply(en_area);
                     var weather_options = {
                         area: en_area,
