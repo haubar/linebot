@@ -182,7 +182,7 @@ bot.on('message', function(event) {
                         key: process.env.yandexKey,
                         lang: 'zh-en'
                     };
-                let en_area = trans_lang(w_keyword)
+                let en_area = trans_lang(lang_options)
                     var weather_options = {
                         area: en_area,
                         uri: 'https://api.apixu.com/v1/current.json?key='+process.env.weatherKey+'&q='+en_area,
