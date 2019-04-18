@@ -183,9 +183,11 @@ bot.on('message', function(event) {
 //                         lang: 'zh-en',
                         json: true
                     };
-
-                    let en_area = transLang(lang_options, event)
-                   return event.reply(en_area);
+                    let en_area
+                    transLang(lang_options, event).then(function(text){
+                        en_area = text
+                    })
+                   return event.reply(en_area)
                     var weather_options = {
                         area: en_area,
                         uri: 'https://api.apixu.com/v1/current.json?key='+process.env.weatherKey+'&q='+en_area,
