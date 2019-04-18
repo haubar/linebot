@@ -189,6 +189,7 @@ bot.on('message', function(event) {
                     };
 
                     var en_area = await trans_lang(lang_options)
+                    return event.reply();
                     var weather_options = {
                         area: en_area,
                         uri: 'https://api.apixu.com/v1/current.json?key='+process.env.weatherKey+'&q='+en_area,
