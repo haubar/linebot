@@ -177,10 +177,11 @@ bot.on('message', function(event) {
             else if (event.message.text.substr(0,2) == '天氣') {
                 let w_keyword = event.message.text.substr(2).trim()
                 var lang_options = {
-                        uri: 'https://translate.yandex.net/api/v1.5/tr.json/translate',
-                        text: encodeURIComponent(w_keyword),
-                        key: process.env.yandexKey,
-                        lang: 'zh-en'
+                        uri: 'https://translate.yandex.net/api/v1.5/tr.json/translate?key='+process.env.yandexKey+'&lang=zh-en&text='+encodeURIComponent(w_keyword),
+//                         text: encodeURIComponent(w_keyword),
+//                         key: process.env.yandexKey,
+//                         lang: 'zh-en'
+                        json: true
                     };
                 let en_area = trans_lang(lang_options)
                  return event.reply(en_area);
