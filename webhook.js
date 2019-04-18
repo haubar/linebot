@@ -144,7 +144,7 @@ function getWeather(weather_options, event) {
 
 function trans_lang(options) {
     rp(options).then(function(response) { 
-       return response.lang
+       return event.reply(JSON.stringify(response))
     }).catch(function (err) {
         return err
     })
