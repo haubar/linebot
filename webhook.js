@@ -131,12 +131,12 @@ function getWeather(weather_options, event) {
         var w_temp = response.current.temp_c
         var w_icon = 'https:'+response.current.condition.icon.replace(/64x64/,'128x128')
         var w_status = response.current.condition.text
-
-        return event.reply({
-            type: 'image',
-            originalContentUrl: w_icon,
-            previewImageUrl: w_icon
-        })
+        return event.reply(weather_options.en_area)
+        #return event.reply({
+        #    type: 'image',
+        #    originalContentUrl: w_icon,
+        #    previewImageUrl: w_icon
+        #})
     }).catch(function (err) {
         return event.reply('歹勢啦~我沒有你輸入的地區資料')
     })
@@ -176,10 +176,10 @@ bot.on('message', function(event) {
             }
             else if (event.message.text.substr(0,2) == '天氣') {
                 let w_keyword = event.message.text.substr(2).trim()
-               
+                let en_area = trans_lang(w_keyword)
                     var weather_options = {
-                        area: w_keyword,
-                        uri: 'https://api.apixu.com/v1/current.json?key='+process.env.weatherKey+'&q='+trans_lang(w_keyword),
+                        area: en_area,
+                        uri: 'https://api.apixu.com/v1/current.json?key='+process.env.weatherKey+'&q='+en_area,
                         json: true
                     };
                     var get_weather_data = getWeather(weather_options, event);
