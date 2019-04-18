@@ -184,9 +184,10 @@ bot.on('message', function(event) {
                         json: true
                     };
                   
-                    transLang(lang_options, event).then(function(text){
-                        return event.reply(JSON.stringify(text))
-                    })
+//                     transLang(lang_options, event).then(function(text){
+//                         return event.reply(JSON.stringify(text))
+//                     })
+                    transLang(lang_options, event).then( en_area => en_area)
                    
                     var weather_options = {
                         area: en_area,
