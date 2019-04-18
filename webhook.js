@@ -2,6 +2,7 @@ const linebot = require('./index.js');
 const dataflit = require('./lib/dataflit');
 const rp = require('request-promise');
 const firebase = require("firebase");
+const translate = require('google-translate-api');
 
 const bot = linebot({
     channelId: process.env.channelId,
@@ -141,6 +142,14 @@ function getWeather(weather_options, event) {
     })
 }
 
+function trans_lang(text) {
+    translate(text, {to: 'en'}).then(res => {
+        return res.text
+    }).catch(err => {
+        return err
+    });
+}
+
 
 bot.on('message', function(event) {
     switch (event.message.type) {
@@ -170,7 +179,7 @@ bot.on('message', function(event) {
                 firedb.ref("getmessage/").push(w_keyword);
                     var weather_options = {
                         area: w_keyword,
-                        uri: 'https://api.apixu.com/v1/current.json?key='+process.env.weatherKey+'&q='+w_keyword,
+                        uri: 'https://api.apixu.com/v1/current.json?key='+process.env.weatherKey+'&q='+trans_lang(w_keyword),
                         json: true
                     };
                     var get_weather_data = getWeather(weather_options, event);
