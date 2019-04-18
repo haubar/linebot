@@ -3,7 +3,6 @@ const dataflit = require('./lib/dataflit');
 const rp = require('request-promise');
 const firebase = require("firebase");
 const translate = require('google-translate-api');
-const translatte = require('translatte');
 
 const bot = linebot({
     channelId: process.env.channelId,
