@@ -143,7 +143,7 @@ function getWeather(weather_options, event) {
 }
 
 function trans_lang(lang_options) {
-   await rp(lang_options).then(function(response) { 
+    rp(lang_options).then(function(response) { 
 //         return response.text
 //        return event.reply(response.text)
         return 'taipei'
@@ -187,14 +187,14 @@ bot.on('message', function(event) {
                         json: true
                     };
 
-                    var en_area = await trans_lang(lang_options)
+                    var en_area = trans_lang(lang_options)
                     return event.reply(en_area);
                     var weather_options = {
                         area: en_area,
                         uri: 'https://api.apixu.com/v1/current.json?key='+process.env.weatherKey+'&q='+en_area,
                         json: true
                     };
-                    var get_weather_data = getWeather(weather_options, event)
+//                     var get_weather_data = getWeather(weather_options, event)
             }
             else if (event.message.text.substr(0,3) == '18+') {
                         let source_code = event.message.text.substr(3).trim()
