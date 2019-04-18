@@ -147,7 +147,7 @@ function transLang(lang_options, event) {
        return event.reply(response.text)
 //         return 'taipei'
     }).catch(function (err) {
-        return event.reply(err)
+        return event.reply('抓不到語言')
     })
 }
 
