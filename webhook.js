@@ -137,8 +137,7 @@ function getWeather(weather_options, event) {
             previewImageUrl: w_icon
         })
     }).catch(function (err) {
-        return event.reply(JSON.stringify(weather_options));
-//         return event.reply('歹勢啦~我沒有你輸入的地區資料')
+        return event.reply('歹勢啦~我沒有你輸入的地區資料')
     })
 }
 
@@ -148,7 +147,7 @@ function transLang(lang_options, event) {
        return event.reply(response.text)
 //         return 'taipei'
     }).catch(function (err) {
-        return event.reply(JSON.stringify(lang_options))
+        return event.reply(err)
     })
 }
 
