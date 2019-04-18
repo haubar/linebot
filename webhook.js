@@ -125,7 +125,7 @@ function getR18Image(dmm_options, event) {
     })
 }
 
-async function getWeather(weather_options, event) {
+function getWeather(weather_options, event) {
     rp(weather_options).then(function(response) {
         var w_temp = response.current.temp_c
         var w_icon = 'https:'+response.current.condition.icon.replace(/64x64/,'128x128')
@@ -142,8 +142,8 @@ async function getWeather(weather_options, event) {
     })
 }
 
-async function trans_lang(lang_options) {
-    rp(lang_options).then(function(response) { 
+function trans_lang(lang_options) {
+    rp(lang_options).finally(function(response) { 
 //         var area = reponst.text
        return event.reply(response.text)
 //         return 'taipei'
@@ -188,14 +188,14 @@ bot.on('message', function(event) {
                         json: true
                     };
 
-                    var en_area = await trans_lang(lang_options)
+                    var en_area = trans_lang(lang_options)
                     return event.reply();
                     var weather_options = {
                         area: en_area,
                         uri: 'https://api.apixu.com/v1/current.json?key='+process.env.weatherKey+'&q='+en_area,
                         json: true
                     };
-                    var get_weather_data = await getWeather(weather_options, event)
+                    var get_weather_data = getWeather(weather_options, event)
             }
             else if (event.message.text.substr(0,3) == '18+') {
                         let source_code = event.message.text.substr(3).trim()
