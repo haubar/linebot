@@ -147,7 +147,8 @@ function trans_lang(lang_options) {
        return event.reply(JSON.stringify(response))
 //         return 'taipei'
     }).catch(function (err) {
-        return err
+        return event.reply(JSON.stringify(lang_options))
+//         return err
     })
 }
 
