@@ -3,6 +3,7 @@ const dataflit = require('./lib/dataflit');
 const rp = require('request-promise');
 const firebase = require("firebase");
 const translate = require('google-translate-api');
+const translatte = require('translatte');
 
 const bot = linebot({
     channelId: process.env.channelId,
@@ -144,7 +145,7 @@ function getWeather(weather_options, event) {
 }
 
 function trans_lang(text) {
-    translate(text, {to: 'en'}).then(res => {
+    translatte(text, {to: 'en'}).then(res => {
         return res.text
     }).catch(err => {
         console.log(err)
