@@ -183,7 +183,7 @@ bot.on('message', function(event) {
 //                         text: encodeURIComponent(w_keyword),
 //                         key: process.env.yandexKey,
 //                         lang: 'zh-en',
-//                         json: true
+                        json: true
                     };
 
                     var en_area = transLang(lang_options, event)
