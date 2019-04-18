@@ -142,11 +142,13 @@ function getWeather(weather_options, event) {
 }
 
 function transLang(lang_options, event) {
+    let text
     rp(lang_options).then(function(response) { 
-        return response.text[0]
+        return text = response.text[0]
     }).catch(function (err) {
-        return event.reply('抓不到語言')
+        return err
     })
+    return text
 }
 
 
