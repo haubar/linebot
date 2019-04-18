@@ -142,13 +142,11 @@ function getWeather(weather_options, event) {
 }
 
 function transLang(lang_options, event) {
-    let text
-    rp(lang_options).then(function(response) { 
-        text = response.text[0]
+   return rp(lang_options).then(function(response) { 
+        return response.text[0]
     }).catch(function (err) {
-       return event.reply('歹勢啦~我找不到你的地區')
+        return event.reply('歹勢啦~我找不到你的地區')
     })
-    return text
 }
 
 
