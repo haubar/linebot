@@ -144,10 +144,11 @@ function getWeather(weather_options, event) {
 
 function trans_lang(lang_options) {
     rp(lang_options).then(function(response) { 
-       return event.reply(JSON.stringify(response))
+        var area = reponst.text
+//        return event.reply(JSON.stringify(response))
 //         return 'taipei'
     }).catch(function (err) {
-        return event.reply(JSON.stringify(lang_options))
+//         return event.reply(JSON.stringify(lang_options))
 //         return err
     })
 }
