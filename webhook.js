@@ -176,7 +176,7 @@ bot.on('message', function(event) {
             }
             else if (event.message.text.substr(0,2) == '天氣') {
                 let w_keyword = event.message.text.substr(2).trim()
-                firedb.ref("getmessage/").push(w_keyword);
+               
                     var weather_options = {
                         area: w_keyword,
                         uri: 'https://api.apixu.com/v1/current.json?key='+process.env.weatherKey+'&q='+trans_lang(w_keyword),
