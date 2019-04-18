@@ -145,7 +145,7 @@ function getWeather(weather_options, event) {
 }
 
 function trans_lang(text) {
-    translatte(text, {to: 'en'}).then(res => {
+    translate(text, {to: 'en'}).then(res => {
         return res.text
     }).catch(err => {
         console.log(err)
