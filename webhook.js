@@ -142,11 +142,10 @@ function getWeather(weather_options, event) {
     })
 }
 
-function trans_lang(options) {
-    rp(options).then(function(response) { 
+function trans_lang(lang_options, event) {
+    rp(lang_options).then(function(response) { 
        return event.reply(JSON.stringify(response))
     }).catch(function (err) {
-        return event.reply(JSON.stringify(err))
         return err
     })
 }
@@ -179,9 +178,9 @@ bot.on('message', function(event) {
                 let w_keyword = event.message.text.substr(2).trim()
                 var lang_options = {
                         uri: 'https://translate.yandex.net/api/v1.5/tr.json/translate?key='+process.env.yandexKey+'&lang=zh-en&text='+encodeURIComponent(w_keyword),
-//                         text: encodeURIComponent(w_keyword),
-//                         key: process.env.yandexKey,
-//                         lang: 'zh-en'
+                        text: encodeURIComponent(w_keyword),
+                        key: process.env.yandexKey,
+                        lang: 'zh-en',
                         json: true
                     };
                 let en_area = trans_lang(lang_options)
