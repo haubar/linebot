@@ -144,9 +144,9 @@ function getWeather(weather_options, event) {
 function transLang(lang_options, event) {
     let text
     rp(lang_options).then(function(response) { 
-        return text = response.text[0]
+        text = response.text[0]
     }).catch(function (err) {
-        return err
+       return event.reply('歹勢啦~我找不到你的地區')
     })
     return text
 }
