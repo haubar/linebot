@@ -142,14 +142,13 @@ function getWeather(weather_options, event) {
     })
 }
 
-async function trans_lang(lang_options) {
+function trans_lang(lang_options) {
    await rp(lang_options).then(function(response) { 
-        return response.text
+//         return response.text
 //        return event.reply(response.text)
-//         return 'taipei'
+        return 'taipei'
     }).catch(function (err) {
-//         return event.reply(JSON.stringify(lang_options))
-        return err
+        return event.reply(JSON.stringify(lang_options))
     })
 }
 
