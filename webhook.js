@@ -76,7 +76,6 @@ function getigImage(ig_options, event) {
 
 function getYoutube(yt_options, event) {
     rp(yt_options).then(function(response) {
-        // return event.replay(yt.yt_options)
         var video = []
         var array_video_data = response.items
         for (let origin of array_video_data) {
@@ -140,7 +139,7 @@ function getWeather(weather_options, event) {
         })
     }).catch(function (err) {
         return event.reply(JSON.stringify(weather_options));
-        //return event.reply('歹勢啦~我沒有你輸入的地區資料')
+//         return event.reply('歹勢啦~我沒有你輸入的地區資料')
     })
 }
 
