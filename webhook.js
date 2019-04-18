@@ -185,7 +185,7 @@ bot.on('message', function(event) {
                     };
                   
                     transLang(lang_options, event).then(function(text){
-                        return event.reply(text)
+                        return event.reply(JSON.stringify(text))
                     })
                    
                     var weather_options = {
