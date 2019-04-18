@@ -146,6 +146,7 @@ function trans_lang(options) {
     rp(options).then(function(response) { 
        return event.reply(JSON.stringify(response))
     }).catch(function (err) {
+        return event.reply(JSON.stringify(err))
         return err
     })
 }
