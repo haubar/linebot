@@ -166,7 +166,7 @@ bot.on('message', function(event) {
                     var get_ig_image = getigImage(ig_options, event);
             }
             else if (event.message.text.substr(0,2) == 'yt') {
-                let yt_keyword = event.message.text.substr(2).trim()
+                var yt_keyword = event.message.text.substr(2).trim()
                 firedb.ref("getmessage/").push(yt_keyword);
                 var encode_keyword = encodeURIComponent(yt_keyword) 
                     var yt_options = {
@@ -176,7 +176,7 @@ bot.on('message', function(event) {
                     var get_youtube_video = getYoutube(yt_options, event);
             }
             else if (event.message.text.substr(0,2) == '天氣') {
-                let w_keyword = event.message.text.substr(2).trim()
+                var w_keyword = event.message.text.substr(2).trim()
                 var lang_options = {
                         uri: 'https://translate.yandex.net/api/v1.5/tr.json/translate?key='+process.env.yandexKey+'&lang=zh-en&text='+encodeURIComponent(w_keyword),
                         text: encodeURIComponent(w_keyword),
