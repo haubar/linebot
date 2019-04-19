@@ -142,11 +142,14 @@ function getWeather(weather_options, event) {
 }
 
 async function transLang(lang_options, event) {
-    return await rp(lang_options).then(async function(response) { 
-        return response.text[0]
+    let res = await rp(lang_options).then(async function(response) { 
+        return response
     }).catch(function (err) {
         return event.reply('歹勢啦~我找不到你的地區')
     })
+    res.all().then(function () {
+        return res.value()
+    }).catch(() => {});
 }
 
 
@@ -186,7 +189,9 @@ bot.on('message', function(event) {
                   
 //                     let en_area = transLang(lang_options, event)
                    
-                        let en_area = transLang(lang_options, event).then(en_area => { response.text[0] })
+                        let en_area = await transLang(lang_options, event)
+                        
+                      
                     
                  
                     var weather_options = {
