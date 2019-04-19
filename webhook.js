@@ -142,7 +142,7 @@ function getWeather(weather_options, event) {
 }
 
 function transLang(lang_options, event) {
-    rp(lang_options).then(function(response) { 
+    return rp(lang_options).then(function(response) { 
         return response.text[0]
     }).catch(function (err) {
         return event.reply('歹勢啦~我找不到你的地區')
@@ -184,11 +184,8 @@ bot.on('message', function(event) {
                         json: true
                     };
                   
-                    let en_area = transLang(lang_options, event).then(function(text){
-                        return text
-                    })
+                    let en_area = await transLang(lang_options, event)
                  
-                   
                     var weather_options = {
                         area: en_area,
                         uri: 'https://api.apixu.com/v1/current.json?key='+process.env.weatherKey+'&q='+en_area,
