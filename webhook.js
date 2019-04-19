@@ -185,9 +185,9 @@ bot.on('message', function(event) {
                     };
                   
 //                     let en_area = transLang(lang_options, event)
-                    function async() {
-                        let en_area = await transLang(lang_options, event)
-                    }
+                   
+                        let en_area = transLang(lang_options, event).then(en_area => { response.text[0] })
+                    
                  
                     var weather_options = {
                         area: en_area,
