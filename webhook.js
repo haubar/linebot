@@ -141,7 +141,7 @@ function getWeather(weather_options, event) {
     })
 }
 
-function transLang(lang_options, event) {
+async function transLang(lang_options, event) {
     return await rp(lang_options).then(async function(response) { 
         return response.text[0]
     }).catch(function (err) {
