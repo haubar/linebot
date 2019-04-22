@@ -130,7 +130,7 @@ function getWeather(weather_options, event) {
         var w_temp = response.current.temp_c
         var w_icon = 'https:'+response.current.condition.icon.replace(/64x64/,'128x128')
         var w_status = response.current.condition.text
-        event.reply(JSON.stringify(weather_options));
+        //event.reply(JSON.stringify(weather_options));
         return event.reply({
             type: 'image',
             originalContentUrl: w_icon,
@@ -143,7 +143,6 @@ function getWeather(weather_options, event) {
 
 function transLang(lang_options, event) {
    return rp(lang_options).then(function(response) {
-//         return response
         return response.text[0]
     }).catch(function (err) {
         return event.reply('歹勢啦~我找不到你的地區')
@@ -178,23 +177,18 @@ bot.on('message', function(event) {
                 let w_keyword = event.message.text.substr(2).trim()
                 
                 var lang_options = {
-                        uri: 'https://translate.yandex.net/api/v1.5/tr.json/translate,
-                        text: encodeURIComponent(w_keyword),
-                        key: process.env.yandexKey,
-                        lang: 'zh-en',
+                        uri: 'https://translate.yandex.net/api/v1.5/tr.json/translate?key='+process.env.yandexKey+'&lang=zh-en&text='+encodeURIComponent(w_keyword),
                         json: true
                     };
-                  
-//                     let en_area = transLang(lang_options, event)
                    
-                        transLang(lang_options, event).then(function(area){
-                            let weather_options = {
-                                area: area,
-                                uri: 'https://api.apixu.com/v1/current.json?key='+process.env.weatherKey+'&q='+area,
-                                json: true
-                            };
-                            getWeather(weather_options, event)
-                        })
+                    transLang(lang_options, event).then(function(area){
+                        let weather_options = {
+                            area: area,
+                            uri: 'https://api.apixu.com/v1/current.json?key='+process.env.weatherKey+'&q='+area,
+                            json: true
+                        }
+                        getWeather(weather_options, event)
+                    })
                              
             }
             else if (event.message.text.substr(0,3) == '18+') {
