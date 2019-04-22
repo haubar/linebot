@@ -186,7 +186,7 @@ bot.on('message', function(event) {
                   
 //                     let en_area = transLang(lang_options, event)
                    
-                        let en_area = await transLang(lang_options, event)
+                        let en_area = transLang(lang_options, event)
                         
                       return event.reply(en_area)
                     
