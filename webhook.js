@@ -143,6 +143,7 @@ function getWeather(weather_options, event) {
 
 function transLang(lang_options, event) {
     rp(lang_options).then(function(response) {
+        return response
         return response.text[0]
     }).catch(function (err) {
         return event.reply('歹勢啦~我找不到你的地區')
@@ -188,7 +189,7 @@ bot.on('message', function(event) {
                    
                         let en_area = transLang(lang_options, event)
                         
-                      return event.reply(en_area)
+                      return event.reply(JSON.stringify(en_area))
                     
                  
                     var weather_options = {
