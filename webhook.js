@@ -142,9 +142,7 @@ function getWeather(weather_options, event) {
 }
 
 function transLang(lang_options, event) {
-   await rp(lang_options).then(function(response) {
-         return event.reply(JSON.stringify(response))
-//         return response
+    rp(lang_options).then(function(response) {
         return response.text[0]
     }).catch(function (err) {
         return event.reply('歹勢啦~我找不到你的地區')
@@ -188,17 +186,15 @@ bot.on('message', function(event) {
                   
 //                     let en_area = transLang(lang_options, event)
                    
-                        let en_area = transLang(lang_options, event)
-                        
-                      return event.reply(JSON.stringify(en_area))
-                    
-                 
-                    var weather_options = {
-                        area: en_area,
-                        uri: 'https://api.apixu.com/v1/current.json?key='+process.env.weatherKey+'&q='+en_area,
-                        json: true
-                    };
-//                     var get_weather_data = getWeather(weather_options, event)
+                        transLang(lang_options, event).then(function(area){
+                            let weather_options = {
+                                area: area,
+                                uri: 'https://api.apixu.com/v1/current.json?key='+process.env.weatherKey+'&q='+area,
+                                json: true
+                            };
+                            getWeather(weather_options, event)
+                        })
+                             
             }
             else if (event.message.text.substr(0,3) == '18+') {
                         let source_code = event.message.text.substr(3).trim()
