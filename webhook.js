@@ -271,26 +271,8 @@ bot.on('message', function(event) {
                         });
                         break;
                     case 'menu':
-                        event.reply({
-//                               type: 'imagemap',
-//                               baseUrl: 'https://www.dropbox.com/s/wayd12io63k1pk2/rich-menu.png',
-//                               baseUrl: 'https://imgur.com/x3P8D3l',
-//                               altText: '這是一個測試的 rich menu',
-//                               baseSize: { height: 1040, width: 1040 },
-//                               actions: [{
-//                                 type: 'message',
-//                                 text: '給你文字',
-//                                 area: { x: 0, y: 0, width: 1024, height: 440 }
-//                               }, {
-//                                 type: 'uri',
-//                                 linkUri: 'https://www.google.com.tw/',
-//                                 area: { x: 348, y: 0, width: 1024, height: 440 }
-//                               },{
-//                                 type: 'message',
-//                                 text: '沒有位置...',
-//                                 area: { x: 672, y: 0, width: 1024, height: 440 }
-//                               }]
-                            {
+                        let data = 
+                             {
                               "size": {
                                 "width": 2500,
                                 "height": 1686
@@ -313,6 +295,8 @@ bot.on('message', function(event) {
                                 }
                               ]
                             }
+                        event.reply({
+                            data
                         });    
                         break;
                     case '指令':
