@@ -295,9 +295,9 @@ bot.on('message', function(event) {
                                 }
                               ]
                             }
-                        event.reply({
-                            data
-                        });    
+                       return this.post(data).then(function (res) {
+                                return res.json();
+                            });
                         break;
                     case '指令':
                         event.reply(['#關鍵字', 'yt關鍵字', '18+番號', '天氣地名', '其它...']);
