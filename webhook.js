@@ -270,6 +270,27 @@ bot.on('message', function(event) {
                             }
                         });
                         break;
+                    case 'menu':
+                        event.reply({
+                              type: 'imagemap',
+                              baseUrl: 'https://www.dropbox.com/s/wayd12io63k1pk2/rich-menu.png',
+                              altText: '這是一個測試的 rich menu',
+                              baseSize: { height: 1040, width: 1040 },
+                              actions: [{
+                                type: 'message',
+                                text: '給你文字',
+                                area: { x: 0, y: 0, width: 1024, height: 440 }
+                              }, {
+                                type: 'uri',
+                                linkUri: 'https://www.google.com.tw/',
+                                area: { x: 348, y: 0, width: 1024, height: 440 }
+                              },{
+                                type: 'message',
+                                text: '沒有位置...',
+                                area: { x: 672, y: 0, width: 1024, height: 440 }
+                              }]
+                        });    
+                        break;
                     case '指令':
                         event.reply(['#關鍵字', 'yt關鍵字', '18+番號', '天氣地名', '其它...']);
                         break;
