@@ -300,7 +300,7 @@ bot.on('message', function(event) {
                             });
                         break;
                     case 'menu':
-                        return this.post('/richmenu/list').then(function (res) {
+                        return this.get('/richmenu/list').then(function (res) {
                                 return res.json();
                             });
                         break;
