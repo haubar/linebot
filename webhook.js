@@ -295,12 +295,12 @@ bot.on('message', function(event) {
                                 }
                               ]
                             }
-                       return this.post('/richmenu').then(function (res) {
+                       return this.post('/richmenu', data).then(function (res) {
                                 return res.json();
                             });
                         break;
                     case 'menu':
-                        return this.post('/richmenu/list', data).then(function (res) {
+                        return this.post('/richmenu/list').then(function (res) {
                                 return res.json();
                             });
                         break;
