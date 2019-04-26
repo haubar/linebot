@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/boybundit/linebot.git"
+    "url": "git+https://github.com/haubar/linebot.git"
   },
   "keywords": [
     "LINE",
@@ -24,12 +24,12 @@
     "chat",
     "bot"
   ],
-  "author": "Bundit Jitkongchuen",
+  "author": "haubar",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/boybundit/linebot/issues"
+    "url": "https://github.com/haubar/linebot/issues"
   },
-  "homepage": "https://github.com/boybundit/linebot#readme",
+  "homepage": "https://github.com/haubar/linebot#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
     "firebase": "^5.8.5",
