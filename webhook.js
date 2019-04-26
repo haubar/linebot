@@ -295,7 +295,7 @@ bot.on('message', function(event) {
                                 }
                               ]
                             }
-                       return this.post(data).then(function (res) {
+                       return this.post('richmenu', data).then(function (res) {
                                 return res.json();
                             });
                         break;
