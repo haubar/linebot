@@ -273,7 +273,8 @@ bot.on('message', function(event) {
                     case 'menu':
                         event.reply({
                               type: 'imagemap',
-                              baseUrl: 'https://www.dropbox.com/s/wayd12io63k1pk2/rich-menu.png',
+//                               baseUrl: 'https://www.dropbox.com/s/wayd12io63k1pk2/rich-menu.png',
+                              baseUrl: 'https://imgur.com/x3P8D3l',
                               altText: '這是一個測試的 rich menu',
                               baseSize: { height: 1040, width: 1040 },
                               actions: [{
