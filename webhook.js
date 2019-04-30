@@ -179,11 +179,11 @@ bot.on('message', function(event) {
                 let area = event.message.text.substr(2).trim()
 
                     var weather_options = {
-                        uri: 'https://api.apixu.com/v1/current.json?key='+process.env.weatherKey+'&q='+area+'&lang=zh_tw'
+//                         uri: 'https://api.apixu.com/v1/current.json?key='+process.env.weatherKey+'&q='+area+'&lang=zh_tw'
+                        uri: 'https://api.apixu.com/v1/current.json?key='+process.env.weatherKey+'&q='+area
                     };
                     let get_current_weather = getWeather(weather_options, event);
-                    get_current_weather.then();
-       
+                    
             }
             else if (event.message.text.substr(0,3) == '中翻英') {
                 let text = event.message.text.substr(3).trim()
