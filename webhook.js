@@ -127,18 +127,17 @@ function getR18Image(dmm_options, event) {
 
 function getWeather(weather_options, event) {
     rp(weather_options).then(function(response) {
-        var w_temp = response.current.temp_c
-        var w_icon = 'https:'+response.current.condition.icon.replace(/64x64/,'128x128')
-        var w_status = response.current.condition.text
-        return event.reply([JSON.parse(response), weather_options])
-//         return event.reply([w_temp, w_status, w_icon])
+        let res = JSON.parse(response)
+        let w_temp = res.current.temp_c
+        let w_icon = 'https:'+res.current.condition.icon.replace(/64x64/,'128x128')
+        let w_status = res.current.condition.text
+
         return event.reply({
             type: 'image',
             originalContentUrl: w_icon,
             previewImageUrl: w_icon
         })
     }).catch(function (err) {
-        return event.reply(JSON.stringify(weather_options))
         return event.reply('歹勢啦~我沒有你輸入的地區資料')
     })
 }
