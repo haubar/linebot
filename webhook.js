@@ -130,7 +130,7 @@ function getWeather(weather_options, event) {
         var w_temp = response.current.temp_c
         var w_icon = 'https:'+response.current.condition.icon.replace(/64x64/,'128x128')
         var w_status = response.current.condition.text
-        return event.reply(JSON.stringify(response))
+        return event.reply(JSON.stringify(weather_options))
         return event.reply(JSON.parse(response))
         return event.reply({
             type: 'image',
