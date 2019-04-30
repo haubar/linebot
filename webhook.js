@@ -127,9 +127,9 @@ function getR18Image(dmm_options, event) {
 
 function getWeather(weather_options, event) {
     rp(weather_options).then(function(response) {
-//         var w_temp = response.current.temp_c
-//         var w_icon = 'https:'+response.current.condition.icon.replace(/64x64/,'128x128')
-//         var w_status = response.current.condition.text
+        var w_temp = response.current.temp_c
+        var w_icon = 'https:'+response.current.condition.icon.replace(/64x64/,'128x128')
+        var w_status = response.current.condition.text
         return event.reply(JSON.stringify(weather_options));
         return event.reply({
             type: 'image',
@@ -143,7 +143,7 @@ function getWeather(weather_options, event) {
 
 function transLang(lang_options, event) {
     rp(lang_options).then(function(response) {
-        return event.reply(JSON.stringify(response))
+        return event.reply(JSON.stringify(response.lang))
         return event.reply(lang_options.text[0])
     }).catch(function (err) {
         return event.reply('歹勢啦~我不曉得你哩工啥米Q口Q')
