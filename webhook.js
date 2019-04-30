@@ -143,7 +143,7 @@ function getWeather(weather_options, event) {
 
 function transLang(lang_options, event) {
    return rp(lang_options).then(function(response) {
-       return event.reply(JSON.stringify(lang_options));
+       return event.reply(JSON.stringify(response));
         return response.text[0]
     }).catch(function (err) {
         return event.reply('歹勢啦~我不曉得你哩工啥米Q口Q')
@@ -181,7 +181,8 @@ bot.on('message', function(event) {
                         uri: 'https://api.apixu.com/v1/current.json?key='+process.env.weatherKey+'&q='+area+'&lang=zh_tw'
                     
                     }
-                    var get_current_weather = getWeather(weather_options, event)
+                    var get_current_weather = getWeather(weather_options, event).then(function(){
+                    })
        
             }
             else if (event.message.text.substr(0,3) == '中翻英') {
@@ -189,9 +190,9 @@ bot.on('message', function(event) {
                 
                     var lang_options = {
                         uri: 'https://translate.yandex.net/api/v1.5/tr.json/translate?key='+process.env.yandexKey+'&lang=zh-en&text='+encodeURIComponent(text)
-                  
                     }
-                    var get_lang = transLang(lang_options, event)
+                    var get_lang = transLang(lang_options, event).then(function(){
+                    })
 
             }
             else if (event.message.text.substr(0,3) == '18+') {
