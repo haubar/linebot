@@ -143,7 +143,7 @@ function getWeather(weather_options, event) {
 
 function transLang(lang_options, event) {
     rp(lang_options).then(function(response) {
-        return event.reply(response.lang)
+        return event.reply(JSON.stringify(response.text[0]))
     }).catch(function (err) {
         return event.reply('歹勢啦~我不曉得你哩工啥米Q口Q')
     })
