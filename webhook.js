@@ -130,7 +130,7 @@ function getWeather(weather_options, event) {
         var w_temp = response.current.temp_c
         var w_icon = 'https:'+response.current.condition.icon.replace(/64x64/,'128x128')
         var w_status = response.current.condition.text
-        //event.reply(JSON.stringify(weather_options));
+        return event.reply(JSON.stringify(weather_options));
         return event.reply({
             type: 'image',
             originalContentUrl: w_icon,
@@ -143,6 +143,7 @@ function getWeather(weather_options, event) {
 
 function transLang(lang_options, event) {
    return rp(lang_options).then(function(response) {
+       return event.reply(JSON.stringify(lang_options));
         return response.text[0]
     }).catch(function (err) {
         return event.reply('歹勢啦~我不曉得你哩工啥米Q口Q')
