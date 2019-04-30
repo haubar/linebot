@@ -307,7 +307,7 @@ bot.on('message', function(event) {
                             });
                         break;
                     case '指令':
-                        event.reply(['#{關鍵字}', 'yt{關鍵字}', '18+{番號}', '天氣{地名}', '中翻英{中文}', '其它...']);
+                        event.reply(['#關鍵字', 'yt關鍵字', '18+番號', '天氣地名', '中翻英中文', '其它...']);
                         break;
                     case '幹':
                         event.reply('....請冷靜 '+ String.fromCharCode('0x10007B') );
