@@ -145,7 +145,7 @@ function transLang(lang_options, event) {
    return rp(lang_options).then(function(response) {
         return response.text[0]
     }).catch(function (err) {
-        return event.reply('歹勢啦~我找不到你的地區')
+        return event.reply('歹勢啦~我不曉得你哩工啥米Q口Q')
     })
 }
 
@@ -174,22 +174,24 @@ bot.on('message', function(event) {
                     var get_youtube_video = getYoutube(yt_options, event);
             }
             else if (event.message.text.substr(0,2) == '天氣') {
-                let w_keyword = event.message.text.substr(2).trim()
+                let area = event.message.text.substr(2).trim()
+
+                 let weather_options = {
+                        uri: 'https://api.apixu.com/v1/current.json?key='+process.env.weatherKey+'&q='+area+'&lang=zh_tw',
+                        json: true
+                    }
+                getWeather(weather_options, event)
+       
+            }
+            else if (event.message.text.substr(0,3) == '中翻英') {
+                let text = event.message.text.substr(3).trim()
                 
                 var lang_options = {
-                        uri: 'https://translate.yandex.net/api/v1.5/tr.json/translate?key='+process.env.yandexKey+'&lang=zh-en&text='+encodeURIComponent(w_keyword),
+                        uri: 'https://translate.yandex.net/api/v1.5/tr.json/translate?key='+process.env.yandexKey+'&lang=zh-en&text='+encodeURIComponent(text),
                         json: true
-                    };
-                   
-                    transLang(lang_options, event).then(function(area){
-                        let weather_options = {
-                            area: area,
-                            uri: 'https://api.apixu.com/v1/current.json?key='+process.env.weatherKey+'&q='+area,
-                            json: true
-                        }
-                        getWeather(weather_options, event)
-                    })
-                             
+                    };    
+                transLang(lang_options, event)
+
             }
             else if (event.message.text.substr(0,3) == '18+') {
                         let source_code = event.message.text.substr(3).trim()
@@ -305,7 +307,7 @@ bot.on('message', function(event) {
                             });
                         break;
                     case '指令':
-                        event.reply(['#關鍵字', 'yt關鍵字', '18+番號', '天氣地名', '其它...']);
+                        event.reply(['#{關鍵字}', 'yt{關鍵字}', '18+{番號}', '天氣{地名}', '中翻英{中文}', '其它...']);
                         break;
                     case '幹':
                         event.reply('....請冷靜 '+ String.fromCharCode('0x10007B') );
