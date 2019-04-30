@@ -130,7 +130,7 @@ function getWeather(weather_options, event) {
         var w_temp = response.current.temp_c
         var w_icon = 'https:'+response.current.condition.icon.replace(/64x64/,'128x128')
         var w_status = response.current.condition.text
-        return event.reply(JSON.parse(response))
+        return event.reply([JSON.parse(response), weather_options])
 //         return event.reply([w_temp, w_status, w_icon])
         return event.reply({
             type: 'image',
@@ -178,7 +178,7 @@ bot.on('message', function(event) {
             else if (event.message.text.substr(0,2) == '天氣') {
                 let area = event.message.text.substr(2).trim()
 
-                    let weather_options = {
+                    var weather_options = {
                         uri: 'https://api.apixu.com/v1/current.json?key='+process.env.weatherKey+'&q='+area+'&lang=zh_tw'
                     };
                     var get_current_weather = getWeather(weather_options, event);
