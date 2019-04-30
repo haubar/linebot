@@ -180,8 +180,7 @@ bot.on('message', function(event) {
                         uri: 'https://api.apixu.com/v1/current.json?key='+process.env.weatherKey+'&q='+area+'&lang=zh_tw'
                     
                     }
-                    var get_current_weather = getWeather(weather_options, event).then(function(){
-                    })
+                    var get_current_weather = getWeather(weather_options, event)
        
             }
             else if (event.message.text.substr(0,3) == '中翻英') {
@@ -190,8 +189,7 @@ bot.on('message', function(event) {
                     var lang_options = {
                         uri: 'https://translate.yandex.net/api/v1.5/tr.json/translate?key='+process.env.yandexKey+'&lang=zh-en&text='+encodeURIComponent(text)
                     }
-                    var get_lang = transLang(lang_options, event).then(function(){
-                    })
+                    var get_lang = transLang(lang_options, event)
 
             }
             else if (event.message.text.substr(0,3) == '18+') {
