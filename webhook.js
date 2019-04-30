@@ -181,7 +181,8 @@ bot.on('message', function(event) {
                     var weather_options = {
                         uri: 'https://api.apixu.com/v1/current.json?key='+process.env.weatherKey+'&q='+area+'&lang=zh_tw'
                     };
-                    var get_current_weather = getWeather(weather_options, event);
+                    let get_current_weather = getWeather(weather_options, event);
+                    get_current_weather.then();
        
             }
             else if (event.message.text.substr(0,3) == '中翻英') {
