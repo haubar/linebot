@@ -170,17 +170,16 @@ bot.on('message', function(event) {
                     var yt_options = {
                         uri: 'https://www.googleapis.com/youtube/v3/search?'+'key='+process.env.youtubeToken+'&q='+encode_keyword+'&type=video'+'&part=snippet',
                         json: true
-                    }
-                    var get_youtube_video = getYoutube(yt_options, event)
+                    };
+                    var get_youtube_video = getYoutube(yt_options, event);
             }
             else if (event.message.text.substr(0,2) == '天氣') {
                 let area = event.message.text.substr(2).trim()
 
                     let weather_options = {
                         uri: 'https://api.apixu.com/v1/current.json?key='+process.env.weatherKey+'&q='+area+'&lang=zh_tw'
-                    
-                    }
-                    var get_current_weather = getWeather(weather_options, event)
+                    };
+                    var get_current_weather = getWeather(weather_options, event);
        
             }
             else if (event.message.text.substr(0,3) == '中翻英') {
@@ -188,8 +187,8 @@ bot.on('message', function(event) {
                 
                     var lang_options = {
                         uri: 'https://translate.yandex.net/api/v1.5/tr.json/translate?key='+process.env.yandexKey+'&lang=zh-en&text='+encodeURIComponent(text)
-                    }
-                    var get_lang = transLang(lang_options, event)
+                    };
+                    var get_lang = transLang(lang_options, event);
 
             }
             else if (event.message.text.substr(0,3) == '18+') {
