@@ -179,8 +179,7 @@ bot.on('message', function(event) {
                 let area = event.message.text.substr(2).trim()
 
                     var weather_options = {
-//                         uri: 'https://api.apixu.com/v1/current.json?key='+process.env.weatherKey+'&q='+area+'&lang=zh_tw'
-                        uri: 'https://api.apixu.com/v1/current.json?key='+process.env.weatherKey+'&q='+area
+                        uri: 'https://api.apixu.com/v1/current.json?key='+process.env.weatherKey+'&q='+area+'&lang=zh_tw'
                     };
                     let get_current_weather = getWeather(weather_options, event);
                     
