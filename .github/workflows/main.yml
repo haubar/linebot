@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Run a one-line script
-      run: ${{ secrets.CMD }}
+      run: echo "deploy linebot action !"
     - name: SSH command runner
       uses: Evaneos/ssh-action@v0.1.0
       with:
