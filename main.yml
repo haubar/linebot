@@ -1,0 +1,26 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Run a one-line script
+      run: deploy linebot action !
+    - name: SSH command runner
+      uses: Evaneos/ssh-action@v0.1.0
+      with:
+        # Remote host(s) to connect to
+        hosts: ${{ secrets.HOSTS }}
+        # One or multiple commands to run on the remote host(s)
+        commands: ${{ secrets.CMD }}
+        # Remote user to connect with
+        user: ${{ secrets.USER }}
+        # Remote port to connect to
+        port: ${{ secrets.PORT }}
+       
+        
