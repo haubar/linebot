@@ -9,16 +9,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo "deploy linebot action !"
-    - name: SSH command runner
-      uses: Evaneos/ssh-action@v0.1.0
+    - name: Deploy linebot 
+      uses: garygrossgarten/github-action-ssh@v0.3.0
       with:
-        # Remote host(s) to connect to
-        hosts: ${{ secrets.HOSTS }}
-        # One or multiple commands to run on the remote host(s)
-        commands: ${{ secrets.CMD }}
-        # Remote user to connect with
-        user: ${{ secrets.USER }}
-        # Remote port to connect to
+        command: ${{ secrets.CMD }}
+        host: ${{ secrets.HOSTS }}
+        username: ${{ secrets.USER }}
         port: ${{ secrets.PORT }}
+        privateKey: ${{ secrets.PRIKEY }}
