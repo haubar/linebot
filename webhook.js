@@ -160,8 +160,8 @@ bot.on('message', function(event) {
                 // firedb.ref("getmessage/").push(ig_keyword);
                 var encode_tag = encodeURIComponent(ig_keyword) 
                     var ig_options = {
-                        uri: 'https://www.instagram.com/explore/tags/'+ encode_tag +'?__a=1',
-                        json: true
+                        method: 'get',
+                        uri: 'https://www.instagram.com/explore/tags/'+ encode_tag +'?__a=1'
                     };
                     var get_ig_image = getigImage(ig_options, event);
             }
@@ -170,8 +170,8 @@ bot.on('message', function(event) {
                 // firedb.ref("getmessage/").push(yt_keyword);
                 var encode_keyword = encodeURIComponent(yt_keyword) 
                     var yt_options = {
+                        method: 'get',
                         uri: 'https://www.googleapis.com/youtube/v3/search?'+'key='+process.env.youtubeToken+'&q='+encode_keyword+'&type=video'+'&part=snippet',
-                        json: true
                     };
                     var get_youtube_video = getYoutube(yt_options, event);
             }
@@ -179,6 +179,7 @@ bot.on('message', function(event) {
                 let area = event.message.text.substr(2).trim()
 
                     var weather_options = {
+                        method: 'get',
                         uri: 'https://api.apixu.com/v1/current.json?key='+process.env.weatherKey+'&q='+area+'&lang=zh_tw'
                     };
                     let get_current_weather = getWeather(weather_options, event);
@@ -188,6 +189,7 @@ bot.on('message', function(event) {
                 let text = event.message.text.substr(3).trim()
                 
                     var lang_options = {
+                        method: 'get',
                         uri: 'https://translate.yandex.net/api/v1.5/tr.json/translate?key='+process.env.yandexKey+'&lang=zh-en&text='+encodeURIComponent(text)
                     };
                     var get_lang = transLang(lang_options, event);
