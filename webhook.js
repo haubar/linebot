@@ -35,7 +35,7 @@ var Data_youtube = function (data) {
 
 
 
-function getImage(eat_options, event) {
+async function getImage(eat_options, event) {
     rp(eat_options).then(function(response) {
         var imagurs = []
         response.data.forEach(function(items) {
@@ -51,7 +51,7 @@ function getImage(eat_options, event) {
     })
 }
 
-function getigImage(ig_options, event) {
+async function getigImage(ig_options, event) {
     rp(ig_options).then(function(response) {
         var ig_image = []
         var array_top_posts = response.graphql.hashtag.edge_hashtag_to_top_posts.edges
@@ -73,7 +73,7 @@ function getigImage(ig_options, event) {
     })
 }
 
-function getYoutube(yt_options, event) {
+async function getYoutube(yt_options, event) {
     rp(yt_options).then(function(response) {
         var video = []
         var array_video_data = response.items
@@ -110,7 +110,7 @@ function getYoutube(yt_options, event) {
     })
 }
 
-function getR18Image(dmm_options, event) {
+async function getR18Image(dmm_options, event) {
     rp(dmm_options).then(function(response) {
         var url_image_small = dmm_options.small
         var url_image_large = dmm_options.large
@@ -125,7 +125,7 @@ function getR18Image(dmm_options, event) {
     })
 }
 
-function getWeather(weather_options, event) {
+async function getWeather(weather_options, event) {
     rp(weather_options).then(function(response) {
         let res = JSON.parse(response)
         let w_temp = res.current.temp_c
@@ -142,7 +142,7 @@ function getWeather(weather_options, event) {
     })
 }
 
-function transLang(lang_options, event) {
+async function transLang(lang_options, event) {
     rp(lang_options).then(function(response) {
         let res = JSON.parse(response)
         return event.reply(res.text[0])
@@ -163,7 +163,7 @@ bot.on('message', function(event) {
                         method: 'get',
                         uri: 'https://www.instagram.com/explore/tags/'+ encode_tag +'?__a=1'
                     };
-                    var get_ig_image = getigImage(ig_options, event);
+                    var get_ig_image = await getigImage(ig_options, event);
             }
             else if (event.message.text.substr(0,2) == 'yt') {
                 var yt_keyword = event.message.text.substr(2).trim()
@@ -173,7 +173,7 @@ bot.on('message', function(event) {
                         method: 'get',
                         uri: 'https://www.googleapis.com/youtube/v3/search?'+'key='+process.env.youtubeToken+'&q='+encode_keyword+'&type=video'+'&part=snippet',
                     };
-                    var get_youtube_video = getYoutube(yt_options, event);
+                    var get_youtube_video = await getYoutube(yt_options, event);
             }
             else if (event.message.text.substr(0,2) == '天氣') {
                 let area = event.message.text.substr(2).trim()
@@ -182,7 +182,7 @@ bot.on('message', function(event) {
                         method: 'get',
                         uri: 'https://api.apixu.com/v1/current.json?key='+process.env.weatherKey+'&q='+area+'&lang=zh_tw'
                     };
-                    let get_current_weather = getWeather(weather_options, event);
+                    let get_current_weather = await getWeather(weather_options, event);
                     
             }
             else if (event.message.text.substr(0,3) == '中翻英') {
@@ -192,7 +192,7 @@ bot.on('message', function(event) {
                         method: 'get',
                         uri: 'https://translate.yandex.net/api/v1.5/tr.json/translate?key='+process.env.yandexKey+'&lang=zh-en&text='+encodeURIComponent(text)
                     };
-                    var get_lang = transLang(lang_options, event);
+                    var get_lang = await transLang(lang_options, event);
 
             }
             else if (event.message.text.substr(0,3) == '18+') {
@@ -215,7 +215,7 @@ bot.on('message', function(event) {
                                 resolveWithFullResponse: true,
                                 followRedirect: false
                             };
-                            var get_r18_image = getR18Image(dmm_options, event);
+                            var get_r18_image = await getR18Image(dmm_options, event);
             } else {
                 switch (event.message.text) {
                     case '給我id':
