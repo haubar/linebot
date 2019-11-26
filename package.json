@@ -34,7 +34,7 @@
     "dotenv": "^8.2.0",
     "body-parser": "^1.15.2",
     "node-fetch": "^1.6.3",
-    "axios": "latest",
+    "request-promise": "^4.2.5",
     "debug": "^4.1.1"
   },
   "devDependencies": {

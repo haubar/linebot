@@ -1,6 +1,6 @@
 const linebot = require('./index.js');
 const dataflit = require('./lib/dataflit');
-const rp = require('axios');
+const rp = require('request-promise');
 // const firebase = require("firebase");
 
 
@@ -35,8 +35,8 @@ var Data_youtube = function (data) {
 
 
 
-async function getImage(eat_options, event) {
-    await rp(eat_options).then(function(response) {
+function getImage(eat_options, event) {
+    rp(eat_options).then(function(response) {
         var imagurs = []
         response.data.forEach(function(items) {
             imagurs.push(items.link)
@@ -51,8 +51,8 @@ async function getImage(eat_options, event) {
     })
 }
 
-async function getigImage(ig_options, event) {
-    await rp(ig_options).then(function(response) {
+function getigImage(ig_options, event) {
+    rp(ig_options).then(function(response) {
         var ig_image = []
         var array_top_posts = response.graphql.hashtag.edge_hashtag_to_top_posts.edges
         for (let origin of array_top_posts) {
@@ -63,7 +63,7 @@ async function getigImage(ig_options, event) {
         var random_val = [Math.floor(Math.random() * ig_image.length)]
         var url_image_m = ig_image[random_val].max_image
         var url_image_s = ig_image[random_val].mini_image
-        return event.reply(JSON.stringify(ig_image)) 
+       
         return event.reply({
             type: 'image',
             originalContentUrl: url_image_m,
@@ -73,8 +73,8 @@ async function getigImage(ig_options, event) {
     })
 }
 
-async function getYoutube(yt_options, event) {
-    await rp(yt_options).then(function(response) {
+function getYoutube(yt_options, event) {
+    rp(yt_options).then(function(response) {
         var video = []
         var array_video_data = response.items
         for (let origin of array_video_data) {
@@ -110,8 +110,8 @@ async function getYoutube(yt_options, event) {
     })
 }
 
-async function getR18Image(dmm_options, event) {
-    await rp(dmm_options).then(function(response) {
+function getR18Image(dmm_options, event) {
+    rp(dmm_options).then(function(response) {
         var url_image_small = dmm_options.small
         var url_image_large = dmm_options.large
 
@@ -125,8 +125,8 @@ async function getR18Image(dmm_options, event) {
     })
 }
 
-async function getWeather(weather_options, event) {
-    await rp(weather_options).then(function(response) {
+function getWeather(weather_options, event) {
+    rp(weather_options).then(function(response) {
         let res = JSON.parse(response)
         let w_temp = res.current.temp_c
         let w_icon = 'https:'+res.current.condition.icon.replace(/64x64/,'128x128')
@@ -142,8 +142,8 @@ async function getWeather(weather_options, event) {
     })
 }
 
-async function transLang(lang_options, event) {
-    await rp(lang_options).then(function(response) {
+function transLang(lang_options, event) {
+    rp(lang_options).then(function(response) {
         let res = JSON.parse(response)
         return event.reply(res.text[0])
     }).catch(function (err) {
@@ -160,8 +160,8 @@ bot.on('message', function(event) {
                 // firedb.ref("getmessage/").push(ig_keyword);
                 var encode_tag = encodeURIComponent(ig_keyword) 
                     var ig_options = {
-                        method: 'get',
-                        uri: 'https://www.instagram.com/explore/tags/'+ encode_tag +'?__a=1'
+                        uri: 'https://www.instagram.com/explore/tags/'+ encode_tag +'?__a=1',
+                        json: true
                     };
                     var get_ig_image = getigImage(ig_options, event);
             }
@@ -170,8 +170,8 @@ bot.on('message', function(event) {
                 // firedb.ref("getmessage/").push(yt_keyword);
                 var encode_keyword = encodeURIComponent(yt_keyword) 
                     var yt_options = {
-                        method: 'get',
                         uri: 'https://www.googleapis.com/youtube/v3/search?'+'key='+process.env.youtubeToken+'&q='+encode_keyword+'&type=video'+'&part=snippet',
+                        json: true
                     };
                     var get_youtube_video = getYoutube(yt_options, event);
             }
@@ -179,7 +179,6 @@ bot.on('message', function(event) {
                 let area = event.message.text.substr(2).trim()
 
                     var weather_options = {
-                        method: 'get',
                         uri: 'https://api.apixu.com/v1/current.json?key='+process.env.weatherKey+'&q='+area+'&lang=zh_tw'
                     };
                     let get_current_weather = getWeather(weather_options, event);
@@ -189,7 +188,6 @@ bot.on('message', function(event) {
                 let text = event.message.text.substr(3).trim()
                 
                     var lang_options = {
-                        method: 'get',
                         uri: 'https://translate.yandex.net/api/v1.5/tr.json/translate?key='+process.env.yandexKey+'&lang=zh-en&text='+encodeURIComponent(text)
                     };
                     var get_lang = transLang(lang_options, event);
