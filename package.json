@@ -34,7 +34,7 @@
     "dotenv": "^8.2.0",
     "body-parser": "^1.15.2",
     "node-fetch": "^1.6.3",
-    "firebase": "^5.8.5",
+    "firebase": "latest",
     "axios": "latest",
     "debug": "^4.1.1"
   },

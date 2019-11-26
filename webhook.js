@@ -1,6 +1,6 @@
 const linebot = require('./index.js');
 const dataflit = require('./lib/dataflit');
-const rp = require('request-promise');
+const rp = require('axios');
 const firebase = require("firebase");
 
 
