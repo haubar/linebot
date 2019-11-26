@@ -310,7 +310,8 @@ bot.on('message', function(event) {
                         event.reply(['#關鍵字', 'yt關鍵字', '18+番號', '中翻英中文']);
                         break;
                     case '幹':
-                        event.reply('....請冷靜 ');
+                        let emjoi = '🖕'
+                        event.reply('....請冷靜 ' + emjoi)
                         // event.reply('....請冷靜 '+ "🖕");
                         break;
                     default:
