@@ -1,7 +1,7 @@
 const linebot = require('./index.js');
 const dataflit = require('./lib/dataflit');
 const rp = require('axios');
-const firebase = require("firebase");
+// const firebase = require("firebase");
 
 
 const bot = linebot({
@@ -18,9 +18,9 @@ const firebase_config = {
     storageBucket: process.env.storageBucket,
 };
  
-firebase.initializeApp(firebase_config);
+// firebase.initializeApp(firebase_config);
  
-const firedb = firebase.database();
+// const firedb = firebase.database();
 
 var Data_ig = function (data) {
     this.max_image = data.thumbnail_src
@@ -157,7 +157,7 @@ bot.on('message', function(event) {
         case 'text':
             if (event.message.text.substr(0,1) == '#') {
                 let ig_keyword = event.message.text.substr(1).trim()
-                firedb.ref("getmessage/").push(ig_keyword);
+                // firedb.ref("getmessage/").push(ig_keyword);
                 var encode_tag = encodeURIComponent(ig_keyword) 
                     var ig_options = {
                         uri: 'https://www.instagram.com/explore/tags/'+ encode_tag +'?__a=1',
@@ -167,7 +167,7 @@ bot.on('message', function(event) {
             }
             else if (event.message.text.substr(0,2) == 'yt') {
                 var yt_keyword = event.message.text.substr(2).trim()
-                firedb.ref("getmessage/").push(yt_keyword);
+                // firedb.ref("getmessage/").push(yt_keyword);
                 var encode_keyword = encodeURIComponent(yt_keyword) 
                     var yt_options = {
                         uri: 'https://www.googleapis.com/youtube/v3/search?'+'key='+process.env.youtubeToken+'&q='+encode_keyword+'&type=video'+'&part=snippet',
@@ -195,7 +195,7 @@ bot.on('message', function(event) {
             }
             else if (event.message.text.substr(0,3) == '18+') {
                         let source_code = event.message.text.substr(3).trim()
-                        firedb.ref("getmessage/").push(source_code);
+                        // firedb.ref("getmessage/").push(source_code);
                         let pic_number = source_code.match(/\d/g).join('')
                         let pic_code = source_code.match(/[a-z]/ig).join('')
                         if (pic_number.length > 3 ) {
