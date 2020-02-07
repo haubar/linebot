@@ -221,7 +221,7 @@ bot.on('message', function(event) {
                     };
                     var get_r18_image = getR18Image(dmm_options, event);
             }
-            else if (event.message.text.substr(0.2) == '片片') {
+            else if (event.message.text.substr(0,2) == '片片') {
                 let mv_keyword = event.message.text.substr(2).trim()
                 
                 console.log('keyword', mv_keyword)
