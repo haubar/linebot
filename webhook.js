@@ -221,6 +221,11 @@ bot.on('message', function(event) {
             }
             else if (event.message.text.substr(0.3) == '18#') {
                 var keyword = event.message.text.substr(3).trim()
+                if (!!keyword) { 
+                    // event.reply('沒有你要的資料，是不是太重口味了呢???')
+                    event.reply(filter)
+                    return false
+                }
                 // console.log('keyword', keyword);
                 var base = new airtable({
                     apiKey: process.env.airtableKey
