@@ -224,7 +224,7 @@ bot.on('message', function(event) {
             else if (event.message.text.substr(0,2) == '片片') {
                 let mv_keyword = event.message.text.substr(2).trim()
                 let filter = ('SEARCH("'+mv_keyword+'", {name})')
-                console.log(filter)
+               
                 base('eighteen').select({
                     maxRecords: 1,
                     view: 'Grid view',
