@@ -226,7 +226,8 @@ bot.on('message', function(event) {
                     apiKey: process.env.airtableKey
                 }).base('appC80QmYDOvGT5cx');
                 // var filter = 'FIND("'+keyword+'", {name}) > 0'
-                var filter = 'FIND("學生", {name}) > 0'
+                var filter = 'SEARCH("學生", {name})'
+                // SEARCH("學生", name)
                 base('eighteen').select({
                     maxRecords: 1,
                     view: 'Grid view',
