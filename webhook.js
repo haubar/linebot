@@ -224,9 +224,10 @@ bot.on('message', function(event) {
             else if (event.message.text.substr(0.3) == '18#') {
                 var keyword = event.message.text.substr(3).trim()
                 
-                // console.log('keyword', keyword);
+                console.log('keyword', keyword);
                
                 var filter = encodeURI('SEARCH("'+keyword+'", {name})')
+                console.log('filter', filter);
                 if (keyword) { 
                     // event.reply('沒有你要的資料，是不是太重口味了呢???')
                     event.reply(filter)
@@ -239,11 +240,6 @@ bot.on('message', function(event) {
                 }).firstPage(function(err, records) {
                     if (err || keyword == '' ) { 
                         event.reply('沒有你要的資料，是不是太重口味了呢???')
-                        return false
-                    }
-                    if (!!keyword) { 
-                        // event.reply('沒有你要的資料，是不是太重口味了呢???')
-                        event.reply(filter)
                         return false
                     }
                     records.forEach(function(record) {
