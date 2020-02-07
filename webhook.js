@@ -229,7 +229,7 @@ bot.on('message', function(event) {
                 base('eighteen').select({
                     maxRecords: 1,
                     view: 'Grid view',
-                    filterByFormula: filter
+                    filterByFormula: filter > 0
                 }).firstPage(function(err, records) {
                     // if (err) { console.error(err); return; }
                     records.forEach(function(record) {
