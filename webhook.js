@@ -222,11 +222,11 @@ bot.on('message', function(event) {
                     var get_r18_image = getR18Image(dmm_options, event);
             }
             else if (event.message.text.substr(0.3) == '18#') {
-                var keyword = event.message.text.substr(3).trim()
+                let keyword = event.message.text.substr(3).trim()
                 
                 console.log('keyword', keyword);
                
-                var filter = encodeURI('SEARCH("'+keyword+'", {name})')
+                let filter = encodeURI('SEARCH("'+keyword+'", {name})')
                 console.log('filter', filter);
                 if (keyword) { 
                     // event.reply('沒有你要的資料，是不是太重口味了呢???')
