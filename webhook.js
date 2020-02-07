@@ -225,11 +225,11 @@ bot.on('message', function(event) {
                 var base = new airtable({
                     apiKey: process.env.airtableKey
                 }).base('appC80QmYDOvGT5cx');
-                var filter = 'FIND("' +keyword+ '", {name})'
+                var filter = 'FIND("' +keyword+ '", {name}) > 0'
                 base('eighteen').select({
                     maxRecords: 1,
                     view: 'Grid view',
-                    filterByFormula: filter > 0
+                    filterByFormula: filter
                 }).firstPage(function(err, records) {
                     // if (err) { console.error(err); return; }
                     records.forEach(function(record) {
