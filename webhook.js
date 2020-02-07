@@ -198,40 +198,44 @@ bot.on('message', function(event) {
 
             }
             else if (event.message.text.substr(0,3) == '18+') {
-                        let source_code = event.message.text.substr(3).trim()
-                        // firedb.ref("getmessage/").push(source_code);
-                        let pic_number = source_code.match(/\d/g).join('')
-                        let pic_code = source_code.match(/[a-z]/ig).join('')
-                        if (pic_number.length > 3 ) {
-                            pic_number = '0'+pic_number
-                        } else {
-                            pic_number = '00'+pic_number
-                        }
-                        var filekey = new dataflit(pic_code.toLowerCase())
-                        var fix_source_code = filekey.filename()+pic_number 
-                        
-                            var dmm_options = {
-                                uri: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'/'+fix_source_code+'ps.jpg',
-                                small: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'/'+fix_source_code+'ps.jpg',
-                                large: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'/'+fix_source_code+'pl.jpg',
-                                resolveWithFullResponse: true,
-                                followRedirect: false
-                            };
-                            var get_r18_image = getR18Image(dmm_options, event);
+                let source_code = event.message.text.substr(3).trim()
+                // firedb.ref("getmessage/").push(source_code);
+                let pic_number = source_code.match(/\d/g).join('')
+                let pic_code = source_code.match(/[a-z]/ig).join('')
+                if (pic_number.length > 3 ) {
+                    pic_number = '0'+pic_number
+                } else {
+                    pic_number = '00'+pic_number
+                }
+                var filekey = new dataflit(pic_code.toLowerCase())
+                var fix_source_code = filekey.filename()+pic_number 
+                
+                    var dmm_options = {
+                        uri: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'/'+fix_source_code+'ps.jpg',
+                        small: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'/'+fix_source_code+'ps.jpg',
+                        large: 'https://pics.dmm.co.jp/digital/video/'+fix_source_code+'/'+fix_source_code+'pl.jpg',
+                        resolveWithFullResponse: true,
+                        followRedirect: false
+                    };
+                    var get_r18_image = getR18Image(dmm_options, event);
             }
             else if (event.message.text.substr(0.3) == '18#') {
-                let keyword = event.message.text.substr(3).trim()
+                var keyword = event.message.text.substr(3).trim()
                 // console.log('keyword', keyword);
                 var base = new airtable({
                     apiKey: process.env.airtableKey
-                }).base('appC80QmYDOvGT5cx');
+                }).base('appC80QmYDOvGT5cx')
                 var filter = encodeURI('SEARCH("'+keyword+'", {name})')
                 base('eighteen').select({
                     maxRecords: 1,
                     view: 'Grid view',
                     filterByFormula: filter
                 }).firstPage(function(err, records) {
-                    if (err || keyword ) { 
+                    if (err || keyword == '' ) { 
+                        event.reply('沒有你要的資料，是不是太重口味了呢???')
+                        return false
+                    }
+                    if (!!keyword) { 
                         // event.reply('沒有你要的資料，是不是太重口味了呢???')
                         event.reply(filter)
                         return false
