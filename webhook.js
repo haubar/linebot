@@ -223,11 +223,11 @@ bot.on('message', function(event) {
             }
             else if (event.message.text.substr(0.3) == '18#') {
                 let keyword = event.message.text.substr(3).trim()
-                console.log('keyword', keyword);
+                // console.log('keyword', keyword);
                 base('eighteen').select({
                     maxRecords: 1,
                     view: 'Grid view',
-                    filterByFormula: SEARCH(keyword, name) > 0
+                    filterByFormula: FIND(keyword, name)
                 }).firstPage(function(err, records) {
                     if (err) { console.error(err); return; }
                     records.forEach(function(record) {
