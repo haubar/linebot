@@ -231,7 +231,9 @@ bot.on('message', function(event) {
                     view: 'Grid view',
                     filterByFormula: filter
                 }).firstPage(function(err, records) {
-                    // if (err) { console.error(err); return; }
+                    if (err || keyword == '') { 
+                        event.reply('沒有你要的資料，是不是太重口味了呢???')
+                        console.error(err); return; }
                     records.forEach(function(record) {
                         console.log('Retrieved', record.get('url'));
                         event.reply([record.get('url'), record.get('name')])
