@@ -224,7 +224,7 @@ bot.on('message', function(event) {
             else if (event.message.text.substr(0.3) == '18-') {
                 let keyword = event.message.text.substr(3).trim()
                 
-                console.log('keyword', event.message.text.substr(3))
+                console.log('keyword', event.message.text)
                 console.log('keyword', keyword)
                
                 let filter = encodeURI('SEARCH("'+keyword+'", {name})')
