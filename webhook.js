@@ -231,10 +231,10 @@ bot.on('message', function(event) {
                     view: 'Grid view',
                     filterByFormula: filter
                 }).firstPage(function(err, records) {
-                    if (err || keyword == '') { 
+                    if (err || keyword ) { 
                         // event.reply('沒有你要的資料，是不是太重口味了呢???')
                         event.reply(filter)
-                        return false 
+                        return false
                     }
                     records.forEach(function(record) {
                         console.log('Retrieved', record.get('url'));
