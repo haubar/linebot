@@ -222,9 +222,9 @@ bot.on('message', function(event) {
                     var get_r18_image = getR18Image(dmm_options, event);
             }
             else if (event.message.text.substr(0.3) == '18#') {
-                let keyword = event.message.text.substr(3).trim()
+                let keyword = event.message.text.substr(3)
                 
-                console.log('keyword', event.message.text.substr(3).trim());
+                console.log('keyword', event.message.text.substr(3);
                
                 let filter = encodeURI('SEARCH("'+keyword+'", {name})')
                 console.log('filter', filter);
