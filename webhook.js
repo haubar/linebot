@@ -223,17 +223,8 @@ bot.on('message', function(event) {
             }
             else if (event.message.text.substr(0,2) == '片片') {
                 let mv_keyword = event.message.text.substr(2).trim()
-                
-                console.log('keyword', mv_keyword)
-                console.log('keyword', encodeURIComponent(mv_keyword))
-               
                 let filter = encodeURIComponent('SEARCH("'+mv_keyword+'", {name})')
-                console.log('filter', filter);
-                if (mv_keyword != '') { 
-                    // event.reply('沒有你要的資料，是不是太重口味了呢???')
-                    event.reply(filter)
-                    return false
-                }
+                
                 base('eighteen').select({
                     maxRecords: 1,
                     view: 'Grid view',
