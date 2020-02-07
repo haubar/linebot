@@ -230,8 +230,8 @@ bot.on('message', function(event) {
                 }).firstPage(function(err, records) {
                     if (err) { console.error(err); return; }
                     records.forEach(function(record) {
-                        // console.log('Retrieved', record.get('url'));
-                        event.reply([record.get('url'), record.get('name')]);
+                        console.log('Retrieved', record.get('url'));
+                        event.reply([record.get('url'), record.get('name')])
                     });
                 });
             } else {
