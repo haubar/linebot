@@ -24,9 +24,7 @@ const firebase_config = {
  
 // const firedb = firebase.database();
 
-var base = new airtable({
-    apiKey: process.env.airtableKey
-}).base('appC80QmYDOvGT5cx');
+
 
 var Data_ig = function (data) {
     this.max_image = data.thumbnail_src
@@ -224,12 +222,15 @@ bot.on('message', function(event) {
             else if (event.message.text.substr(0.3) == '18#') {
                 let keyword = event.message.text.substr(3).trim()
                 // console.log('keyword', keyword);
+                var base = new airtable({
+                    apiKey: process.env.airtableKey
+                }).base('appC80QmYDOvGT5cx');
                 base('eighteen').select({
                     maxRecords: 1,
                     view: 'Grid view',
                     filterByFormula: FIND(keyword, name)
                 }).firstPage(function(err, records) {
-                    if (err) { console.error(err); return; }
+                    // if (err) { console.error(err); return; }
                     records.forEach(function(record) {
                         console.log('Retrieved', record.get('url'));
                         event.reply([record.get('url'), record.get('name')])
