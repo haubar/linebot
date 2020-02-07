@@ -225,7 +225,8 @@ bot.on('message', function(event) {
                 var base = new airtable({
                     apiKey: process.env.airtableKey
                 }).base('appC80QmYDOvGT5cx');
-                var filter = 'FIND("%'+keyword+'%", {name}) > 0'
+                // var filter = 'FIND("'+keyword+'", {name}) > 0'
+                var filter = 'FIND("妹", {name}) > 0'
                 base('eighteen').select({
                     maxRecords: 1,
                     view: 'Grid view',
