@@ -220,13 +220,13 @@ bot.on('message', function(event) {
                             var get_r18_image = getR18Image(dmm_options, event);
             }
             else if (event.message.text.substr(0.3) == '18#') {
-                let keyword = event.message.text.substr(3).trim()
+                let keyword = encodeUri(event.message.text.substr(3).trim())
                 // console.log('keyword', keyword);
                 var base = new airtable({
                     apiKey: process.env.airtableKey
                 }).base('appC80QmYDOvGT5cx');
-                // var filter = 'FIND("'+keyword+'", {name}) > 0'
-                var filter = 'SEARCH("學生", {name})'
+                var filter = 'SEARCH("'+keyword+'", {name})'
+                // var filter = 'SEARCH("學生", {name})'
                 // SEARCH("學生", name)
                 base('eighteen').select({
                     maxRecords: 1,
