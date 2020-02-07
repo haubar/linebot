@@ -222,14 +222,14 @@ bot.on('message', function(event) {
                     var get_r18_image = getR18Image(dmm_options, event);
             }
             else if (event.message.text.substr(0.2) == '片片') {
-                let keyword = event.message.text.substr(2).trim()
+                let mv_keyword = event.message.text.substr(2).trim()
                 
-                console.log('keyword', event.message.text)
-                console.log('keyword', encodeURIComponent(keyword))
+                console.log('keyword', mv_keyword)
+                console.log('keyword', encodeURIComponent(mv_keyword))
                
-                let filter = encodeURIComponent('SEARCH("'+keyword+'", {name})')
+                let filter = encodeURIComponent('SEARCH("'+mv_keyword+'", {name})')
                 console.log('filter', filter);
-                if (keyword != '') { 
+                if (mv_keyword != '') { 
                     // event.reply('沒有你要的資料，是不是太重口味了呢???')
                     event.reply(filter)
                     return false
@@ -239,7 +239,7 @@ bot.on('message', function(event) {
                     view: 'Grid view',
                     filterByFormula: filter
                 }).firstPage(function(err, records) {
-                    if (err || keyword == '' ) { 
+                    if (err || mv_keyword == '' ) { 
                         event.reply('沒有你要的資料，是不是太重口味了呢???')
                         return false
                     }
