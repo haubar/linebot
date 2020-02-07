@@ -230,12 +230,14 @@ bot.on('message', function(event) {
                     view: 'Grid view',
                     filterByFormula: filter
                 }).firstPage(function(err, records) {
-                    if (err || mv_keyword == '' ) { 
+                    // if (err || mv_keyword == '' ) { 
+                    if (err ) { 
+                        console.log(err)
                         event.reply('沒有你要的資料，是不是太重口味了呢???')
                         return false
                     }
                     records.forEach(function(record) {
-                        console.log('Retrieved', record.get('url'));
+                        // console.log('Retrieved', record.get('url'));
                         event.reply([record.get('url'), record.get('name')])
                     });
                 });
@@ -340,7 +342,7 @@ bot.on('message', function(event) {
                         // event.reply('....請冷靜 '+ "🖕");
                         break;
                     default:
-                        event.reply(event.message.text)
+                        // event.reply(event.message.text)
                         break;
                 }
             }
