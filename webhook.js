@@ -221,15 +221,15 @@ bot.on('message', function(event) {
                     };
                     var get_r18_image = getR18Image(dmm_options, event);
             }
-            else if (event.message.text.substr(0.3) == '18-') {
-                let keyword = event.message.text.substr(3).trim()
+            else if (event.message.text.substr(0.2) == '片片') {
+                let keyword = event.message.text.substr(2).trim()
                 
                 console.log('keyword', event.message.text)
-                console.log('keyword', keyword)
+                console.log('keyword', encodeURIComponent(keyword))
                
-                let filter = encodeURI('SEARCH("'+keyword+'", {name})')
+                let filter = encodeURIComponent('SEARCH("'+keyword+'", {name})')
                 console.log('filter', filter);
-                if (keyword) { 
+                if (keyword != '') { 
                     // event.reply('沒有你要的資料，是不是太重口味了呢???')
                     event.reply(filter)
                     return false
