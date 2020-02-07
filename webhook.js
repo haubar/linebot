@@ -224,14 +224,13 @@ bot.on('message', function(event) {
             else if (event.message.text.substr(0,2) == '片片') {
                 let mv_keyword = event.message.text.substr(2).trim()
                 let filter = encodeURIComponent('SEARCH("'+mv_keyword+'", {name})')
-                
+                console.log(filter)
                 base('eighteen').select({
                     maxRecords: 1,
                     view: 'Grid view',
                     filterByFormula: filter
                 }).firstPage(function(err, records) {
-                    // if (err || mv_keyword == '' ) { 
-                    if (err ) { 
+                    if (err || mv_keyword == '' ) { 
                         console.log(err)
                         event.reply('沒有你要的資料，是不是太重口味了呢???')
                         return false
