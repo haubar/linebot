@@ -349,7 +349,7 @@ bot.on('message', function(event) {
                         // event.reply('....請冷靜 '+ "🖕");
                         break;
                     default:
-                        // event.reply(event.message.text.substr(0,2))
+                        event.reply(event.message.text)
                         break;
                 }
             }
