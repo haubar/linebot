@@ -36,7 +36,9 @@ var Data_youtube = function (data) {
     this.video_image_url = data.snippet.thumbnails.default.url
 }
 
-
+var base = new airtable({
+    apiKey: process.env.airtableKey
+}).base('appC80QmYDOvGT5cx')
 
 
 function getImage(eat_options, event) {
@@ -221,16 +223,15 @@ bot.on('message', function(event) {
             }
             else if (event.message.text.substr(0.3) == '18#') {
                 var keyword = event.message.text.substr(3).trim()
-                if (!!keyword) { 
+                
+                // console.log('keyword', keyword);
+               
+                var filter = encodeURI('SEARCH("'+keyword+'", {name})')
+                if (keyword) { 
                     // event.reply('沒有你要的資料，是不是太重口味了呢???')
                     event.reply(filter)
                     return false
                 }
-                // console.log('keyword', keyword);
-                var base = new airtable({
-                    apiKey: process.env.airtableKey
-                }).base('appC80QmYDOvGT5cx')
-                var filter = encodeURI('SEARCH("'+keyword+'", {name})')
                 base('eighteen').select({
                     maxRecords: 1,
                     view: 'Grid view',
