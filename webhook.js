@@ -24,7 +24,7 @@ const firebase_config = {
  
 // const firedb = firebase.database();
 
-var base = new Airtable({
+var base = new airtable({
     apiKey: process.env.airtableKey
 }).base('appC80QmYDOvGT5cx');
 
