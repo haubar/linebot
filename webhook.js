@@ -233,7 +233,8 @@ bot.on('message', function(event) {
                 }).firstPage(function(err, records) {
                     if (err || keyword == '') { 
                         event.reply('沒有你要的資料，是不是太重口味了呢???')
-                        console.error(err); return; }
+                        return false 
+                    }
                     records.forEach(function(record) {
                         console.log('Retrieved', record.get('url'));
                         event.reply([record.get('url'), record.get('name')])
