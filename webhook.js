@@ -160,14 +160,13 @@ function transLang(lang_options, event) {
 function getStock(stock_options, event) {
     rp(stock_options).then(function(response) {
         let res = JSON.parse(response)
-         console.log(res.msgArray[0])
         let info = res.msgArray[0]
         let name = '名稱:'+info.nf
         let hight = '最高價:'+info.h
         let low = '最低價:'+info.l
         let now_buy = '現買價:'+ (info.b).split("_", 1)
         let now_sell = '現賣價:'+ (info.a).split("_", 1)
-        let msg = name +'\n'+ now_buy +'\n'+ now_sell +'\n'+ hight +'\n'+low
+        let msg = name +" \n"+ now_buy +" \n"+ now_sell +" \n"+ hight +" \n"+low
         return event.reply(msg)
         return event.reply([name, now_buy ,now_sell ,hight ,low ])
     }).catch(function (err) {
