@@ -158,9 +158,9 @@ function transLang(lang_options, event) {
 }
 
 function getStock(stock_options, event) {
-    console.log(stock_options)
     rp(stock_options).then(function(response) {
         let res = JSON.parse(response)
+         console.log(res.msgArray)
         let info = res.msgArray
         let hight = '最高價:'+info.h
         let low = '最低價:'+info.l
@@ -198,9 +198,9 @@ bot.on('message', function(event) {
                     var get_youtube_video = getYoutube(yt_options, event);
             }
             else if (event.message.text.substr(0,5) == 'stock') {
-                var stock_id = event.message.text.substr(5).trim()
+                let stock_id = event.message.text.substr(5).trim()
                 // firedb.ref("getmessage/").push(yt_keyword);
-       console.log(stock_id)
+   
                     var stock_options = {
                         uri: 'https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_'+stock_id+'.tw&json=1&delay=0'
                     };
