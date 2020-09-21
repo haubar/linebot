@@ -157,6 +157,19 @@ function transLang(lang_options, event) {
     })
 }
 
+function getStock(stock_options, event) {
+    rp(stock_options).then(function(response) {
+        let res = JSON.parse(response)
+        let info = res.msgArray
+        let hight = '最高價:'+info.h
+        let low = '最低價:'+info.l
+        let now_buy = '現買價:'+ (info.b).split("_", 1)
+        let now_sell = '現賣價:'+ (info.a).split("_", 1)
+        return event.reply([, , , ])
+    }).catch(function (err) {
+        return event.reply('沒有這筆代號資料喲, 咩噗QoQ')
+    })
+}
 
 bot.on('message', function(event) {
     switch (event.message.type) {
@@ -181,6 +194,16 @@ bot.on('message', function(event) {
                         json: true
                     };
                     var get_youtube_video = getYoutube(yt_options, event);
+            }
+            else if (event.message.text.substr(0,5) == 'stock') {
+                var stock_id = event.message.text.substr(5).trim()
+                // firedb.ref("getmessage/").push(yt_keyword);
+       
+                    var stock_options = {
+                        uri: 'https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_'+stock_id+'.tw&json=1&delay=0',
+                        json: true
+                    };
+                    var get_stock_info = getStock(stock_options, event);
             }
             else if (event.message.text.substr(0,2) == '天氣') {
                 let area = event.message.text.substr(2).trim()
