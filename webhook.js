@@ -200,8 +200,7 @@ bot.on('message', function(event) {
                 // firedb.ref("getmessage/").push(yt_keyword);
        
                     var stock_options = {
-                        uri: 'https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_'+stock_id+'.tw&json=1&delay=0',
-                        json: true
+                        uri: 'https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_'+stock_id+'.tw&json=1&delay=0'
                     };
                     var get_stock_info = getStock(stock_options, event);
             }
