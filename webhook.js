@@ -165,6 +165,7 @@ function getStock(stock_options, event) {
         let low = '最低價:'+info.l
         let now_buy = '現買價:'+ (info.b).split("_", 1)
         let now_sell = '現賣價:'+ (info.a).split("_", 1)
+        return event.reply(hight)
         return event.reply([now_buy ,now_sell ,hight ,low ])
     }).catch(function (err) {
         return event.reply('沒有這筆代號資料喲, 咩噗QoQ')
