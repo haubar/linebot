@@ -159,10 +159,9 @@ function transLang(lang_options, event) {
 
 function getStock(stock_options, event) {
     rp(stock_options).then(function(response) {
-         console.log(response)
         let res = JSON.parse(response)
-         console.log(res)
-        let info = res.msgArray
+         console.log(res.msgArray[0])
+        let info = res.msgArray[0]
         let hight = '最高價:'+info.h
         let low = '最低價:'+info.l
         let now_buy = '現買價:'+ (info.b).split("_", 1)
