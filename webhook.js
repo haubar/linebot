@@ -158,6 +158,7 @@ function transLang(lang_options, event) {
 }
 
 function getStock(stock_options, event) {
+    console.log(stock_options)
     rp(stock_options).then(function(response) {
         let res = JSON.parse(response)
         let info = res.msgArray
@@ -168,7 +169,7 @@ function getStock(stock_options, event) {
         return event.reply(hight)
         return event.reply([now_buy ,now_sell ,hight ,low ])
     }).catch(function (err) {
-        return event.reply('沒有這筆代號資料喲, 咩噗QoQ')
+        return event.reply('沒有這筆代號資料喲, 咩噗Q口Q')
     })
 }
 
@@ -199,7 +200,7 @@ bot.on('message', function(event) {
             else if (event.message.text.substr(0,5) == 'stock') {
                 var stock_id = event.message.text.substr(5).trim()
                 // firedb.ref("getmessage/").push(yt_keyword);
-       
+       console.log(stock_id)
                     var stock_options = {
                         uri: 'https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_'+stock_id+'.tw&json=1&delay=0'
                     };
