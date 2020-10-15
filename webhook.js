@@ -359,7 +359,7 @@ bot.on('message', function(event) {
                             });
                         break;
                     case '指令':
-                        event.reply(['#關鍵字', 'yt關鍵字', '18+番號', '中翻英中文']);
+                        event.reply(['#關鍵字', 'yt關鍵字', '18+番號', '中翻英中文', 'stock{股號}']);
                         break;
                     case '幹':
                         let emjoi = '🖕'
