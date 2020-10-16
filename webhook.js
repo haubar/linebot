@@ -59,6 +59,7 @@ function getImage(eat_options, event) {
 
 function getigImage(ig_options, event) {
     rp(ig_options).then(function(response) {
+        console.log(response)
         var ig_image = []
         var array_top_posts = response.graphql.hashtag.edge_hashtag_to_top_posts.edges
         for (let origin of array_top_posts) {
