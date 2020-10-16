@@ -182,8 +182,8 @@ bot.on('message', function(event) {
                 // firedb.ref("getmessage/").push(ig_keyword);
                 var encode_tag = encodeURIComponent(ig_keyword) 
                     var ig_options = {
-                        uri: 'https://www.instagram.com/explore/tags/'+ encode_tag +'?__a=1',
-                        //uri: 'https://www.instagram.com/graphql/query/?query_hash=472f257a40c653c64c666ce877d59d2b&variables={"tag_name":"'+ encode_tag +'","first":0}',
+                        //uri: 'https://www.instagram.com/explore/tags/'+ encode_tag +'?__a=1',
+                        uri: 'https://www.instagram.com/graphql/query/?query_hash=472f257a40c653c64c666ce877d59d2b&variables={"tag_name":"'+ encode_tag +'","first":0}',
                         json: true
                     };
                     var get_ig_image = getigImage(ig_options, event);
