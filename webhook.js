@@ -205,10 +205,16 @@ bot.on('message', function(event) {
                 let stock_id = event.message.text.substr(5).trim()
                 // firedb.ref("getmessage/").push(yt_keyword);
    
-                    var stock_options = {
+                    var stock_tse = {
                         uri: 'https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_'+stock_id+'.tw&json=1&delay=0'
                     };
-                    var get_stock_info = getStock(stock_options, event);
+                
+                    var stock_otc = {
+                        uri: 'https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=otc_'+stock_id+'.tw&json=1&delay=0'
+                    };
+                   
+                    var get_stock_info = getStock(stock_tse, event);
+                    var get_stock_info = getStock(stock_otc, event);
             }
             else if (event.message.text.substr(0,2) == '天氣') {
                 let area = event.message.text.substr(2).trim()
