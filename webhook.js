@@ -158,20 +158,47 @@ function transLang(lang_options, event) {
     })
 }
 
-function getStock(stock_options, event) {
-    rp(stock_options).then(function(response) {
+function getStock(stock_id, event) {
+    let stock_tse = {
+       uri: 'https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_'+stock_id+'.tw&json=1&delay=0'
+    }
+    let stock_otc = {
+       uri: 'https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=otc_'+stock_id+'.tw&json=1&delay=0'
+    }
+    
+    rp(stock_tse).then(function(response) {
         let res = JSON.parse(response)
         let info = res.msgArray[0]
-        let name = '名稱:'+info.nf
-        let hight = '最高價:'+info.h
-        let low = '最低價:'+info.l
-        let now_qty = '當盤成交量:'+info.tv
-        let all_qty = '累積成交量:'+info.v
-        let now_buy = '現買價:'+ (info.b).split("_", 1)
-        let now_sell = '現賣價:'+ (info.a).split("_", 1)
-        let msg = name +" \n"+ now_buy +" \n"+ now_sell +" \n"+ hight +" \n"+low
-        return event.reply(msg)
-        return event.reply([name, now_buy ,now_sell ,hight ,low ,now_qty , all_qty ])
+        if(!!info){
+            let name = '名稱:'+info.nf
+            let hight = '最高價:'+info.h
+            let low = '最低價:'+info.l
+            let now_qty = '當盤成交量:'+info.tv
+            let all_qty = '累積成交量:'+info.v
+            let now_buy = '現買價:'+ (info.b).split("_", 1)
+            let now_sell = '現賣價:'+ (info.a).split("_", 1)
+            let msg = name +" \n"+ now_buy +" \n"+ now_sell +" \n"+ hight +" \n"+low
+            //return event.reply(msg)
+            return event.reply([name, now_buy ,now_sell ,hight ,low ,now_qty , all_qty ])
+        } else {
+            rp(stock_otc).then(function(response) {
+            let res = JSON.parse(response)
+            let info = res.msgArray[0]
+            if(!!info){
+                let name = '名稱:'+info.nf
+                let hight = '最高價:'+info.h
+                let low = '最低價:'+info.l
+                let now_qty = '當盤成交量:'+info.tv
+                let all_qty = '累積成交量:'+info.v
+                let now_buy = '現買價:'+ (info.b).split("_", 1)
+                let now_sell = '現賣價:'+ (info.a).split("_", 1)
+                let msg = name +" \n"+ now_buy +" \n"+ now_sell +" \n"+ hight +" \n"+low
+                //return event.reply(msg)
+                return event.reply([name, now_buy ,now_sell ,hight ,low ,now_qty , all_qty ])
+            } else {
+                 return event.reply('沒有這筆代號資料喲, 咩噗Q口Q')
+            }
+        }
     }).catch(function (err) {
         return event.reply('沒有這筆代號資料喲, 咩噗Q口Q')
     })
@@ -201,20 +228,21 @@ bot.on('message', function(event) {
                     };
                     var get_youtube_video = getYoutube(yt_options, event);
             }
-            else if (event.message.text.substr(0,5) == 'stock') {
+            else if (event.message.text.substr(0,5) == '
+                     ') {
                 let stock_id = event.message.text.substr(5).trim()
                 // firedb.ref("getmessage/").push(yt_keyword);
    
-                    var stock_tse = {
-                        uri: 'https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_'+stock_id+'.tw&json=1&delay=0'
-                    };
+//                     var stock_tse = {
+//                         uri: 'https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_'+stock_id+'.tw&json=1&delay=0'
+//                     };
                 
-                    var stock_otc = {
-                        uri: 'https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=otc_'+stock_id+'.tw&json=1&delay=0'
-                    };
+//                     var stock_otc = {
+//                         uri: 'https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=otc_'+stock_id+'.tw&json=1&delay=0'
+//                     };
                    
-                    var get_stock_info = getStock(stock_tse, event);
-                    var get_stock_info = getStock(stock_otc, event);
+                    var get_stock_info = getStock(stock_id, event);
+                    //var get_stock_info = getStock(stock_otc, event);
             }
             else if (event.message.text.substr(0,2) == '天氣') {
                 let area = event.message.text.substr(2).trim()
