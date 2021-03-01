@@ -177,9 +177,8 @@ function getStock(stock_id, event) {
             let all_qty = '累積成交量:'+info.v
             let now_buy = '現買價:'+ (info.b).split("_", 1)
             let now_sell = '現賣價:'+ (info.a).split("_", 1)
-            let msg = name +" \n"+ now_buy +" \n"+ now_sell +" \n"+ hight +" \n"+low
+            let msg = name +" \n"+ now_buy +" \n"+ now_sell +" \n"+ hight +" \n"+low+" \n"+now_qty+" \n"+all_qty
             return event.reply(msg)
-            // return event.reply([name, now_buy ,now_sell ,hight ,low ,now_qty , all_qty ])
         }else{
             rp(stock_otc).then(function(response) {
                 let res = JSON.parse(response)
@@ -192,11 +191,11 @@ function getStock(stock_id, event) {
                     let all_qty = '累積成交量:'+info.v
                     let now_buy = '現買價:'+ (info.b).split("_", 1)
                     let now_sell = '現賣價:'+ (info.a).split("_", 1)
-                    let msg = name +" \n"+ now_buy +" \n"+ now_sell +" \n"+ hight +" \n"+low
+                    let msg = name +" \n"+ now_buy +" \n"+ now_sell +" \n"+ hight +" \n"+low+" \n"+now_qty+" \n"+all_qty
                     return event.reply(msg)
-                    // return event.reply([name, now_buy ,now_sell ,hight ,low ,now_qty , all_qty ])
+                } else {
+                    return event.reply('沒有這筆代號資料喲, 咩噗Q口Q')
                 }
-                
             }).catch(function (err) {
                 return event.reply('沒有這筆代號資料喲, 咩噗Q口Q')
             })
