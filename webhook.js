@@ -169,7 +169,7 @@ function getStock(stock_id, event) {
     rp(stock_tse).then(function(response) {
         let res = JSON.parse(response)
         let info = res.msgArray[0]
-        console.log(info)
+        console.log(!!info)
         if(!!info){
             let name = '名稱:'+info.nf
             let hight = '最高價:'+info.h
