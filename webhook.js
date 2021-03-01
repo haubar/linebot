@@ -169,6 +169,7 @@ function getStock(stock_id, event) {
     rp(stock_tse).then(function(response) {
         let res = JSON.parse(response)
         let info = res.msgArray[0]
+        console.log(info)
         if(!!info){
             let name = '名稱:'+info.nf
             let hight = '最高價:'+info.h
@@ -182,6 +183,7 @@ function getStock(stock_id, event) {
             return event.reply([name, now_buy ,now_sell ,hight ,low ,now_qty , all_qty ])
         }
     }).catch(function (err) {
+        console.log(err)
         return event.reply('非上市股, 咩噗Q口Q')
         /*
         rp(stock_otc).then(function(response) {
@@ -234,7 +236,6 @@ bot.on('message', function(event) {
             }
             else if (event.message.text.substr(0,5) == 'stock') {
                 let stock_id = event.message.text.substr(5).trim()
-                console.log(stock_id)
                 // firedb.ref("getmessage/").push(yt_keyword);
    
                     // var stock_tse = {
