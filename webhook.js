@@ -234,6 +234,7 @@ bot.on('message', function(event) {
             }
             else if (event.message.text.substr(0,5) == 'stock') {
                 let stock_id = event.message.text.substr(5).trim()
+                console.log(stock_id)
                 // firedb.ref("getmessage/").push(yt_keyword);
    
                     // var stock_tse = {
