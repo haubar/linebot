@@ -183,6 +183,7 @@ function getStock(stock_id, event) {
         }
     }).catch(function (err) {
         return event.reply('非上市股, 咩噗Q口Q')
+        /*
         rp(stock_otc).then(function(response) {
             let res = JSON.parse(response)
             let info = res.msgArray[0]
@@ -202,6 +203,7 @@ function getStock(stock_id, event) {
         }).catch(function (err) {
             return event.reply('沒有這筆代號資料喲, 咩噗Q口Q')
         })
+        */
         
     })
 }
