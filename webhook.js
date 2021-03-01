@@ -231,8 +231,7 @@ bot.on('message', function(event) {
                     };
                     var get_youtube_video = getYoutube(yt_options, event);
             }
-            else if (event.message.text.substr(0,5) == '
-                     ') {
+            else if (event.message.text.substr(0,5) == '') {
                 let stock_id = event.message.text.substr(5).trim()
                 // firedb.ref("getmessage/").push(yt_keyword);
    
