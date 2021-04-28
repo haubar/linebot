@@ -135,8 +135,6 @@ function getR18Image(dmm_options, event) {
 function getWeather(weather_options, event) {
     rp(weather_options).then(function(response) {
         let res = JSON.parse(response)
-        let w_temp = res.current.temp_c
-        let w_icon = 'https:'+res.current.condition.icon.replace(/64x64/,'128x128')
         let w_status = res.current.condition.text
 
         return event.reply({
@@ -148,6 +146,17 @@ function getWeather(weather_options, event) {
         return event.reply('歹勢啦~我沒有你輸入的地區資料')
     })
 }
+
+function getPrice(options, event) {
+    rp(options).then(function(response) {
+        let res = JSON.parse(response)
+        let lastItem = res[res.length - 1]
+        return event.reply(lastItem.close)
+    }).catch(function (err) {
+        return event.reply('歹勢啦~我沒有最新的資料Q口Q')
+    })
+}
+
 
 function transLang(lang_options, event) {
     rp(lang_options).then(function(response) {
@@ -265,6 +274,14 @@ bot.on('message', function(event) {
                         uri: 'https://translate.yandex.net/api/v1.5/tr.json/translate?key='+process.env.yandexKey+'&lang=zh-en&text='+encodeURIComponent(text)
                     };
                     var get_lang = transLang(lang_options, event);
+
+            }
+            else if (event.message.text.substr(0,2) == '黃金') {
+                let times = Date.now() - 60000
+                    var lang_options = {
+                        uri: 'https://www.wantgoo.com/global/gold/realtimeprice-pricemin1?equalandafter='+times
+                    };
+                    var get_gold = getPrice(options, event);
 
             }
             else if (event.message.text.substr(0,3) == '18+') {
