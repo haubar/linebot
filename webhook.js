@@ -150,6 +150,7 @@ function getWeather(weather_options, event) {
 function getPrice(options, event) {
     rp(options).then(function(response) {
         let res = JSON.parse(response)
+        console.log(res)
         let lastItem = res[res.length - 1]
         return event.reply(lastItem.close)
     }).catch(function (err) {
