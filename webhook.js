@@ -279,6 +279,7 @@ bot.on('message', function(event) {
             }
             else if (event.message.text.substr(0,2) == '黃金') {
                 let times = Date.now() - 60000
+console.log(times)
                     var options = {
                         uri: 'https://www.wantgoo.com/global/gold/realtimeprice-pricemin1?equalandafter='+times
                     };
