@@ -154,6 +154,7 @@ function getPrice(options, event) {
         let lastItem = res[res.length - 1]
         return event.reply(lastItem.close)
     }).catch(function (err) {
+console.log(err)
         return event.reply('歹勢啦~我沒有最新的資料Q口Q')
     })
 }
@@ -279,10 +280,10 @@ bot.on('message', function(event) {
             }
             else if (event.message.text.substr(0,2) == '黃金') {
                 let times = Date.now() - 60000
-console.log(times)
                     var options = {
                         uri: 'https://www.wantgoo.com/global/gold/realtimeprice-pricemin1?equalandafter='+times
                     };
+	console.log(options)
                     var get_gold = getPrice(options, event);
 
             }
