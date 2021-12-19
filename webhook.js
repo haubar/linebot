@@ -298,7 +298,7 @@ bot.on('message', function(event) {
             }
             else if (event.message.text.substr(0,4) == 'disc') {
                 let stock_price = event.message.text.substr(4).trim()
-                var get_disc = getDisc(stock_price);
+                var get_disc = getDisc(stock_price, event);
             }
             else if (event.message.text.substr(0,3) == '18+') {
                 let source_code = event.message.text.substr(3).trim()
