@@ -169,6 +169,13 @@ function transLang(lang_options, event) {
     })
 }
 
+// 最低手續費、交易費計算
+function getDisc(price) {
+    let disc = (Number(price)*1000*0.2697/100)
+    let msg = '最低手續費用計算:' + disc
+    return event.reply(msg)
+}
+
 function getStock(stock_id, event) {
     let stock_tse = {
        uri: 'https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_'+stock_id+'.tw&json=1&delay=0'
@@ -188,7 +195,8 @@ function getStock(stock_id, event) {
             let all_qty = '累積成交量:'+info.v
             let now_buy = '現買價:'+ (info.b).split("_", 1)
             let now_sell = '現賣價:'+ (info.a).split("_", 1)
-            let msg = name +" \n"+ now_buy +" \n"+ now_sell +" \n"+ hight +" \n"+low+" \n"+now_qty+" \n"+all_qty
+            let disc = '最低手續費用計算:'+ (Number(info.b).split("_", 1)*1000*0.2697/100)
+            let msg = name +" \n"+ now_buy +" \n"+ now_sell +" \n"+ hight +" \n"+low+" \n"+now_qty+" \n"+all_qty+" \n"+disc
             return event.reply(msg)
         }else{
             rp(stock_otc).then(function(response) {
@@ -202,7 +210,8 @@ function getStock(stock_id, event) {
                     let all_qty = '累積成交量:'+info.v
                     let now_buy = '現買價:'+ (info.b).split("_", 1)
                     let now_sell = '現賣價:'+ (info.a).split("_", 1)
-                    let msg = name +" \n"+ now_buy +" \n"+ now_sell +" \n"+ hight +" \n"+low+" \n"+now_qty+" \n"+all_qty
+                    let disc = '最低手續費用計算:'+ (Number(info.b).split("_", 1)*1000*0.2697/100)
+                    let msg = name +" \n"+ now_buy +" \n"+ now_sell +" \n"+ hight +" \n"+low+" \n"+now_qty+" \n"+all_qty+" \n"+disc
                     return event.reply(msg)
                 } else {
                     return event.reply('沒有這筆代號資料喲, 咩噗Q口Q')
@@ -286,6 +295,10 @@ bot.on('message', function(event) {
 	console.log(options)
                     var get_gold = getPrice(options, event);
 
+            }
+            else if (event.message.text.substr(0,4) == 'disc') {
+                let stock_price = event.message.text.substr(4).trim()
+                var get_disc = getDisc(stock_price);
             }
             else if (event.message.text.substr(0,3) == '18+') {
                 let source_code = event.message.text.substr(3).trim()
@@ -421,7 +434,7 @@ bot.on('message', function(event) {
                             });
                         break;
                     case '指令':
-                        event.reply(['#關鍵字', 'yt關鍵字', '18+番號', '中翻英中文', 'stock{股號}']);
+                        event.reply(['#關鍵字', 'yt關鍵字', '18+番號', '中翻英中文', 'stock{股號}', 'disc{股價}']);
                         break;
                     case '早知道':
                         event.reply('股市深淵－－－沒有早知道（ ＴДＴ）')
