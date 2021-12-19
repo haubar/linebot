@@ -171,7 +171,7 @@ function transLang(lang_options, event) {
 
 // 最低手續費、交易費計算
 function getDisc(price) {
-    let disc = (parseFloat(price)*1000*0.2697/100)
+    let disc = ((parseFloat(price))*1000*0.2697/100)
     let msg = '最低手續費用計算:' + disc
     return event.reply(msg)
 }
