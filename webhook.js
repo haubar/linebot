@@ -195,8 +195,7 @@ function getStock(stock_id, event) {
             let all_qty = '累積成交量:'+info.v
             let now_buy = '現買價:'+ (info.b).split("_", 1)
             let now_sell = '現賣價:'+ (info.a).split("_", 1)
-            // let disc = '最低手續費用計算:'+ (Number(info.b).split("_", 1)*1000*0.2697/100)
-            let disc = 000
+            let disc = '最低手續費用計算:'+ (Number(info.b).split("_", 1)*1000*0.2697/100)
             let msg = name +" \n"+ now_buy +" \n"+ now_sell +" \n"+ hight +" \n"+low+" \n"+now_qty+" \n"+all_qty+" \n"+disc
             return event.reply(msg)
         }else{
@@ -211,8 +210,7 @@ function getStock(stock_id, event) {
                     let all_qty = '累積成交量:'+info.v
                     let now_buy = '現買價:'+ (info.b).split("_", 1)
                     let now_sell = '現賣價:'+ (info.a).split("_", 1)
-                    // let disc = '最低手續費用計算:'+ (Number(info.b).split("_", 1)*1000*0.2697/100)
-                    let disc = '000'
+                    let disc = '最低手續費用計算:'+ (Number(info.b).split("_", 1)*1000*0.2697/100)
                     let msg = name +" \n"+ now_buy +" \n"+ now_sell +" \n"+ hight +" \n"+low+" \n"+now_qty+" \n"+all_qty+" \n"+disc
                     return event.reply(msg)
                 } else {
@@ -436,7 +434,7 @@ bot.on('message', function(event) {
                             });
                         break;
                     case '指令':
-                        event.reply(['#關鍵字', 'yt關鍵字', '18+番號', '中翻英中文', 'stock{股號}', 'disc{股價}']);
+                        event.reply(['#關鍵字', 'yt關鍵字', '18+番號', '中翻英中文', 'stock{股號}', 'stock{股號}']);
                         break;
                     case '早知道':
                         event.reply('股市深淵－－－沒有早知道（ ＴДＴ）')
