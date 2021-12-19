@@ -434,7 +434,7 @@ bot.on('message', function(event) {
                             });
                         break;
                     case '指令':
-                        event.reply(['#關鍵字', 'yt關鍵字', '18+番號', '中翻英中文', 'stock{股號}']);
+                        event.reply(['#關鍵字', 'yt關鍵字', '18+番號', '中翻英中文', 'disc{股價}', 'stock{股號}']);
                         break;
                     case '早知道':
                         event.reply('股市深淵－－－沒有早知道（ ＴДＴ）')
