@@ -292,14 +292,14 @@ bot.on('message', function(event) {
                     var options = {
                         uri: 'https://www.wantgoo.com/global/gold/realtimeprice-pricemin1?equalandafter='+times
                     };
-	console.log(options)
+	
                     var get_gold = getPrice(options, event);
 
             }
-            else if (event.message.text.substr(0,4) == 'disc') {
-                let stock_price = event.message.text.substr(4).trim()
-                var get_disc = getDisc(stock_price);
-            }
+            // else if (event.message.text.substr(0,4) == 'disc') {
+            //     let stock_price = event.message.text.substr(4).trim()
+            //     var get_disc = getDisc(stock_price);
+            // }
             else if (event.message.text.substr(0,3) == '18+') {
                 let source_code = event.message.text.substr(3).trim()
                 // firedb.ref("getmessage/").push(source_code);
