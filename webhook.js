@@ -171,7 +171,7 @@ function transLang(lang_options, event) {
 
 // 最低手續費、交易費計算
 function getDisc(price) {
-    let disc = (Number(price)*1000*0.2697/100)
+    let disc = (parseFloat(price)*1000*0.2697/100)
     let msg = '最低手續費用計算:' + disc
     return event.reply(msg)
 }
@@ -195,7 +195,7 @@ function getStock(stock_id, event) {
             let all_qty = '累積成交量:'+info.v
             let now_buy = '現買價:'+ (info.b).split("_", 1)
             let now_sell = '現賣價:'+ (info.a).split("_", 1)
-            let disc = '最低手續費用計算:'+ (Number(info.b).split("_", 1)*1000*0.2697/100)
+            let disc = '最低手續費用計算:'+ (parseFloat(info.b).split("_", 1)*1000*0.2697/100)
             let msg = name +" \n"+ now_buy +" \n"+ now_sell +" \n"+ hight +" \n"+low+" \n"+now_qty+" \n"+all_qty+" \n"+disc
             return event.reply(msg)
         }else{
@@ -210,7 +210,7 @@ function getStock(stock_id, event) {
                     let all_qty = '累積成交量:'+info.v
                     let now_buy = '現買價:'+ (info.b).split("_", 1)
                     let now_sell = '現賣價:'+ (info.a).split("_", 1)
-                    let disc = '最低手續費用計算:'+ (Number(info.b).split("_", 1)*1000*0.2697/100)
+                    let disc = '最低手續費用計算:'+ (parseFloat(info.b).split("_", 1)*1000*0.2697/100)
                     let msg = name +" \n"+ now_buy +" \n"+ now_sell +" \n"+ hight +" \n"+low+" \n"+now_qty+" \n"+all_qty+" \n"+disc
                     return event.reply(msg)
                 } else {
