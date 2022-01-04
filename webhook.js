@@ -187,14 +187,19 @@ function getDisc(price) {
 // 取得stock tick
 function getick(price) {
     let price = parseFloat(price)
+    console.log(price)
     let disc = getDisc(price)
+    console.log(disc)
     if(price < 1000){
         let num = Math.floor(price * 0.001)
     }else{
         let num = 5       
     }
+    console.log(num)
     let part = Math.ceil(disc/num)   
+    console.log(part)
     increase_price = price + (part*num) 
+    console.log(increase_price)
     let msg = '最少要跳'+part+'檔,' + increase_price + '賣出'
     return msg
 }
