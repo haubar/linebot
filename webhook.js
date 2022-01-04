@@ -220,7 +220,7 @@ function getStock(stock_id, event) {
             let now_sell = '現賣價:'+ (info.a).split("_", 1)
             let disc = '最低手續費用計算:'+ (parseFloat((info.b).split("_", 1))*1000*0.2697/100)
             // let tick = getick(now_buy)
-            let msg = name +" \n"+ now_buy +" \n"+ now_sell +" \n"+ hight +" \n"+low+" \n"+now_qty+" \n"+all_qty+" \n"+disc+" \n"+tick
+            let msg = name +" \n"+ now_buy +" \n"+ now_sell +" \n"+ hight +" \n"+low+" \n"+now_qty+" \n"+all_qty+" \n"+disc+" \n"
             return event.reply(msg)
         }else{
             rp(stock_otc).then(function(response) {
@@ -236,7 +236,7 @@ function getStock(stock_id, event) {
                     let now_sell = '現賣價:'+ (info.a).split("_", 1)
                     let disc = '最低手續費用計算:'+ (parseFloat((info.b).split("_", 1))*1000*0.2697/100)
                     // let tick = getick(now_buy)
-                    let msg = name +" \n"+ now_buy +" \n"+ now_sell +" \n"+ hight +" \n"+low+" \n"+now_qty+" \n"+all_qty+" \n"+disc+" \n"+tick
+                    let msg = name +" \n"+ now_buy +" \n"+ now_sell +" \n"+ hight +" \n"+low+" \n"+now_qty+" \n"+all_qty+" \n"+disc+" \n"
                     return event.reply(msg)
                 } else {
                     return event.reply('沒有這筆代號資料喲, 咩噗Q口Q')
