@@ -184,22 +184,21 @@ function getDisc(price) {
     return disc
 }
 
-// 取得stock tick
+//檔位判斷
+function getPart(price) {
+    return fee = price<10?0.01:price<50?0.05:price<100?0.1:price<500?0.5:price<1000?1:5; 
+}
+
+//取得跳的檔位
 function getick(price) {
-    let price = parseFloat(price)
-    console.log(price)
+    price = parseFloat(price)
     let disc = getDisc(price)
-    console.log(disc)
+    let num = 5 
     if(price < 1000){
-        let num = Math.floor(price * 0.001)
-    }else{
-        let num = 5       
+        num = getPart(price)
     }
-    console.log(num)
-    let part = Math.ceil(disc/num)   
-    console.log(part)
+    let part = Math.ceil(disc/(num*1000))   
     increase_price = price + (part*num) 
-    console.log(increase_price)
     let msg = '最少要跳'+part+'檔,' + increase_price + '賣出'
     return msg
 }
@@ -224,7 +223,7 @@ function getStock(stock_id, event) {
             let now_buy = '現買價:'+ (info.b).split("_", 1)
             let now_sell = '現賣價:'+ (info.a).split("_", 1)
             let disc = '最低手續費用計算:'+ (parseFloat((info.b).split("_", 1))*1000*0.2697/100)
-            // let tick = getick(now_buy)
+            let tick = getick(now_buy)
             let msg = name +" \n"+ now_buy +" \n"+ now_sell +" \n"+ hight +" \n"+low+" \n"+now_qty+" \n"+all_qty+" \n"+disc+" \n"
             return event.reply(msg)
         }else{
@@ -240,7 +239,7 @@ function getStock(stock_id, event) {
                     let now_buy = '現買價:'+ (info.b).split("_", 1)
                     let now_sell = '現賣價:'+ (info.a).split("_", 1)
                     let disc = '最低手續費用計算:'+ (parseFloat((info.b).split("_", 1))*1000*0.2697/100)
-                    // let tick = getick(now_buy)
+                    let tick = getick(now_buy)
                     let msg = name +" \n"+ now_buy +" \n"+ now_sell +" \n"+ hight +" \n"+low+" \n"+now_qty+" \n"+all_qty+" \n"+disc+" \n"
                     return event.reply(msg)
                 } else {
