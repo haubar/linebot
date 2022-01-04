@@ -194,10 +194,8 @@ function getick(price) {
     price = parseFloat(price)
     let disc = getDisc(price)
     let num = getPart(price)
-    
     let part = Math.ceil(disc/(num*1000))
     increase_price = price + (part*num)
-    return num
     let msg = '最少要跳'+part+'檔,'+increase_price+'賣出'
     return msg
 }
