@@ -193,10 +193,8 @@ function getPart(price) {
 function getick(price) {
     price = parseFloat(price)
     let disc = getDisc(price)
-    let num = 5 
-    if(price < 1000){
-        num = getPart(price)
-    }
+    let num = getPart(price)
+    
     let part = Math.ceil(disc/(num*1000))
     increase_price = price + (part*num)
     return part
