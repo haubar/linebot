@@ -197,11 +197,11 @@ function getick(price) {
     }
     console.log(num)
     let part = Math.ceil(disc/num)   
-    // console.log(part)
-    // increase_price = price + (part*num) 
-    // console.log(increase_price)
-    // let msg = '最少要跳'+part+'檔,' + increase_price + '賣出'
-    return part
+    console.log(part)
+    increase_price = price + (part*num) 
+    console.log(increase_price)
+    let msg = '最少要跳'+part+'檔,' + increase_price + '賣出'
+    return msg
 }
 
 function getStock(stock_id, event) {
@@ -224,7 +224,7 @@ function getStock(stock_id, event) {
             let now_buy = '現買價:'+ (info.b).split("_", 1)
             let now_sell = '現賣價:'+ (info.a).split("_", 1)
             let disc = '最低手續費用計算:'+ (parseFloat((info.b).split("_", 1))*1000*0.2697/100)
-            let tick = getick(now_buy)
+            // let tick = getick(now_buy)
             let msg = name +" \n"+ now_buy +" \n"+ now_sell +" \n"+ hight +" \n"+low+" \n"+now_qty+" \n"+all_qty+" \n"+disc+" \n"
             return event.reply(msg)
         }else{
@@ -240,7 +240,7 @@ function getStock(stock_id, event) {
                     let now_buy = '現買價:'+ (info.b).split("_", 1)
                     let now_sell = '現賣價:'+ (info.a).split("_", 1)
                     let disc = '最低手續費用計算:'+ (parseFloat((info.b).split("_", 1))*1000*0.2697/100)
-                    let tick = getick(now_buy)
+                    // let tick = getick(now_buy)
                     let msg = name +" \n"+ now_buy +" \n"+ now_sell +" \n"+ hight +" \n"+low+" \n"+now_qty+" \n"+all_qty+" \n"+disc+" \n"
                     return event.reply(msg)
                 } else {
