@@ -197,11 +197,11 @@ function getick(price) {
     }
     console.log(num)
     let part = Math.ceil(disc/num)   
-    console.log(part)
-    increase_price = price + (part*num) 
-    console.log(increase_price)
-    let msg = '最少要跳'+part+'檔,' + increase_price + '賣出'
-    return msg
+    // console.log(part)
+    // increase_price = price + (part*num) 
+    // console.log(increase_price)
+    // let msg = '最少要跳'+part+'檔,' + increase_price + '賣出'
+    return part
 }
 
 function getStock(stock_id, event) {
