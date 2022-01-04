@@ -197,9 +197,9 @@ function getick(price) {
     if(price < 1000){
         num = getPart(price)
     }
-    let part = Math.ceil(disc/(num*1000))   
-    increase_price = price + (part*num) 
-    let msg = '最少要跳'+""+part+""+'檔,' + ""+increase_price+"" + '賣出'
+    let part = ""+Math.ceil(disc/(num*1000))+""   
+    increase_price = "" + price + (part*num) + ""
+    let msg = '最少要跳'+part+'檔,'+increase_price+'賣出'
     return msg
 }
 
