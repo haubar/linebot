@@ -186,7 +186,7 @@ function getDisc(price) {
 
 //檔位判斷
 function getPart(price) {
-    return fee = price<10?0.01:price<50?0.05:price<100?0.1:price<500?0.5:price<1000?1:5; 
+    return fee = price<10?'0.01':price<50?'0.05':price<100?'0.1':price<500?'0.5':price<1000?1:'5'; 
 }
 
 //取得跳的檔位
@@ -195,7 +195,7 @@ function getick(price) {
     let disc = getDisc(price)
     let num = getPart(price)
     
-    let part = Math.ceil(disc/(num*1000))
+    let part = Math.ceil(disc/(parseFloat(num*1000)))
     increase_price = price + (part*num)
     return num
     let msg = '最少要跳'+part+'檔,'+increase_price+'賣出'
