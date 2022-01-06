@@ -327,6 +327,19 @@ bot.on('message', function(event) {
                 let stock_price = event.message.text.substr(4).trim()
                 var get_disc = getDiscMsg(stock_price, event);
             }
+            else if (event.message.text.substr(0,1) == '表') {
+                let msg =   "370~500→三檔"+" \n"+
+                            "370~184→兩檔"+" \n"+
+                            "184~100→一檔"+" \n"+
+                            "100~75→三檔"+" \n"+
+                            "74~50→兩檔"+" \n"+
+                            "50~38→三檔"+" \n"+
+                            "37~18→兩檔"+" \n"+
+                            "18~11→一檔"+" \n"+
+                            "10~3.7→兩檔"+" \n"+
+                            "3.6 以下→一檔";
+                event.reply(msg);
+            }
             else if (event.message.text.substr(0,3) == '18+') {
                 let source_code = event.message.text.substr(3).trim()
                 // firedb.ref("getmessage/").push(source_code);
