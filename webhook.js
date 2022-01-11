@@ -234,10 +234,11 @@ function getStock(stock_id, event) {
                     let low = '最低價:'+info.l
                     let now_qty = '當盤成交量:'+info.tv
                     let all_qty = '累積成交量:'+info.v
-                    let now_buy = '現買價:'+ (info.b).split("_", 1)
+                    let buy_num = (info.b).split("_", 1)
+                    let now_buy = '現買價:'+ buy_num
                     let now_sell = '現賣價:'+ (info.a).split("_", 1)
                     let disc = '最低手續費用計算:'+ (parseFloat((info.b).split("_", 1))*1000*0.2697/100)
-                    let tick = getick(now_buy)
+                    let tick = getick(buy_num)
                     let msg = name +" \n"+ now_buy +" \n"+ now_sell +" \n"+ hight +" \n"+low+" \n"+now_qty+" \n"+all_qty+" \n"+disc+" \n"+ tick
                     return event.reply(msg)
                 } else {
