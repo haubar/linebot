@@ -328,6 +328,13 @@ bot.on('message', function(event) {
                 let stock_price = event.message.text.substr(4).trim()
                 var get_disc = getDiscMsg(stock_price, event);
             }
+            else if (event.message.text.substr(0,1) == '沖') {
+                let msg =   "當沖三不"+" \n"+
+                            "不留目前倉超過該時段"+" \n"+
+                            "手中不大量持倉"+" \n"+
+                            "不要不作功課亂沖";
+                event.reply(msg);
+            }
             else if (event.message.text.substr(0,1) == '表') {
                 let msg =   "370~500→三檔"+" \n"+
                             "370~184→兩檔"+" \n"+
