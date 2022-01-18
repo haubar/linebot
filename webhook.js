@@ -297,6 +297,15 @@ bot.on('message', function(event) {
                     var get_stock_info = getStock(stock_id, event);
                     //var get_stock_info = getStock(stock_otc, event);
             }
+            else if (event.message.text.substr(0,2) == '凱基') {
+                let msg = 'https://fubon-ebrokerdj.fbs.com.tw/z/zg/zgb/zgb0.djhtm?a=9200&b=9268&c=B&d=1';
+                event.reply(msg);
+                    
+            }
+            else if (event.message.text.substr(0,2) == '盤後') {
+                let msg = 'https://fubon-ebrokerdj.fbs.com.tw/Z/ZG/ZGB/ZGB.djhtm';
+                event.reply(msg);
+            }
             else if (event.message.text.substr(0,2) == '天氣') {
                 let area = event.message.text.substr(2).trim()
 
