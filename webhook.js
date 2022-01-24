@@ -311,20 +311,12 @@ bot.on('message', function(event) {
                 let stock_id = event.message.text.substr(5).trim()
                 // firedb.ref("getmessage/").push(yt_keyword);
    
-                    // var stock_tse = {
-                    //     uri: 'https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_'+stock_id+'.tw&json=1&delay=0'
-                    // };
-                
-                    // var stock_otc = {
-                    //     uri: 'https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=otc_'+stock_id+'.tw&json=1&delay=0'
-                    // };
-                   
                     var get_stock_info = getStock(stock_id, event);
                     //var get_stock_info = getStock(stock_otc, event);
             }
             else if (event.message.text.substr(0,4) == '三大法人') {
                     let category = '';       
-                    var get_report_stock = getReport(category);
+                    var get_report_stock = getReport(category,event);
             }
             else if (event.message.text.substr(0,2) == '凱基') {
                 let msg = 'https://fubon-ebrokerdj.fbs.com.tw/z/zg/zgb/zgb0.djhtm?a=9200&b=9268&c=B&d=1';
