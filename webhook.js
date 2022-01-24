@@ -165,10 +165,11 @@ function getReport(category, event) {
     let stock_report = {
        uri: 'https://www.twse.com.tw/fund/T86?response=json&date='+today+'&selectType='+category+'&_=1643005796329'
     }
-    
+    onsole.log(stock_report)
     rp(stock_report).then(function(response) {
         let res = JSON.parse(response)
         let title = res.title
+        return event.reply(title)
         let info = res.data
         if(!!info){
             let returnArray = self_pluck(info)
@@ -322,7 +323,6 @@ bot.on('message', function(event) {
                     //var get_stock_info = getStock(stock_otc, event);
             }
             else if (event.message.text.substr(0,4) == '三大法人') {
-                let stock_id = event.message.text.substr(4).trim()
                     let category = '';       
                     var get_report_stock = getReport(category);
             }
