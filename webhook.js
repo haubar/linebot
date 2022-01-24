@@ -171,7 +171,6 @@ function getReport(category, event) {
         let info = res.data
         if(status == 'OK'){
             console.log(info[0])
-            return event.reply(info[0])
             let msg = self_pluck(info)
             return event.reply(msg)
         }
@@ -182,7 +181,9 @@ function getReport(category, event) {
 
 // 抓取回傳的指定資料
 function self_pluck(array) {
-    return array.map(o => o[0]+''+o[1]+'='+o[18]);
+    let msgg = array.map(o => o[0]+''+o[1]+'='+o[18]);
+    console.log(msgg)
+    return 1
 }
 
 function transLang(lang_options, event) {
