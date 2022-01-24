@@ -154,7 +154,6 @@ function getPrice(options, event) {
         let lastItem = res[res.length - 1]
         return event.reply(lastItem.close)
     }).catch(function (err) {
-console.log(err)
         return event.reply('歹勢啦~我沒有最新的資料Q口Q')
     })
 }
@@ -164,7 +163,7 @@ function getReport(category, event) {
     let stock_report = {
        uri: 'https://www.twse.com.tw/fund/T86?response=json&date='+today+'&selectType='+category+'&_=1643005796329'
     }
-    onsole.log(stock_report)
+    console.log(stock_report)
     rp(stock_report).then(function(response) {
         let res = JSON.parse(response)
         let title = res.title
