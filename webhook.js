@@ -166,10 +166,10 @@ function getReport(category, event) {
     }
     rp(stock_report).then(function(response) {
         let res = JSON.parse(response)
+        let status = res.stat
         let title = res.title
-        return event.reply(res.stat)
         let info = res.data
-        if(!!info){
+        if(status == 'OK'){
             let returnArray = self_pluck(info)
             let msg = returnArray
             return event.reply(msg)
