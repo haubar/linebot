@@ -170,9 +170,9 @@ function getReport(category, event) {
         let title = res.title
         let info = res.data
         if(status == 'OK'){
+            console.log(info[0])
             return event.reply(info[0])
-            let returnArray = self_pluck(info)
-            let msg = returnArray
+            let msg = self_pluck(info)
             return event.reply(msg)
         }
     }).catch(function (err) {
