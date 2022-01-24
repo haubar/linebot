@@ -161,8 +161,7 @@ function getPrice(options, event) {
 function getReport(category, event) {
     let today = new Date().toISOString().replace('-', '').split('T')[0].replace('-', '');
     let stock_report = {
-    //    uri: 'https://www.twse.com.tw/fund/T86?response=json&date='+today+'&selectType='+category+'&_=1643005796329'
-        uri: 'https://www.twse.com.tw/fund/T86?response=json&date=20220121&selectType='+category+'&_=1643005796329'
+       uri: 'https://www.twse.com.tw/fund/T86?response=json&date='+today+'&selectType='+category+'&_=1643005796329'
     }
     rp(stock_report).then(function(response) {
         let res = JSON.parse(response)
