@@ -159,7 +159,31 @@ console.log(err)
     })
 }
 
+function getReport(category, event) {
+    let dt = new Date();
+    let today = dt.toLocaleDateString('en-GB').split('/').reverse().join(''); 
+    let stock_report = {
+       uri: 'https://www.twse.com.tw/fund/T86?response=json&date='+today+'&selectType='+category+'&_=1643005796329'
+    }
+    
+    rp(stock_report).then(function(response) {
+        let res = JSON.parse(response)
+        let title = res.title
+        let info = res.data
+        if(!!info){
+            let returnArray = self_pluck(info)
+            let msg = returnArray
+            return event.reply(msg)
+        }
+    }).catch(function (err) {
+        return event.reply('歹勢啦~我不曉得你哩工啥米Q口Q')
+    })
+}
 
+// 抓取回傳的指定資料
+function self_pluck(array) {
+    return array.map(o => o[0]+''+o[1]+'='+o[18]);
+}
 
 function transLang(lang_options, event) {
     rp(lang_options).then(function(response) {
@@ -296,6 +320,11 @@ bot.on('message', function(event) {
                    
                     var get_stock_info = getStock(stock_id, event);
                     //var get_stock_info = getStock(stock_otc, event);
+            }
+            else if (event.message.text.substr(0,4) == '三大法人') {
+                let stock_id = event.message.text.substr(4).trim()
+                    let category = '';       
+                    var get_report_stock = getReport(category);
             }
             else if (event.message.text.substr(0,2) == '凱基') {
                 let msg = 'https://fubon-ebrokerdj.fbs.com.tw/z/zg/zgb/zgb0.djhtm?a=9200&b=9268&c=B&d=1';
