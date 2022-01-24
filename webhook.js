@@ -161,7 +161,7 @@ function getPrice(options, event) {
 function getReport(category, event) {
     let today = new Date().toISOString().replace('-', '').split('T')[0].replace('-', '');
     let stock_report = {
-       uri: 'https://www.twse.com.tw/fund/T86?response=json&date='+today+'&selectType='+category+'&_=1643005796329'
+       uri: 'https://www.twse.com.tw/fund/T86?response=json&date='+today+'&selectType='+category+'&_=1643005796331'
     }
     rp(stock_report).then(function(response) {
         let res = JSON.parse(response)
@@ -314,7 +314,7 @@ bot.on('message', function(event) {
                     //var get_stock_info = getStock(stock_otc, event);
             }
             else if (event.message.text.substr(0,4) == '三大法人') {
-                    let category = '';       
+                    let category = 'ALL';       
                     var get_report_stock = getReport(category,event);
             }
             else if (event.message.text.substr(0,2) == '凱基') {
