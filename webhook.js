@@ -172,6 +172,8 @@ function getReport(category, event) {
         if(status == 'OK'){
             let msg = self_pluck(info)
             return event.reply(msg)
+        }else{
+            return event.reply(status)
         }
     }).catch(function (err) {
         return event.reply('歹勢啦~我不曉得你哩工啥米Q口Q')
@@ -180,9 +182,8 @@ function getReport(category, event) {
 
 // 抓取回傳的指定資料
 function self_pluck(array) {
-    let msgg = array.map(o => o[0]+''+o[1].trim()+'='+o[18]);
-    console.log(msgg)
-    return msgg
+    let pluck_msg = array.map(o => o[0]+''+o[1].trim()+' : '+o[18]);
+    return pluck_msg.join(" \n")
 }
 
 function transLang(lang_options, event) {
