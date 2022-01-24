@@ -164,11 +164,10 @@ function getReport(category, event) {
     let stock_report = {
        uri: url
     }
-    return event.reply(url)
     rp(stock_report).then(function(response) {
         let res = JSON.parse(response)
         let title = res.title
-        return event.reply(title)
+        return event.reply(res.stat)
         let info = res.data
         if(!!info){
             let returnArray = self_pluck(info)
