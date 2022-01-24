@@ -161,12 +161,9 @@ console.log(err)
 
 function getReport(category, event) {
     let today = new Date().toISOString().replace('-', '').split('T')[0].replace('-', '');
-
-    return event.reply(today)
     let stock_report = {
        uri: 'https://www.twse.com.tw/fund/T86?response=json&date='+today+'&selectType='+category+'&_=1643005796329'
     }
-    return event.reply(stock_report)
     onsole.log(stock_report)
     rp(stock_report).then(function(response) {
         let res = JSON.parse(response)
