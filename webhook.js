@@ -163,6 +163,7 @@ function getReport(category, event) {
     let stock_report = {
        uri: 'https://www.twse.com.tw/fund/T86?response=json&date='+today+'&selectType='+category+'&_=1643005796329'
     }
+    return event.reply(stock_report)
     rp(stock_report).then(function(response) {
         let res = JSON.parse(response)
         let title = res.title
