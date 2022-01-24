@@ -181,7 +181,7 @@ function getReport(category, event) {
 
 // 抓取回傳的指定資料
 function self_pluck(array) {
-    let pluck_msg = array.map(o => o[0]+''+o[1].trim()+' : '+o[18]);
+    let pluck_msg = array.map(o => o[0]+''+o[1].trim()+' : '+o[18]).slice(0, 12);
     return pluck_msg.join(" \n")
 }
 
