@@ -288,10 +288,10 @@ bot.on('message', function(event) {
             if (event.message.text.substr(0,1) == '#') {
                 let ig_keyword = event.message.text.substr(1).trim()
                 // firedb.ref("getmessage/").push(ig_keyword);
-                var encode_tag = encodeURIComponent(ig_keyword) 
+                var encode_tag = encodeURIComponent(ig_keyword)
                     var ig_options = {
-                        //uri: 'https://www.instagram.com/explore/tags/'+ encode_tag +'?__a=1',
-                        uri: 'https://www.instagram.com/graphql/query/?query_hash=298b92c8d7cad703f7565aa892ede943&variables={"tag_name":"'+ encode_tag +'","first":0}',
+                        uri: 'https://www.instagram.com/explore/tags/'+ encode_tag +'?__a=1&__d=dis',
+                        // uri: 'https://www.instagram.com/graphql/query/?query_hash=298b92c8d7cad703f7565aa892ede943&variables={"tag_name":"'+ encode_tag +'","first":0}',
                         json: true
                     };
                     var get_ig_image = getigImage(ig_options, event);
