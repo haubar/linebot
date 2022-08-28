@@ -59,7 +59,7 @@ async function findstock(stock) {
         //     })
         // })
         .eachPage((records) => {
-            recordsArray = [...recordsArray, ...records];
+            recordsArray = records;
         })
         console.info("ary", recordsArray)
     } else {
