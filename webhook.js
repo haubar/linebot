@@ -307,7 +307,7 @@ bot.on('message', function(event) {
                     var get_youtube_video = getYoutube(yt_options, event);
             }
             else if (event.message.text.substr(0,5) == 'stock') {
-                let stock_id = event.message.text.substr(5).trim()
+                var stock_id = event.message.text.substr(5).trim()
                 //判斷中文
                 let reg = /^[\u4E00-\u9FA5]+$/
                 if (reg.test(stock_id)) {
