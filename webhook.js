@@ -308,10 +308,31 @@ bot.on('message', function(event) {
             }
             else if (event.message.text.substr(0,5) == 'stock') {
                 let stock_id = event.message.text.substr(5).trim()
+                //判斷中文
+                let reg = /^[\u4E00-\u9FA5]+$/
+                if (reg.test(stock_id)) {
+                    var base = new airtable({
+                        apiKey: process.env.airtableKey
+                    }).base('appC80QmYDOvGT5cx');
+                    var filter = 'FIND("' +stock_id+ '", {name}) > 0'
+                    base('stock_list').select({
+                        maxRecords: 1,
+                        view: 'Grid view',
+                        filterByFormula: filter
+                    }).firstPage(function(err, records) {
+                        if (err || stock_id == '') { 
+                            event.reply('沒有你要的股票名稱資料...')
+                        }
+                        records.forEach(function(record) {
+                            stock_id = record.get('no')
+                            // event.reply([record.get('no'), record.get('name')])
+                        });
+                    });
+                } 
                 // firedb.ref("getmessage/").push(yt_keyword);
-   
-                    var get_stock_info = getStock(stock_id, event);
-                    //var get_stock_info = getStock(stock_otc, event);
+           
+                var get_stock_info = getStock(stock_id, event);
+                    
             }
             else if (event.message.text.substr(0,4) == '三大法人') {
                     let category = 'ALL';       
