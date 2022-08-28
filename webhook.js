@@ -50,8 +50,8 @@ async function findstock(stock) {
             maxRecords: 1,
             view: 'Grid view',
             filterByFormula: filter
-        }).firstPage(function(err, records) {
-            records.forEach(function(record) {
+        }).firstPage(async function(err, records) {
+            await records.forEach(function(record) {
                 stock_id = record.get('no')
                 console.info("id", stock_id)
             })
