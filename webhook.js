@@ -311,9 +311,10 @@ bot.on('message', function(event) {
                 //判斷中文
                 let reg = /^[\u4E00-\u9FA5]+$/
                 if (reg.test(stock_id)) {
+                    console.log("中文")
                     var base = new airtable({
                         apiKey: process.env.airtableKey
-                    }).base('appC80QmYDOvGT5cx');
+                    }).base('app2oVW62FODpXmq0');
                     var filter = 'FIND("' +stock_id+ '", {name}) > 0'
                     base('stock_list').select({
                         maxRecords: 1,
@@ -331,7 +332,7 @@ bot.on('message', function(event) {
                     });
                 } 
                 // firedb.ref("getmessage/").push(yt_keyword);
-           
+                console.log(stock_id)
                 var get_stock_info = getStock(stock_id, event);
                     
             }
