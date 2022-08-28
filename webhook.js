@@ -324,11 +324,12 @@ bot.on('message', function(event) {
                         if (err || stock_id == '') { 
                             event.reply('沒有你要的股票名稱資料...')
                         }
-                        records.forEach(function(record) {
-                            stock_id = record.get('no')
-                            event.reply(record.get('no'))
-                            // event.reply([record.get('no'), record.get('name')])
-                        });
+                        console.log(records)
+                        // records.forEach(function(record) {
+                        //     stock_id = record.get('no')
+                        //     event.reply(record.get('no'))
+                        //     // event.reply([record.get('no'), record.get('name')])
+                        // });
                     });
                 } 
                 // firedb.ref("getmessage/").push(yt_keyword);
