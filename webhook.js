@@ -324,8 +324,9 @@ bot.on('message', function(event) {
                             event.reply('沒有你要的股票名稱資料...')
                         }
                         records.forEach(function(record) {
-                            stock_id = record.get('no')
-                            var get_stock_info = getStock(stock_id, event);
+                            console.log(record.get('no'))
+                            return stock_id = record.get('no')
+                            // var get_stock_info = getStock(stock_id, event);
                         //     event.reply(record.get('no'))
                         //     // event.reply([record.get('no'), record.get('name')])
                         });
