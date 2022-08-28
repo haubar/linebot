@@ -46,7 +46,7 @@ async function checkstock(stock) {
     let reg = /^[\u4E00-\u9FA5]+$/
     if (reg.test(stock)) {
         var filter = 'FIND("' +stock+ '", {name}) > 0'
-        await base('stock_list').select({
+        return await base('stock_list').select({
             maxRecords: 1,
             view: 'Grid view',
             filterByFormula: filter
@@ -55,7 +55,7 @@ async function checkstock(stock) {
                 event.reply('沒有你要的股票名稱資料...')
             }
             records.forEach(function(record) {
-                console.log(record.get('no'))
+                
                 return stock_id = record.get('no')
             });
         });
