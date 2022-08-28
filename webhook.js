@@ -42,26 +42,27 @@ var base = new airtable({
 
 async function findstock(stock) {
     let stock_id = stock
-    let recordsArray = []
     //判斷中文
     let reg = /^[\u4E00-\u9FA5]+$/
     if (reg.test(stock)) {
         var filter = 'FIND("' +stock+ '", {name}) > 0'
-        await base('stock_list').select({
+        const record = await base('stock_list').select({
             maxRecords: 1,
             view: 'Grid view',
             filterByFormula: filter
-        })
+        }).all()
+        console.info("record",records[0].get('no'))
+        return records[0].get('no')
         // .firstPage(function(err, records) {
         //     records.forEach(function(record) {
         //         stock_id = record.get('no')
         //         console.info("id", stock_id)
         //     })
         // })
-        .eachPage((records) => {
-            recordsArray = records;
-        })
-        console.info("ary", recordsArray)
+        // const records = await table.select({
+        //     filterByFormula: `{url} = "${url}"`
+        //   }).all()
+        // return records[0].get(‘json’)
     } else {
         console.info("stock",stock)
         return stock
