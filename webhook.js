@@ -315,7 +315,7 @@ bot.on('message', function(event) {
                         apiKey: process.env.airtableKey
                     }).base('app2oVW62FODpXmq0');
                     var filter = 'FIND("' +stock_id+ '", {name}) > 0'
-                    base('stock_list').select({
+                    await base('stock_list').select({
                         maxRecords: 1,
                         view: 'Grid view',
                         filterByFormula: filter
