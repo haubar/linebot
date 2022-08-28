@@ -51,8 +51,8 @@ async function checkstock(stock) {
             maxRecords: 1,
             view: 'Grid view',
             filterByFormula: filter
-        }).firstPage(function(err, records) {
-            records.forEach(function(record) {
+        }).firstPage(async function(err, records) {
+            await records.forEach(function(record) {
                 stock_id = record.get('no')
                 console.log(stock_id)
             })
@@ -297,12 +297,7 @@ async function getStock(stock, event) {
             })
         }
     }).catch(function (err) {
-        return event.reply('沒有這筆代號資料喲, 咩噗Q口Q')
-        
-        /*
-        
-        */
-        
+        return event.reply('沒有這筆代號資料喲, 咩噗Q口Q')        
     })
 }
 
