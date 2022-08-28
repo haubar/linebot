@@ -54,6 +54,7 @@ async function checkstock(stock) {
         }).firstPage(function(err, records) {
             records.forEach(function(record) {
                 stock_id = record.get('no')
+                console.log(stock_id)
             })
         })
     }
@@ -328,7 +329,7 @@ bot.on('message', function(event) {
             }
             else if (event.message.text.substr(0,5) == 'stock') {
                 let stock_id = event.message.text.substr(5).trim()
-                stock_id = checkstock(stock_id).then((res)=>console.log("DONE: ", res))
+                stock_id = checkstock(stock_id)
                 // firedb.ref("getmessage/").push(yt_keyword);
                 console.log(stock_id)
                 var get_stock_info = getStock(stock_id, event);
