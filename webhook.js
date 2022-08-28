@@ -51,22 +51,9 @@ async function findstock(stock) {
             view: 'Grid view',
             filterByFormula: filter
         }).all()
-        console.info("record",records[0].get('no'))
-        return records[0].get('no')
-        // .firstPage(function(err, records) {
-        //     records.forEach(function(record) {
-        //         stock_id = record.get('no')
-        //         console.info("id", stock_id)
-        //     })
-        // })
-        // const records = await table.select({
-        //     filterByFormula: `{url} = "${url}"`
-        //   }).all()
-        // return records[0].get(‘json’)
-    } else {
-        console.info("stock",stock)
-        return stock
+        stock_id = records[0].get('no')
     }
+    return (!!stock_id) ? stock_id : stock;
     
     
 }
