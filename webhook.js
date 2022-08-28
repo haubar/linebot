@@ -56,7 +56,9 @@ async function checkstock(stock) {
                 stock_id = record.get('no')
             })
         })
-    } 
+    }
+    console.log(stock_id)
+    return stock_id 
 }
 
 function getImage(eat_options, event) {
