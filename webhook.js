@@ -38,8 +38,29 @@ var Data_youtube = function (data) {
 
 var base = new airtable({
     apiKey: process.env.airtableKey
-}).base('appC80QmYDOvGT5cx')
+}).base('app2oVW62FODpXmq0');
 
+
+async function checkstock(stock) {
+    //判斷中文
+    let reg = /^[\u4E00-\u9FA5]+$/
+    if (reg.test(stock)) {
+        var filter = 'FIND("' +stock+ '", {name}) > 0'
+        await base('stock_list').select({
+            maxRecords: 1,
+            view: 'Grid view',
+            filterByFormula: filter
+        }).firstPage(function(err, records) {
+            if (err || stock == '') { 
+                event.reply('沒有你要的股票名稱資料...')
+            }
+            records.forEach(function(record) {
+                console.log(record.get('no'))
+                return stock_id = record.get('no')
+            });
+        });
+    } 
+}
 
 function getImage(eat_options, event) {
     rp(eat_options).then(function(response) {
@@ -308,30 +329,7 @@ bot.on('message', function(event) {
             }
             else if (event.message.text.substr(0,5) == 'stock') {
                 let stock_id = event.message.text.substr(5).trim()
-                //判斷中文
-                let reg = /^[\u4E00-\u9FA5]+$/
-                if (reg.test(stock_id)) {
-                    var base = new airtable({
-                        apiKey: process.env.airtableKey
-                    }).base('app2oVW62FODpXmq0');
-                    var filter = 'FIND("' +stock_id+ '", {name}) > 0'
-                    await base('stock_list').select({
-                        maxRecords: 1,
-                        view: 'Grid view',
-                        filterByFormula: filter
-                    }).firstPage(function(err, records) {
-                        if (err || stock_id == '') { 
-                            event.reply('沒有你要的股票名稱資料...')
-                        }
-                        records.forEach(function(record) {
-                            console.log(record.get('no'))
-                            return stock_id = record.get('no')
-                            // var get_stock_info = getStock(stock_id, event);
-                        //     event.reply(record.get('no'))
-                        //     // event.reply([record.get('no'), record.get('name')])
-                        });
-                    });
-                } 
+                stock_id = checkstock(stock_id)
                 // firedb.ref("getmessage/").push(yt_keyword);
                 console.log(stock_id)
                 var get_stock_info = getStock(stock_id, event);
