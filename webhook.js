@@ -52,12 +52,16 @@ async function findstock(stock) {
             filterByFormula: filter
         }).firstPage(function(err, records) {
             records.forEach(function(record) {
-               return stock_id = record.get('no')
+                stock_id = record.get('no')
+                console.info("id", stock_id)
             })
         })
+    } else {
+        console.info("stock",stock)
+        return stock
     }
-    // console.log(stock_id)
-    // return stock_id
+    
+    
 }
 
 function getImage(eat_options, event) {
