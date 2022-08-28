@@ -52,7 +52,7 @@ async function checkstock(stock) {
             view: 'Grid view',
             filterByFormula: filter
         }).firstPage(async function(err, records) {
-            await records.forEach(function(record) {
+            await records.forEach(async function(record) {
                 stock_id = record.get('no')
                 console.log(stock_id)
             })
