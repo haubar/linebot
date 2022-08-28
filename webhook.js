@@ -325,6 +325,7 @@ bot.on('message', function(event) {
                         }
                         records.forEach(function(record) {
                             stock_id = record.get('no')
+                            event.reply(record.get('no'))
                             // event.reply([record.get('no'), record.get('name')])
                         });
                     });
