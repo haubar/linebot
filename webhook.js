@@ -51,6 +51,7 @@ async function findstock(stock) {
             view: 'Grid view',
             filterByFormula: filter
         }).all()
+        console.info('record', records[0].get('no'))
         stock_id = records[0].get('no')
     }
     return (!!stock_id) ? stock_id : stock;
