@@ -42,6 +42,7 @@ var base = new airtable({
 
 
 async function checkstock(stock) {
+    let stock_id = ''
     //判斷中文
     let reg = /^[\u4E00-\u9FA5]+$/
     if (reg.test(stock)) {
@@ -51,14 +52,10 @@ async function checkstock(stock) {
             view: 'Grid view',
             filterByFormula: filter
         }).firstPage(function(err, records) {
-            if (err || stock == '') { 
-                event.reply('沒有你要的股票名稱資料...')
-            }
             records.forEach(function(record) {
-                
-                return stock_id = record.get('no')
-            });
-        });
+                stock_id = record.get('no')
+            })
+        })
     } 
 }
 
