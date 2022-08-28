@@ -325,7 +325,7 @@ bot.on('message', function(event) {
                         }
                         console.log(records)
                         records.forEach(function(record) {
-                            console.log(record)
+                            console.log(record.get('no'))
                         //     stock_id = record.get('no')
                         //     event.reply(record.get('no'))
                         //     // event.reply([record.get('no'), record.get('name')])
