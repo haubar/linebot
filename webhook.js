@@ -52,7 +52,9 @@ async function findstock(stock) {
             filterByFormula: filter
         }).all()
         console.info('record', records)
-        stock_id = records[0].get('no')
+        if(records.length>0){
+            stock_id = records[0].get('no')
+        }
     }
     return (!!stock_id) ? stock_id : stock;
     
