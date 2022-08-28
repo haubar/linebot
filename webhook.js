@@ -247,8 +247,8 @@ function getick(price) {
     return msg
 }
 
-async function getStock(stock_id, event) {
-    let stock_id = checkstock(stock_id)
+async function getStock(stock, event) {
+    let stock_id = checkstock(stock)
     let stock_tse = {
        uri: 'https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_'+stock_id+'.tw&json=1&delay=0'
     }
