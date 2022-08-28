@@ -42,6 +42,7 @@ var base = new airtable({
 
 async function findstock(stock) {
     let stock_id = ''
+    //判斷中文
     let reg = /^[\u4E00-\u9FA5]+$/
     if (reg.test(stock)) {
         var filter = 'FIND("' +stock+ '", {name}) > 0'
@@ -52,20 +53,18 @@ async function findstock(stock) {
         }).firstPage(function(err, records) {
             records.forEach(function(record) {
                 stock_id = record.get('no')
-                console.log(stock_id)
             })
         })
     }
+    console.log(stock_id)
     return stock_id
 }
 
 async function checkstock(stock) {
     
-    //判斷中文
+   
     let stock_id = await findstock(stock)
-    console.info('stock id',stock_id)
     stock_id = (!!stock_id) ? stock_id : stock;
-    console.info('last stock id',stock_id)
     return stock_id 
 }
 
@@ -254,6 +253,7 @@ function getick(price) {
 
 async function getStock(stock, event) {
     let stock_id = await checkstock(stock)
+    console.info("get stock", stock_id)
     let stock_tse = {
        uri: 'https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_'+stock_id+'.tw&json=1&delay=0'
     }
