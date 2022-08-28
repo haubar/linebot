@@ -311,7 +311,6 @@ bot.on('message', function(event) {
                 //判斷中文
                 let reg = /^[\u4E00-\u9FA5]+$/
                 if (reg.test(stock_id)) {
-                    console.log("中文")
                     var base = new airtable({
                         apiKey: process.env.airtableKey
                     }).base('app2oVW62FODpXmq0');
@@ -325,11 +324,12 @@ bot.on('message', function(event) {
                             event.reply('沒有你要的股票名稱資料...')
                         }
                         console.log(records)
-                        // records.forEach(function(record) {
+                        records.forEach(function(record) {
+                            console.log(record)
                         //     stock_id = record.get('no')
                         //     event.reply(record.get('no'))
                         //     // event.reply([record.get('no'), record.get('name')])
-                        // });
+                        });
                     });
                 } 
                 // firedb.ref("getmessage/").push(yt_keyword);
