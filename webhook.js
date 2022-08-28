@@ -47,7 +47,7 @@ async function checkstock(stock) {
     let reg = /^[\u4E00-\u9FA5]+$/
     if (reg.test(stock)) {
         var filter = 'FIND("' +stock+ '", {name}) > 0'
-        return await base('stock_list').select({
+        await base('stock_list').select({
             maxRecords: 1,
             view: 'Grid view',
             filterByFormula: filter
