@@ -59,6 +59,8 @@ async function checkstock(stock) {
         })
     }
     console.info('stock id',stock_id)
+    stock_id = (!!stock_id) ? stock_id : stock;
+    console.info('last stock id',stock_id)
     return stock_id 
 }
 
@@ -245,7 +247,8 @@ function getick(price) {
     return msg
 }
 
-function getStock(stock_id, event) {
+async function getStock(stock_id, event) {
+    let stock_id = checkstock(stock_id)
     let stock_tse = {
        uri: 'https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_'+stock_id+'.tw&json=1&delay=0'
     }
@@ -329,9 +332,7 @@ bot.on('message', function(event) {
             }
             else if (event.message.text.substr(0,5) == 'stock') {
                 let stock_id = event.message.text.substr(5).trim()
-                stock_id = await checkstock(stock_id)
                 // firedb.ref("getmessage/").push(yt_keyword);
-                console.info('return stock',stock_id)
                 var get_stock_info = getStock(stock_id, event);
                     
             }
