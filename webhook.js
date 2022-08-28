@@ -40,24 +40,29 @@ var base = new airtable({
     apiKey: process.env.airtableKey
 }).base('app2oVW62FODpXmq0');
 
-
-async function checkstock(stock) {
+async function findstock(stock) {
     let stock_id = ''
-    //判斷中文
     let reg = /^[\u4E00-\u9FA5]+$/
     if (reg.test(stock)) {
         var filter = 'FIND("' +stock+ '", {name}) > 0'
-     stock_id = await base('stock_list').select({
+        await base('stock_list').select({
             maxRecords: 1,
             view: 'Grid view',
             filterByFormula: filter
         }).firstPage(async function(err, records) {
             await records.forEach(async function(record) {
-               return stock_id = record.get('no')
+                stock_id = record.get('no')
                 console.log(stock_id)
             })
         })
     }
+    return stock_id
+}
+
+async function checkstock(stock) {
+    
+    //判斷中文
+    let stock_id = await findstock(stock)
     console.info('stock id',stock_id)
     stock_id = (!!stock_id) ? stock_id : stock;
     console.info('last stock id',stock_id)
