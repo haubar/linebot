@@ -51,7 +51,6 @@ async function findstock(stock) {
             view: 'Grid view',
             filterByFormula: filter
         }).all()
-        console.info('record', records)
         if(records.length>0){
             stock_id = records[0].get('no')
         }
@@ -246,7 +245,6 @@ function getick(price) {
 
 async function getStock(stock, event) {
     let stock_id = await findstock(stock)
-    console.info("get stock", stock_id)
     let stock_tse = {
        uri: 'https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_'+stock_id+'.tw&json=1&delay=0'
     }
