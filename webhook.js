@@ -45,7 +45,7 @@ async function findstock(stock) {
     //判斷中文
     let reg = /^[\u4E00-\u9FA5]+$/
     if (reg.test(stock)) {
-        var filter = 'FIND("' +stock+ '", {name}) > 0'
+        var filter = 'FIND("' +stock+ '", {name}) == 0'
         const records = await base('stock_list').select({
             maxRecords: 1,
             view: 'Grid view',
