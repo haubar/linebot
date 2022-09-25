@@ -273,17 +273,21 @@ async function getStock(stock, event) {
                 let res = JSON.parse(response)
                 let info = res.msgArray[0]
                 if(!!info){
-                    let name = '名稱:'+info.nf
+                    let name = info.c+info.n
+                    let fullname = info.c+'名稱:'+info.nf
                     let hight = '最高價:'+info.h
-                    let low = '最低價:'+info.l
+                    let lock = '漲停價:'+info.u
+                    let hight = '最高價:'+info.l
+                    let down = '跌停價:'+info.w
                     let now_qty = '當盤成交量:'+info.tv
                     let all_qty = '累積成交量:'+info.v
                     let buy_num = (info.b).split("_", 1)
+                    let yd = '昨收價:'+info.y
                     let now_buy = '現買價:'+ buy_num
                     let now_sell = '現賣價:'+ (info.a).split("_", 1)
                     let disc = '最低手續費用計算:'+ (parseFloat((info.b).split("_", 1))*1000*0.2697/100)
                     let tick = getick(buy_num)
-                    let msg = name +" \n"+ now_buy +" \n"+ now_sell +" \n"+ hight +" \n"+low+" \n"+now_qty+" \n"+all_qty+" \n"+disc+" \n"+ tick
+                    let msg = name +" \n"+fullname +" \n"+ now_buy +" \n"+ now_sell +" \n"+ hight +" \n"+ lock +" \n"+low+" \n"+ down +" \n"+now_qty+" \n"+all_qty+" \n"+disc+" \n"+ tick
                     return event.reply(msg)
                 } else {
                     return event.reply('沒有這筆代號資料喲, 咩噗Q口Q')
