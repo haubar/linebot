@@ -324,7 +324,7 @@ bot.on('message', function(event) {
             }
 	    if (event.message.text.substr(0,1) == '!') {
 		let ig_keyword = event.message.text.substr(1).trim()
-		let access_token = "EAAE2Ui4HmzEBACDiKdAQdHeneoXOvoIMBIklhsiOiymfCrLbZBtZBYJwP5LEsAVosvm9ivT8IrI6jdxEZBUxfwYDBFod5Vw2tGLeUpYPEK5gSc4G4ZAk3gEIo0rrdT0p3eD1KsUbnof7saYm4qpKitt6HeUiR4Hyd9SZA8dKq1MoZBgWLbZCad1TKrZAVpH5yrfC32admcjHUAZDZD",
+		let access_token = "EAAE2Ui4HmzEBACDiKdAQdHeneoXOvoIMBIklhsiOiymfCrLbZBtZBYJwP5LEsAVosvm9ivT8IrI6jdxEZBUxfwYDBFod5Vw2tGLeUpYPEK5gSc4G4ZAk3gEIo0rrdT0p3eD1KsUbnof7saYm4qpKitt6HeUiR4Hyd9SZA8dKq1MoZBgWLbZCad1TKrZAVpH5yrfC32admcjHUAZDZD"
                 var encode_tag = encodeURIComponent(ig_keyword)
 		//https://graph.facebook.com/{ig-hashtag-id}?fields={fields}&access_token={access-token}
 		var testig_options = {
