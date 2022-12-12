@@ -327,8 +327,10 @@ bot.on('message', function(event) {
 		let access_token = "EAAE2Ui4HmzEBACDiKdAQdHeneoXOvoIMBIklhsiOiymfCrLbZBtZBYJwP5LEsAVosvm9ivT8IrI6jdxEZBUxfwYDBFod5Vw2tGLeUpYPEK5gSc4G4ZAk3gEIo0rrdT0p3eD1KsUbnof7saYm4qpKitt6HeUiR4Hyd9SZA8dKq1MoZBgWLbZCad1TKrZAVpH5yrfC32admcjHUAZDZD"
                 var encode_tag = encodeURIComponent(ig_keyword)
 		//https://graph.facebook.com/{ig-hashtag-id}?fields={fields}&access_token={access-token}
+		let path = 'https://graph.facebook.com/'+encode_tag+'?'+'access_token='+access_token
+		console.log(path)
 		var testig_options = {
-			uri: 'https://graph.facebook.com/'+encode_tag+'?'+'access_token='+access_token
+			uri: path
 		}
 		var get_ig_image = getigImage(testig_options, event)
 	    }
