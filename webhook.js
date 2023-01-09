@@ -264,13 +264,14 @@ async function getStock(stock, event) {
                     let down = '跌停價:'+info.w
                     let now_qty = '當盤成交量:'+info.tv
                     let all_qty = '累積成交量:'+info.v
-                    let buy_num = (info.b).split("_", 1)
                     let yd = '昨收價:'+info.y
-                    let now_buy = '現買價:'+ buy_num
+                    let now_buy = '現買價:'+ (info.b).split("_", 1)
                     let now_sell = '現賣價:'+ (info.a).split("_", 1)
+                    let now_sell_amont = '現賣價:'+ (info.f).split("_", 1)
+                    let now_buy_amont = '現買價:'+ (info.g).split("_", 1)
                     let disc = '最低手續費用計算:'+ (parseFloat((info.b).split("_", 1))*1000*0.2697/100)
                     let tick = getick(buy_num)
-                    let msg = name +" \n"+fullname +" \n"+ now_buy +" \n"+ now_sell +" \n"+ hight +" \n"+ lock +" \n"+low+" \n"+ down +" \n"+now_qty+" \n"+all_qty+" \n"+disc+" \n"+ tick
+                    let msg = name +" \n"+fullname +" \n"+ now_buy +" \n"+ now_sell_amont +" \n"+ now_sell +" \n"+ now_buy_amont +" \n"+ hight +" \n"+ lock +" \n"+low+" \n"+ down +" \n"+now_qty+" \n"+all_qty+" \n"+disc+" \n"+ tick
                     return event.reply(msg)
         }else{
             rp(stock_otc).then(function(response) {
@@ -285,13 +286,14 @@ async function getStock(stock, event) {
                     let down = '跌停價:'+info.w
                     let now_qty = '當盤成交量:'+info.tv
                     let all_qty = '累積成交量:'+info.v
-                    let buy_num = (info.b).split("_", 1)
                     let yd = '昨收價:'+info.y
-                    let now_buy = '現買價:'+ buy_num
+                    let now_buy = '現買價:'+ (info.b).split("_", 1)
                     let now_sell = '現賣價:'+ (info.a).split("_", 1)
+                    let now_sell_amont = '現賣價:'+ (info.f).split("_", 1)
+                    let now_buy_amont = '現買價:'+ (info.g).split("_", 1)
                     let disc = '最低手續費用計算:'+ (parseFloat((info.b).split("_", 1))*1000*0.2697/100)
                     let tick = getick(buy_num)
-                    let msg = name +" \n"+fullname +" \n"+ now_buy +" \n"+ now_sell +" \n"+ hight +" \n"+ lock +" \n"+low+" \n"+ down +" \n"+now_qty+" \n"+all_qty+" \n"+disc+" \n"+ tick
+                    let msg = name +" \n"+fullname +" \n"+ now_buy +" \n"+ now_sell_amont +" \n"+ now_sell +" \n"+ now_buy_amont +" \n"+ hight +" \n"+ lock +" \n"+low+" \n"+ down +" \n"+now_qty+" \n"+all_qty+" \n"+disc+" \n"+ tick
                     return event.reply(msg)
                 } else {
                     return event.reply('沒有這筆代號資料喲, 咩噗Q口Q')
