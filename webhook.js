@@ -101,7 +101,7 @@ function getigImage(ig_options, event) {
 
 function getfrImage(options, event) {
     rp(options).then(function(response) {
-        console.log(response.items)
+        console.log(response.title)
         var flickr_images = []    
 	for (let origin of response.items) {
             flickr_images.push(origin.media)
