@@ -89,7 +89,7 @@ function getigImage(ig_options, event) {
         var random_val = [Math.floor(Math.random() * ig_image.length)]
         var url_image_m = ig_image[random_val].max_image
         var url_image_s = ig_image[random_val].mini_image
-       
+       return event.reply(response.data.hashtag.name)    
 	return event.reply(array_top_posts)      
         return event.reply({
             type: 'image',
