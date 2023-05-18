@@ -89,14 +89,29 @@ function getigImage(ig_options, event) {
         var random_val = [Math.floor(Math.random() * ig_image.length)]
         var url_image_m = ig_image[random_val].max_image
         var url_image_s = ig_image[random_val].mini_image
-       return event.reply(response.data.hashtag.name)    
-	return event.reply(array_top_posts)      
+	
         return event.reply({
             type: 'image',
             originalContentUrl: url_image_m,
             previewImageUrl: url_image_s
         })
 
+    })
+}
+
+function getfrImage(options, event) {
+    rp(options).then(function(response) {
+        console.log(response)
+        var flickr_images = []    
+        response.items.forEach(function(item) {
+            flickr_images.push(item.media)
+        })
+        var media = flickr_images[Math.floor(Math.random() * flickr_images.length)]
+        return event.reply({
+            type: 'image',
+            originalContentUrl: media.m,
+            previewImageUrl: media.m
+        })
     })
 }
 
@@ -311,13 +326,14 @@ async function getStock(stock, event) {
 bot.on('message', function(event) {
     switch (event.message.type) {
         case 'text':
-            if (event.message.text.substr(0,1) == '#') {
+            if (event.message.text.substr(0,1) == '#' && event.message.text.substr(0,2) !== '##') {
                 let ig_keyword = event.message.text.substr(1).trim()
                 // firedb.ref("getmessage/").push(ig_keyword);
                 var encode_tag = encodeURIComponent(ig_keyword)
                     var ig_options = {
                         headers: {
 			    'Set-Cookie': "csrftoken=d3uVNRNhdijqFsPy9JsT2N6DJdlFvyQp",
+			    'Referer': "https://www.instagram.com",
                             'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36'
                         },
                         uri: 'https://www.instagram.com/explore/tags/'+ encode_tag +'/?__a=1&__d=dis',
@@ -325,6 +341,15 @@ bot.on('message', function(event) {
                         json: true
                     };
                     var get_ig_image = getigImage(ig_options, event);
+            }
+	    if (event.message.text.substr(0,2) == '##') {
+                let keyword = event.message.text.substr(1).trim()
+                // firedb.ref("getmessage/").push(ig_keyword);
+                var encode_tag = encodeURIComponent(keyword)
+                    var options = {
+                        uri: 'https://www.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1&tags='+ encode_tag
+                    };
+                    var get_image = getfrImage(options, event);
             }
 	    if (event.message.text.substr(0,1) == '!') {
 		let ig_keyword = event.message.text.substr(1).trim()
