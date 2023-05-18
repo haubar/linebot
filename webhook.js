@@ -349,7 +349,8 @@ bot.on('message', function(event) {
                 // firedb.ref("getmessage/").push(ig_keyword);
                 var encode_tag = encodeURIComponent(keyword)
                     var options = {
-                        uri: 'https://www.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1&tags='+ encode_tag
+                        uri: 'https://www.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1&tags='+ encode_tag,
+			json: true
                     };
                     var get_image = getfrImage(options, event);
             }
