@@ -353,6 +353,7 @@ bot.on('message', function(event) {
             }
             else if (event.message.text.substr(0,2) == '凱基') {
                 let msg = 'https://fubon-ebrokerdj.fbs.com.tw/z/zg/zgb/zgb0.djhtm?a=9200&b=9268&c=B&d=1';
+		    event.reply('訊息測試');
                 event.reply(msg);
                     
             }
