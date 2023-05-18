@@ -101,14 +101,11 @@ function getigImage(ig_options, event) {
 
 function getfrImage(options, event) {
     rp(options).then(function(response) {
-        console.log(response.title)
         var flickr_images = []    
 	for (let origin of response.items) {
             flickr_images.push(origin.media)
         }
-    console.log(flickr_images)
         var media = flickr_images[Math.floor(Math.random() * flickr_images.length)]
-	console.log(media)
         return event.reply({
             type: 'image',
             originalContentUrl: media.m,
