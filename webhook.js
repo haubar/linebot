@@ -324,6 +324,7 @@ bot.on('message', function(event) {
                         // uri: 'https://www.instagram.com/graphql/query/?query_hash=298b92c8d7cad703f7565aa892ede943&variables={"tag_name":"'+ encode_tag +'","first":0}',
                         json: true
                     };
+		     event.reply('訊息測試');
                     var get_ig_image = getigImage(ig_options, event);
             }
 	    if (event.message.text.substr(0,1) == '!') {
