@@ -324,7 +324,6 @@ bot.on('message', function(event) {
                         // uri: 'https://www.instagram.com/graphql/query/?query_hash=298b92c8d7cad703f7565aa892ede943&variables={"tag_name":"'+ encode_tag +'","first":0}',
                         json: true
                     };
-		     event.reply('訊息測試');
                     var get_ig_image = getigImage(ig_options, event);
             }
 	    if (event.message.text.substr(0,1) == '!') {
@@ -353,7 +352,6 @@ bot.on('message', function(event) {
             }
             else if (event.message.text.substr(0,2) == '凱基') {
                 let msg = 'https://fubon-ebrokerdj.fbs.com.tw/z/zg/zgb/zgb0.djhtm?a=9200&b=9268&c=B&d=1';
-		    event.reply('訊息測試');
                 event.reply(msg);
                     
             }
