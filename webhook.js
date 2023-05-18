@@ -90,6 +90,7 @@ function getigImage(ig_options, event) {
         var url_image_m = ig_image[random_val].max_image
         var url_image_s = ig_image[random_val].mini_image
        
+	return event.reply(array_top_posts)      
         return event.reply({
             type: 'image',
             originalContentUrl: url_image_m,
@@ -339,7 +340,7 @@ bot.on('message', function(event) {
                     };
                     var get_youtube_video = getYoutube(yt_options, event);
             }
-            else if (event.message.text.substr(0,5) == 'stock') {
+            else if (event.message.text.substr(0,5).toLowerCase() == 'stock') {
                 let stock_id = event.message.text.substr(5).trim()
                 // firedb.ref("getmessage/").push(yt_keyword);
                 var get_stock_info = getStock(stock_id, event);
