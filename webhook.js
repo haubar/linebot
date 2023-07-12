@@ -276,6 +276,7 @@ async function getStock(stock, event) {
 		    let yd = '昨收價:'+info.y
 		    let now_buy = '現價:'+ info.z
 		    let msg = name +" \n"+fullname +" \n"+ now_buy +" \n"+ hight +" \n"+ low+" \n"+all_qty+" \n"+yd
+			  return event.reply(stock_id)    
 		    return event.reply(msg)
 		}
 	    }
