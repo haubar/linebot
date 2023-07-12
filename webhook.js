@@ -260,6 +260,26 @@ function getick(price) {
 
 async function getStock(stock, event) {
     let stock_id = await findstock(stock)
+	if(stock_id=='0000') {
+	    let stock_tai = {
+       	  	uri: 'https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_t00.tw&json=1&delay=0'
+    	    }
+	    rp(stock_tai).then(function(response) {
+		let res = JSON.parse(response)
+		let info = res.msgArray[0]
+		if(!!info){
+		    let name = info.c+info.n
+		    let fullname = info.c+'名稱:'+info.n
+		    let hight = '最高價:'+info.h
+		    let low = '最低價:'+info.l
+		    let all_qty = '累積成交量:'+info.v
+		    let yd = '昨收價:'+info.y
+		    let now_buy = '現價:'+ info.z
+		    let msg = name +" \n"+fullname +" \n"+ now_buy +" \n"+ hight +" \n"+ low+" \n"+all_qty+" \n"+yd
+		    return event.reply(msg)
+		}
+	    }
+	}
     let stock_tse = {
        uri: 'https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_'+stock_id+'.tw&json=1&delay=0'
     }
