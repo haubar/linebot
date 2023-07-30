@@ -275,7 +275,7 @@ async function getStock(stock, event) {
                 let all_qty = '累積成交量:'+info.v
                 let yd = '昨收價:'+info.y
                 let now_buy = '現價:'+ info.z
-                let now_level = '漲跌:'+ parseFloat(info.z) - parseFloat(info.y)
+                let now_level = '漲跌:'+ (parseFloat(info.z) - parseFloat(info.y))
                 let msg = name +" \n"+fullname +" \n"+ now_buy +" \n"+ hight +" \n"+ low+" \n"+all_qty+" \n"+yd+" \n"+now_level
                
                 return event.reply(msg)
