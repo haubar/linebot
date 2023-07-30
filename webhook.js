@@ -276,7 +276,7 @@ async function getStock(stock, event) {
                 let yd = '昨收價:'+info.y
                 let now_buy = '現價:'+ info.z
                 let now_level = '漲跌:'+ parseFloat(info.z) - parseFloat(info.y)
-                let msg = name +" \n"+fullname +" \n"+ now_buy +" \n"+ hight +" \n"+ low+" \n"+all_qty+" \n"+yd
+                let msg = name +" \n"+fullname +" \n"+ now_buy +" \n"+ hight +" \n"+ low+" \n"+all_qty+" \n"+yd+" \n"+now_level
                
                 return event.reply(msg)
             }
@@ -306,11 +306,12 @@ async function getStock(stock, event) {
                     let yd = '昨收價:'+info.y
                     let now_buy = '現買價:'+ (info.b).split("_", 1)
                     let now_sell = '現賣價:'+ (info.a).split("_", 1)
+                    let now_level = '漲跌:'+ parseFloat(info.z) - parseFloat(info.y)
                     let now_sell_amont = '現賣量:'+ (info.f).split("_", 1)
                     let now_buy_amont = '現買量:'+ (info.g).split("_", 1)
                     let disc = '最低手續費用計算:'+ (parseFloat((info.b).split("_", 1))*1000*0.2697/100)
                     let tick = getick((info.b).split("_", 1))
-                    let msg = name +" \n"+fullname +" \n"+ now_buy +" \n"+ now_buy_amont +" \n"+ now_sell +" \n"+ now_sell_amont +" \n"+ hight +" \n"+ lock +" \n"+low+" \n"+ down +" \n"+now_qty+" \n"+all_qty+" \n"+disc+" \n"+ tick
+                    let msg = name +" \n"+fullname +" \n"+now_level +" \n"+ now_buy +" \n"+ now_buy_amont +" \n"+ now_sell +" \n"+ now_sell_amont +" \n"+ hight +" \n"+ lock +" \n"+low+" \n"+ down +" \n"+now_qty+" \n"+all_qty+" \n"+disc+" \n"+ tick
                     return event.reply(msg)
         }else{
             rp(stock_otc).then(function(response) {
@@ -328,11 +329,12 @@ async function getStock(stock, event) {
                     let yd = '昨收價:'+info.y
                     let now_buy = '現買價:'+ (info.b).split("_", 1)
                     let now_sell = '現賣價:'+ (info.a).split("_", 1)
+                    let now_level = '漲跌:'+ parseFloat(info.z) - parseFloat(info.y)
                     let now_sell_amont = '現賣量:'+ (info.f).split("_", 1)
                     let now_buy_amont = '現買量:'+ (info.g).split("_", 1)
                     let disc = '最低手續費用計算:'+ (parseFloat((info.b).split("_", 1))*1000*0.2697/100)
                     let tick = getick((info.b).split("_", 1))
-                    let msg = name +" \n"+fullname +" \n"+ now_buy +" \n"+ now_buy_amont +" \n"+ now_sell +" \n"+ now_sell_amont +" \n"+ hight +" \n"+ lock +" \n"+low+" \n"+ down +" \n"+now_qty+" \n"+all_qty+" \n"+disc+" \n"+ tick
+                    let msg = name +" \n"+fullname+" \n"+now_level +" \n"+ now_buy +" \n"+ now_buy_amont +" \n"+ now_sell +" \n"+ now_sell_amont +" \n"+ hight +" \n"+ lock +" \n"+low+" \n"+ down +" \n"+now_qty+" \n"+all_qty+" \n"+disc+" \n"+ tick
                     return event.reply(msg)
                 } else {
                     return event.reply('沒有這筆代號資料喲, 咩噗Q口Q')
