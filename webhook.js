@@ -306,7 +306,7 @@ async function getStock(stock, event) {
                     let yd = '昨收價:'+info.y
                     let now_buy = '現買價:'+ (info.b).split("_", 1)
                     let now_sell = '現賣價:'+ (info.a).split("_", 1)
-                    let now_level = '漲跌:'+ parseFloat(info.z) - parseFloat(info.y)
+                    let now_level = '漲跌:'+ (parseFloat(info.z) - parseFloat(info.y))
                     let now_sell_amont = '現賣量:'+ (info.f).split("_", 1)
                     let now_buy_amont = '現買量:'+ (info.g).split("_", 1)
                     let disc = '最低手續費用計算:'+ (parseFloat((info.b).split("_", 1))*1000*0.2697/100)
@@ -329,7 +329,7 @@ async function getStock(stock, event) {
                     let yd = '昨收價:'+info.y
                     let now_buy = '現買價:'+ (info.b).split("_", 1)
                     let now_sell = '現賣價:'+ (info.a).split("_", 1)
-                    let now_level = '漲跌:'+ parseFloat(info.z) - parseFloat(info.y)
+                    let now_level = '漲跌:'+ (parseFloat(info.z) - parseFloat(info.y))
                     let now_sell_amont = '現賣量:'+ (info.f).split("_", 1)
                     let now_buy_amont = '現買量:'+ (info.g).split("_", 1)
                     let disc = '最低手續費用計算:'+ (parseFloat((info.b).split("_", 1))*1000*0.2697/100)
