@@ -265,6 +265,7 @@ async function getStock(stock, event) {
        	  	uri: 'https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_t00.tw&json=1&delay=0'
     	}
 	    rp(stock_tai).then(function(response) {
+		    console.log(response)
             let res = JSON.parse(response)
             let info = res.msgArray[0]
             if(!!info){
