@@ -260,6 +260,7 @@ function getick(price) {
 
 async function getStock(stock, event) {
     let stock_id = await findstock(stock)
+	console.log(stock_id)
 	if(stock_id == '0000') {
 	    let stock_tai = {
        	  	uri: 'https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_t00.tw&json=1&delay=0'
