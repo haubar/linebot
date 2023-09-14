@@ -391,7 +391,8 @@ bot.on('message', function(event) {
                     var get_youtube_video = getYoutube(yt_options, event);
             }
             else if (event.message.text.substr(0,5).toLowerCase() == 'stock') {
-                let stock_id = event.message.text.trim().substr(5).trim()
+		let string_stock = event.message.text.trim()
+                let stock_id = string_stock.substr(5).trim()
                 // firedb.ref("getmessage/").push(yt_keyword);
                 var get_stock_info = getStock(stock_id, event);
                     
