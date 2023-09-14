@@ -184,7 +184,6 @@ function getWeather(weather_options, event) {
 function getPrice(options, event) {
     rp(options).then(function(response) {
         let res = JSON.parse(response)
-        console.log(res)
         let lastItem = res[res.length - 1]
         return event.reply(lastItem.close)
     }).catch(function (err) {
@@ -260,13 +259,11 @@ function getick(price) {
 
 async function getStock(stock, event) {
     let stock_id = await findstock(stock)
-	console.log(stock_id)
 	if(stock_id == '0000') {
 	    let stock_tai = {
        	  	uri: 'https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_t00.tw&json=1&delay=0'
     	}
 	    rp(stock_tai).then(function(response) {
-		    console.log(response)
             let res = JSON.parse(response)
             let info = res.msgArray[0]
             if(!!info){
@@ -394,7 +391,7 @@ bot.on('message', function(event) {
                     var get_youtube_video = getYoutube(yt_options, event);
             }
             else if (event.message.text.substr(0,5).toLowerCase() == 'stock') {
-                let stock_id = event.message.text.substr(5).trim()
+                let stock_id = event.message.text.trim().substr(5).trim()
                 // firedb.ref("getmessage/").push(yt_keyword);
                 var get_stock_info = getStock(stock_id, event);
                     
