@@ -356,8 +356,9 @@ bot.on('message', function(event) {
                 var encode_tag = encodeURIComponent(ig_keyword)
                     var ig_options = {
                         headers: {
-			    // 'access-control-expose-headers':"X-IG-Set-WWW-Claim",
-			    // 'Set-Cookie': "csrftoken=cPObkbKCL5iQSxlvJ2cXXNov07cTTbTA",
+			    'access-control-expose-headers':"X-IG-Set-WWW-Claim",
+			    'set-Cookie': "csrftoken=JhkmVX89xxyEAuzgO2LjZVuxQRRpXc92; Domain=.instagram.com; expires=Tue, 01-Oct-2024 07:23:00 GMT; Max-Age=31449600; Path=/; Secure",
+			
 			    // 'Referer': "https://www.instagram.com",
                             // 'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36'
                         },
