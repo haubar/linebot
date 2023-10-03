@@ -1,6 +1,6 @@
 const linebot = require('./index.js');
 const dataflit = require('./lib/dataflit');
-const rp = require('request-promise');
+const rp = require('request-promise').defaults({ jar: true });
 const airtable = require('airtable');
 
 // const firebase = require("firebase");
@@ -357,7 +357,7 @@ bot.on('message', function(event) {
                     var ig_options = {
                         headers: {
 			    // 'access-control-expose-headers':"X-IG-Set-WWW-Claim",
-			    'Set-Cookie': "csrftoken=cPObkbKCL5iQSxlvJ2cXXNov07cTTbTA",
+			    // 'Set-Cookie': "csrftoken=cPObkbKCL5iQSxlvJ2cXXNov07cTTbTA",
 			    // 'Referer': "https://www.instagram.com",
                             // 'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36'
                         },
