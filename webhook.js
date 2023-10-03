@@ -356,7 +356,8 @@ bot.on('message', function(event) {
                 var encode_tag = encodeURIComponent(ig_keyword)
                     var ig_options = {
                         headers: {
-			    'Set-Cookie': "csrftoken=d3uVNRNhdijqFsPy9JsT2N6DJdlFvyQp",
+			    'access-control-expose-headers':"X-IG-Set-WWW-Claim",
+			    // 'Set-Cookie': "csrftoken=d3uVNRNhdijqFsPy9JsT2N6DJdlFvyQp",
 			    'Referer': "https://www.instagram.com",
                             'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36'
                         },
