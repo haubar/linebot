@@ -368,20 +368,19 @@ bot.on('message', function(event) {
                     };
                     var get_ig_image = getigImage(ig_options, event);
             }
-	    if (event.message.text.substr(0,2) == '##') {
+	        if (event.message.text.substr(0,2) == '##') {
                 let keyword = event.message.text.substr(1).trim()
                 // firedb.ref("getmessage/").push(ig_keyword);
                 var encode_tag = encodeURIComponent(keyword)
                     var options = {
                         uri: 'https://www.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1&tags='+ encode_tag,
-			json: true
+			            json: true
                     };
                     var get_image = getfrImage(options, event);
             }
-	    if (event.message.text.substr(0,1) == '!') {
-		let ig_keyword = event.message.text.substr(1).trim()
-		
-	    }
+            if (event.message.text.substr(0,1) == '!') {
+                let ig_keyword = event.message.text.substr(1).trim()
+            }
             else if (event.message.text.substr(0,2) == 'yt') {
                 var yt_keyword = event.message.text.substr(2).trim()
                 // firedb.ref("getmessage/").push(yt_keyword);
@@ -647,18 +646,18 @@ bot.on('unfollow', function(event) {
 
 bot.on('join', function(event) {
     if (!!event.source.groupId) {
-        var joinid = event.source.groupId
+        let joinid = event.source.groupId
     } else {
-        var joinid = event.source.roomId
+        let joinid = event.source.roomId
     }
     event.reply('join: ' + joinid);
 });
 
 bot.on('leave', function(event) {
     if (!!event.source.groupId) {
-        var leaveid = event.source.groupId
+        let leaveid = event.source.groupId
     } else {
-        var leaveid = event.source.roomId
+        let leaveid = event.source.roomId
     }
     event.reply('leave: ' + leaveid);
 });
