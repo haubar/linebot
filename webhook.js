@@ -282,6 +282,30 @@ function getick(price) {
 
 async function getStock(stock, event) {
     let stock_id = await findstock(stock)
+	if(stock_id == '0000') {
+	    let stock_tai = {
+       	  	uri: 'https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_t00.tw&json=1&delay=0'
+    	}
+	    rp(stock_tai).then(function(response) {
+            let res = JSON.parse(response)
+            let info = res.msgArray[0]
+            if(!!info){
+                let name = info.c+info.n
+                let fullname = info.c+'名稱:'+info.n
+                let hight = '最高價:'+info.h
+                let low = '最低價:'+info.l
+                let all_qty = '累積成交量:'+info.v
+                let yd = '昨收價:'+info.y
+                let now_buy = '現價:'+ info.z
+                let now_level = '漲跌:'+ (parseFloat(info.z) - parseFloat(info.y))
+                let msg = name +" \n"+fullname +" \n"+ now_buy +" \n"+ hight +" \n"+ low+" \n"+all_qty+" \n"+yd+" \n"+now_level
+               
+                return event.reply(msg)
+            }
+            return event.reply(stock_id)    
+	    })
+	}
+
     let stock_option = {
         url: 'https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_'+ stock_id +'.tw|otc_'+ stock_id +'.tw&json=1&delay=0'
     }
@@ -307,8 +331,9 @@ async function getStock(stock, event) {
             let disc = '最低手續費用計算:'+ (parseFloat((info.b).split("_", 1))*1000*0.2697/100)
             let tick = getick((info.b).split("_", 1))
             let msg = name +" \n"+fullname +" \n"+now_level +" \n"+ now_buy +" \n"+ now_buy_amont +" \n"+ now_sell +" \n"+ now_sell_amont +" \n"+ hight +" \n"+ lock +" \n"+low+" \n"+ down +" \n"+now_qty+" \n"+all_qty+" \n"+disc+" \n"+ tick
+            return event.reply(msg)
         } 
-        return event.reply(msg)
+        
     }).catch(function (err) {
         return event.reply('沒有這筆代號資料喲, 咩噗Q口Q')        
     })
