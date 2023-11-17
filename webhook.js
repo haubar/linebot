@@ -87,6 +87,7 @@ function testigImage() {
         json: true
     };
     rp(ig_options).then(function(response) {
+        return response
         console.log(response)
         return  response.data.hashtag.name
         // return  response.data.hashtag.edge_hashtag_to_top_posts.edges[0]
