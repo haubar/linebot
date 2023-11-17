@@ -310,7 +310,7 @@ async function getStock(stock, event) {
         url: 'https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_'+ stock_id +'.tw|otc_'+ stock_id +'.tw&json=1&delay=0'
     }
     
-    rp(stock_option).then(function(response) {
+    rp(stock_option).then(function(response, event) {
         let res = JSON.parse(response)
         let info = res.msgArray[0]
         if(!!info){
