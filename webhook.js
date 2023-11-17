@@ -76,6 +76,28 @@ function getImage(eat_options, event) {
     })
 }
 
+function testigImage() {
+    let encode_tag = encodeURIComponent("抹茶")
+    let ig_options = {
+        headers: {
+            'User-Agent': "insomnia/2023.5.8",
+            'Referer': "https://www.instagram.com",
+        },
+        uri: 'https://www.instagram.com/explore/tags/'+ encode_tag +'/?__a=1&__d=dis',
+        json: true
+    };
+    rp(ig_options).then(function(response) {
+        console.log(response)
+        return  response.data.hashtag.name
+        // return  response.data.hashtag.edge_hashtag_to_top_posts.edges[0]
+       
+        
+	
+       
+
+    })
+}
+
 function getigImage(ig_options, event) {
     rp(ig_options).then(function(response) {
         console.log(response)
@@ -350,19 +372,23 @@ async function getStock(stock, event) {
 bot.on('message', function(event) {
     switch (event.message.type) {
         case 'text':
+            if(event.message.text == 'test') {
+                let msg = testigImage()
+                event.reply(msg)
+            }
             if (event.message.text.substr(0,1) == '#' && event.message.text.substr(0,2) !== '##') {
                 let ig_keyword = event.message.text.substr(1).trim()
                 // firedb.ref("getmessage/").push(ig_keyword);
                 var encode_tag = encodeURIComponent(ig_keyword)
-                    var ig_options = {
-                        headers: {
-                            'User-Agent': "insomnia/2023.5.8",
-			                'Referer': "https://www.instagram.com",
-                        },
-                        uri: 'https://www.instagram.com/explore/tags/'+ encode_tag +'/?__a=1&__d=dis',
-                        json: true
-                    };
-                    var get_ig_image = getigImage(ig_options, event);
+                var ig_options = {
+                    headers: {
+                        'User-Agent': "insomnia/2023.5.8",
+                        'Referer': "https://www.instagram.com",
+                    },
+                    uri: 'https://www.instagram.com/explore/tags/'+ encode_tag +'/?__a=1&__d=dis',
+                    json: true
+                };
+                var get_ig_image = getigImage(ig_options, event);
             }
 	        if (event.message.text.substr(0,2) == '##') {
                 let keyword = event.message.text.substr(1).trim()
@@ -388,7 +414,7 @@ bot.on('message', function(event) {
                     var get_youtube_video = getYoutube(yt_options, event);
             }
             else if (event.message.text.substr(0,5).toLowerCase() == 'stock') {
-		let string_stock = event.message.text.trim()
+		        let string_stock = event.message.text.trim()
                 let stock_id = string_stock.substr(5).trim()
                 // firedb.ref("getmessage/").push(yt_keyword);
                 var get_stock_info = getStock(stock_id, event);
@@ -512,12 +538,12 @@ bot.on('message', function(event) {
                     case 'bot滾':
                         if (!!event.source.roomId){
                             let roomId = event.source.roomId;
-                            return this.post('/room/' + roomId + '/leave/').then(function (res) {
+                                return this.post('/room/' + roomId + '/leave/').then(function (res) {
                                 return res.json();
                             });
                         } else {
                             let groupId = event.source.groupId;
-                            return this.post('/group/' + groupId + '/leave/').then(function (res) {
+                                return this.post('/group/' + groupId + '/leave/').then(function (res) {
                                 return res.json();
                             });
                         }
