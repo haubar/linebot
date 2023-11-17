@@ -374,7 +374,7 @@ bot.on('message', function(event) {
         case 'text':
             if(event.message.text == 'test') {
                 let msg = testigImage()
-                event.reply(msg)
+                event.reply("one test command")
             }
             if (event.message.text.substr(0,1) == '#' && event.message.text.substr(0,2) !== '##') {
                 let ig_keyword = event.message.text.substr(1).trim()
