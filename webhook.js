@@ -356,7 +356,7 @@ bot.on('message', function(event) {
                 var encode_tag = encodeURIComponent(ig_keyword)
                     var ig_options = {
                         headers: {
-                            'User-Agent': "User-Agent: insomnia/2023.5.8",
+                            'User-Agent': "insomnia/2023.5.8",
 			                'Referer': "https://www.instagram.com",
                         },
                         uri: 'https://www.instagram.com/explore/tags/'+ encode_tag +'/?__a=1&__d=dis',
