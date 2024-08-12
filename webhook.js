@@ -426,7 +426,6 @@ bot.on('message', function(event) {
                 let text = event.message.text.substr(2).trim()
                 var options = {
                     uri: 'https://script.google.com/macros/s/AKfycbyYM5gyVv9O8sngZpCHuNAmbX9mBR0gvQcpmTfbLdQu7xz3SKllTqErJHj_KuoJuEhDhQ/exec',
-                    followAllRedirects: true,
                     body: {
                       message: text
                     },
