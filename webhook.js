@@ -200,15 +200,15 @@ function getWeather(weather_options, event) {
     })
 }
 
-function getGemini(options, event) {
-    rp(options).then(function(response) {
-        let res = JSON.parse(response)
-        let message = res.candidates[0].content.parts[0].text
-        return event.reply(message)
-    }).catch(function (err) {
-        return event.reply('歹勢啦~Gemini無法回你喲')
-    })
-}
+// function getGemini(options, event) {
+//     rp(options).then(function(response) {
+//         let res = JSON.parse(response)
+//         let message = res.candidates[0].content.parts[0].text
+//         return event.reply(message)
+//     }).catch(function (err) {
+//         return event.reply('歹勢啦~Gemini無法回你喲')
+//     })
+// }
 
 function getPrice(options, event) {
     rp(options).then(function(response) {
