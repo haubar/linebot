@@ -437,7 +437,8 @@ bot.on('message', function(event) {
                     uri: 'https://script.google.com/macros/s/AKfycbyYM5gyVv9O8sngZpCHuNAmbX9mBR0gvQcpmTfbLdQu7xz3SKllTqErJHj_KuoJuEhDhQ/exec',
                     headers: {'Content-Type': 'application/json', 'User-Agent': 'insomnia/8.3.0'},
                     body: {'message':text},
-                    followAllRedirects: true,
+                    resolveWithFullResponse: true,
+                    followRedirect: false,
                     json: true
                 }
                 let gemini = getGemini(options, event);
