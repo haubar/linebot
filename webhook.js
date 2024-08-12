@@ -91,10 +91,6 @@ function testigImage() {
         console.log(response)
         return  response.data.hashtag.name
         // return  response.data.hashtag.edge_hashtag_to_top_posts.edges[0]
-       
-        
-	
-       
 
     })
 }
@@ -201,6 +197,16 @@ function getWeather(weather_options, event) {
         })
     }).catch(function (err) {
         return event.reply('歹勢啦~我沒有你輸入的地區資料')
+    })
+}
+
+function getGemini(options, event) {
+    rp(options).then(function(response) {
+        let res = JSON.parse(response)
+        let message = res?.candidates[0]?.content?.parts[0]?.text
+        return event.reply(message)
+    }).catch(function (err) {
+        return event.reply('歹勢啦~Gemini無法回你喲')
     })
 }
 
@@ -413,6 +419,20 @@ bot.on('message', function(event) {
                     };
                     let get_current_weather = getWeather(weather_options, event);
                     
+            }
+            else if (event.message.text.substr(0,2).toLowerCase() == 'ai') {
+                let text = event.message.text.substr(2).trim()
+                var options = {
+                    method: 'POST',
+                    uri: 'https://kerkerlab.kerker.workers.dev/',
+                    body: {
+                      message: text
+                    },
+                    json: true
+                }
+                
+                let gemini = getGemini(options, event);
+                
             }
             else if (event.message.text.substr(0,3) == '中翻英') {
                     let text = event.message.text.substr(3).trim()
