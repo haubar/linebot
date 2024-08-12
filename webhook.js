@@ -427,6 +427,9 @@ bot.on('message', function(event) {
                 var options = {
                     method: 'POST',
                     uri: 'https://script.google.com/macros/s/AKfycbyYM5gyVv9O8sngZpCHuNAmbX9mBR0gvQcpmTfbLdQu7xz3SKllTqErJHj_KuoJuEhDhQ/exec',
+                    followRedirect: true,
+                    followAllRedirects: true,
+                    maxRedirects: 10,
                     body: {
                       message: text
                     },
