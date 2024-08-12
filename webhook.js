@@ -438,8 +438,11 @@ bot.on('message', function(event) {
                     headers: {'Content-Type': 'application/json', 'User-Agent': 'insomnia/8.3.0'},
                     body: {'message':text},
                     json: true,
-                    resolveWithFullResponse: true,
-                    followRedirect: true
+                    resolveWithFullResponse: true,  // 啟用完整響應
+                    simple: false,  // 不要將非2xx狀態碼視為錯誤
+                    followRedirect: true,
+                    followAllRedirects: true,
+                    maxRedirects: 5
                 }
                 let gemini = getGemini(options, event);
                 
