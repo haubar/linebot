@@ -430,7 +430,6 @@ bot.on('message', function(event) {
                     },
                     json: true
                 }
-                event.reply(text)
                 let gemini = getGemini(options, event);
                 
             }
