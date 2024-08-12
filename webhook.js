@@ -207,6 +207,7 @@ function getGemini(options, event) {
         let message = res.candidates[0].content.parts[0].text
         return event.reply(message)
     }).catch(function (err) {
+        return event.reply(JSON.stringify(err))
         return event.reply('歹勢啦~Gemini無法回你喲')
     })
 }
