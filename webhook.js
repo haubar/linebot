@@ -203,10 +203,11 @@ function getWeather(weather_options, event) {
 function getGemini(options, event) {
     rp(options).then(function(response) {
         let res = JSON.parse(response)
-        return event.reply(JSON.stringify(res))
+        return event.reply(JSON.stringify(response))
         let message = res.candidates[0].content.parts[0].text
         return event.reply(message)
     }).catch(function (err) {
+        return event.reply(JSON.stringify(err))
         return event.reply('歹勢啦~Gemini無法回你喲')
     })
 }
