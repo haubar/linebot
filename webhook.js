@@ -201,7 +201,7 @@ function getWeather(weather_options, event) {
 }
 
 function getGemini(options, event) {
-    rp(options).then(function(response) {
+    rp.post(options).then(function(response) {
         let res = JSON.parse(response)
         return event.reply(JSON.stringify(res))
         let message = res.candidates[0].content.parts[0].text
@@ -425,7 +425,6 @@ bot.on('message', function(event) {
             else if (event.message.text.substr(0,2).toLowerCase() == 'ai') {
                 let text = event.message.text.substr(2).trim()
                 var options = {
-                    method: 'POST',
                     uri: 'https://script.google.com/macros/s/AKfycbyYM5gyVv9O8sngZpCHuNAmbX9mBR0gvQcpmTfbLdQu7xz3SKllTqErJHj_KuoJuEhDhQ/exec',
                     followAllRedirects: true,
                     body: {
