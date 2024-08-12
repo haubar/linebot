@@ -424,14 +424,20 @@ bot.on('message', function(event) {
             }
             else if (event.message.text.substr(0,2).toLowerCase() == 'ai') {
                 let text = event.message.text.substr(2).trim()
+                // var options = {
+                //     method: 'POST',
+                //     uri: 'https://script.google.com/macros/s/AKfycbyYM5gyVv9O8sngZpCHuNAmbX9mBR0gvQcpmTfbLdQu7xz3SKllTqErJHj_KuoJuEhDhQ/exec',
+                //     body: {
+                //       message: text
+                //     },
+                //     json: true
+                // }
                 var options = {
                     method: 'POST',
-                    uri: 'https://script.google.com/macros/s/AKfycbyYM5gyVv9O8sngZpCHuNAmbX9mBR0gvQcpmTfbLdQu7xz3SKllTqErJHj_KuoJuEhDhQ/exec',
-                    body: {
-                      message: text
-                    },
+                    headers: {'Content-Type': 'application/json', 'User-Agent': 'insomnia/8.3.0'},
+                    body: '{"message":"北極熊"}',
                     json: true
-                }
+                  };
                 let gemini = getGemini(options, event);
                 
             }
