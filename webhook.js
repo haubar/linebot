@@ -420,19 +420,19 @@ bot.on('message', function(event) {
                     let get_current_weather = getWeather(weather_options, event);
                     
             }
-            else if (event.message.text.substr(0,2).toLowerCase() == 'ai') {
-                let text = event.message.text.substr(2).trim()
-                var options = {
-                    method: 'POST',
-                    uri: 'https://script.google.com/macros/s/AKfycbyYM5gyVv9O8sngZpCHuNAmbX9mBR0gvQcpmTfbLdQu7xz3SKllTqErJHj_KuoJuEhDhQ/exec',
-                    body: {
-                      message: text
-                    },
-                    json: true
-                }
-                let gemini = getGemini(options, event);
+            // else if (event.message.text.substr(0,2).toLowerCase() == 'ai') {
+            //     let text = event.message.text.substr(2).trim()
+            //     var options = {
+            //         method: 'POST',
+            //         uri: 'https://script.google.com/macros/s/AKfycbyYM5gyVv9O8sngZpCHuNAmbX9mBR0gvQcpmTfbLdQu7xz3SKllTqErJHj_KuoJuEhDhQ/exec',
+            //         body: {
+            //           message: text
+            //         },
+            //         json: true
+            //     }
+            //     let gemini = getGemini(options, event);
                 
-            }
+            // }
             else if (event.message.text.substr(0,3) == '中翻英') {
                     let text = event.message.text.substr(3).trim()
                 
