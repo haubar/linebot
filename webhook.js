@@ -210,13 +210,13 @@ const getStock = async(stock, event) => {
         const info = JSON.parse(response).msgArray[0];
         if (info) {
             const msg = `
-                ${info.c}${info.n} \n
-                ${info.c}名稱: ${info.nf} \n
-                現價: ${info.z} \n
-                漲跌: ${(parseFloat(info.z) - parseFloat(info.y))} \n
-                最高價: ${info.h} \n
-                最低價: ${info.l} \n
-                累積成交量: ${info.v} \n
+                ${info.c}${info.n}
+                ${info.c}名稱: ${info.nf}
+                現價: ${info.z}
+                漲跌: ${(parseFloat(info.z) - parseFloat(info.y))}
+                最高價: ${info.h}
+                最低價: ${info.l}
+                累積成交量: ${info.v}
                 昨收價: ${info.y}
             `;
             return event.reply(msg);
@@ -312,23 +312,23 @@ bot.on('message', async (event) => {
                 await getDiscMsg(stock_price, event);
             } else if (msgText.startsWith('沖')) {
                 const msg = `
-                    當沖三不 \n
-                    不留目前倉超過該時段 \n
-                    手中不大量持倉 \n
+                    當沖三不
+                    不留目前倉超過該時段
+                    手中不大量持倉
                     不要不作功課亂沖
                 `;
                 return event.reply(msg);
             } else if (msgText.startsWith('表')) {
                 const msg = `
-                    370~500→三檔 \n
-                    370~184→兩檔 \n
-                    184~100→一檔 \n
-                    100~75→三檔 \n
-                    74~50→兩檔 \n
-                    50~38→三檔 \n
-                    37~18→兩檔 \n
-                    18~11→一檔 \n
-                    10~3.7→兩檔 \n
+                    370~500→三檔
+                    370~184→兩檔
+                    184~100→一檔
+                    100~75→三檔
+                    74~50→兩檔
+                    50~38→三檔
+                    37~18→兩檔
+                    18~11→一檔
+                    10~3.7→兩檔
                     3.6 以下→一檔
                 `;
                 return event.reply(msg);
