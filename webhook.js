@@ -14,17 +14,17 @@ const base = new airtable({
     apiKey: process.env.airtableKey
 }).base('app2oVW62FODpXmq0');
 
-const DataIg = (data) => {
+const DataIg = (data) => ({
     this.max_image = data.thumbnail_src
     this.mini_image = data.thumbnail_resources[0].src
-}
+})
 
-const DataYoutube = (data) => {
+const DataYoutube = (data) => ({
     this.video_id = data.id.videoId
     this.video_image_url = data.snippet.thumbnails.default.url
-}
+})
 
-const findstock = async(stock) => {
+const findStock = async(stock) => {
     let stock_id = stock
     //判斷中文
     const reg = /^[\u4E00-\u9FA5]+$/
@@ -45,7 +45,7 @@ const findstock = async(stock) => {
 const getIgImage = async(options, event) => {
     try {
         const response = await rp(options);
-        const ig_image = response.data.hashtag.edge_hashtag_to_top_posts.edges.map(origin => DataIG(origin.node));
+        const ig_image = response.data.hashtag.edge_hashtag_to_top_posts.edges.map(origin => DataIg(origin.node));
         const random_val = Math.floor(Math.random() * ig_image.length);
         const url_image_m = ig_image[random_val].max_image;
         const url_image_s = ig_image[random_val].mini_image;
@@ -77,7 +77,7 @@ const getFrImage = async(options, event) => {
 const getYoutube = async(options, event) => {
     try {
         const response = await rp(options);
-        const video = response.items.map(origin => DataYouTube(origin));
+        const video = response.items.map(origin => DataYoutube(origin));
         const random_val = Math.floor(Math.random() * video.length);
         const url_video = `https://www.youtube.com/watch?v=${video[random_val].video_id}`;
         const url_image = video[random_val].video_image_url;
@@ -165,7 +165,7 @@ const getReport = async(category, event) => {
 
 const transLang = async(options, event) => {
     try {
-        const response = await rp(lang_options);
+        const response = await rp(options);
         return event.reply(JSON.parse(response).text[0]);
     } catch (err) {
         return event.reply('歹勢啦~我不曉得你哩工啥米Q口Q');
