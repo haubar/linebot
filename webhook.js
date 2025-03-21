@@ -14,15 +14,15 @@ const base = new airtable({
     apiKey: process.env.airtableKey
 }).base('app2oVW62FODpXmq0');
 
-const DataIg = (data) => ({
+const DataIg = (data) => {
     this.max_image = data.thumbnail_src
     this.mini_image = data.thumbnail_resources[0].src
-})
+}
 
-const DataYoutube = (data) => ({
+const DataYoutube = (data) => {
     this.video_id = data.id.videoId
     this.video_image_url = data.snippet.thumbnails.default.url
-})
+}
 
 const findStock = async(stock) => {
     let stock_id = stock
