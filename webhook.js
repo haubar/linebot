@@ -200,6 +200,12 @@ const getTick = (price) => {
     return msg;
 };
 
+const formatMsg = (msg) => {
+    if(!msg) return false; 
+    return msg.replace(/\n\s+/g, '\n').trim();
+};
+
+
 const getStock = async(stock, event) => {
     const stock_id = await findStock(stock);
     const stock_uri = stock_id === '0000' ? 'https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_t00.tw&json=1&delay=0' : `https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_${stock_id}.tw|otc_${stock_id}.tw&json=1&delay=0`;
@@ -317,7 +323,7 @@ bot.on('message', async (event) => {
                     手中不大量持倉
                     不要不作功課亂沖
                 `;
-                return event.reply(msg);
+                return event.reply(formatMsg(msg));
             } else if (msgText.startsWith('表')) {
                 const msg = `
                     370~500→三檔
@@ -331,7 +337,7 @@ bot.on('message', async (event) => {
                     10~3.7→兩檔
                     3.6 以下→一檔
                 `;
-                return event.reply(msg);
+                return event.reply(formatMsg(msg));
             } else if (msgText.startsWith('18+')) {
                 const source_code = msgText.slice(3).trim();
                 let pic_number = source_code.match(/\d/g).join('');
