@@ -443,6 +443,8 @@ bot.on('message', async (event) => {
                     case '幹':
                         const emoji = '🖕🖕🖕🖕';
                         return event.reply(`....請冷靜 ${emoji}`);
+                    csee '龍破斬':
+                        return event.reply(['比黃昏還要昏暗的東西，比血液還要鮮紅的東西，在時間之流中出現吧！在您偉大的名下，我在這黑闇中起誓，把阻擋在我們前方，所有的愚蠢之物，集合你我之力，賜與他們平等的毀滅吧！', '🫸🏻🔥🐲'])
                     default:
                         break;
                 }
