@@ -16,7 +16,7 @@ bot.on('message', async (event) => {
     switch (event.message.type) {
         case 'text':
             const msgText = event.message.text;
-            return event.reply(`Unknow message: ${msgText}`);
+            // return event.reply(`Unknow message: ${msgText}`);
             return output_message(event);
             if (msgText === 'test') {
                 return event.reply("TEST");
