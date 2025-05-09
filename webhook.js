@@ -1,7 +1,7 @@
 const linebot = require('./index.js');
 const dataflit = require('./lib/dataflit');
 const feature = require('./lib/feature');
-const { output_message }  = require('./lib/message');
+const  output_message  = require('./lib/message');
 
 
 const bot = linebot({
