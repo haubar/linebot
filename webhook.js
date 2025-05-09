@@ -3,7 +3,6 @@ const dataflit = require('./lib/dataflit');
 const feature = require('./lib/feature');
 
 
-
 const bot = linebot({
     channelId: process.env.channelId,
     channelAccessToken: process.env.accessToken,
@@ -15,7 +14,6 @@ const bot = linebot({
 bot.on('message', async (event) => {
     switch (event.message.type) {
         case 'text':
-            return handleMessage(event);
             const msgText = event.message.text;
             if (msgText === 'test') {
                 return event.reply("TEST");
