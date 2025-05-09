@@ -15,6 +15,8 @@ bot.on('message', async (event) => {
     switch (event.message.type) {
         case 'text':
             const msgText = event.message.text;
+            return event.reply(`Unknow message: ${msgText}`);
+            
             if (msgText === 'test') {
                 return event.reply("TEST");
             } else if (msgText.startsWith('##')) {
