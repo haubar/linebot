@@ -1,6 +1,6 @@
 const linebot = require('./index.js');
-// const dataflit = require('./lib/dataflit');
-// const feature = require('./lib/feature');
+const dataflit = require('./lib/dataflit');
+const feature = require('./lib/feature');
 const { output_message }  = require('./lib/message');
 
 
@@ -16,8 +16,8 @@ bot.on('message', async (event) => {
     switch (event.message.type) {
         case 'text':
             const msgText = event.message.text;
+            return event.reply(`Unknow message: ${msgText}`);
             return output_message(event);
-            
             if (msgText === 'test') {
                 return event.reply("TEST");
             } else if (msgText.startsWith('##')) {
