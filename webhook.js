@@ -1,7 +1,5 @@
 const linebot = require('./index.js');
-const { handleMessage }  = require('./lib/message');
-
-
+const { output_message }  = require('./lib/message');
 
 
 const bot = linebot({
@@ -15,7 +13,7 @@ const bot = linebot({
 bot.on('message', async (event) => {
     switch (event.message.type) {
         case 'text':
-            return handleMessage(event);
+            return output_message(event);
         case 'video':
             return event.reply('No yet support movie');
         case 'audio':
