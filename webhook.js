@@ -1,6 +1,5 @@
 const linebot = require('./index.js');
-
-const { handleMessage } = require('./botSwitchHandler');
+const { handleMessage }  = require('./lib/message');
 
 
 
