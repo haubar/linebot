@@ -13,6 +13,7 @@ const bot = linebot({
 bot.on('message', async (event) => {
     switch (event.message.type) {
         case 'text':
+            return event.reply(`Unknow message: ${JSON.stringify(event)}`);
             return output_message(event);
         case 'video':
             return event.reply('No yet support movie');
