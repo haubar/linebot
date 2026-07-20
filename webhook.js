@@ -19,7 +19,7 @@ bot.on('message', async (event) => {
         case 'audio':
             return output_message(event);
         case 'image': 
-            let buffer = event.getMessageContent(messageId);
+            let buffer = event.getMessageContent(event.message.id);
             if(buffer) {
                 return event.reply(buffer.toString('base64'));
             } else {
