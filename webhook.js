@@ -20,12 +20,10 @@ bot.on('message', async (event) => {
             return output_message(event);
         case 'image': 
             let buffer = bot.getMessageContent(event.message.id);
-            if(buffer) {
-                return event.reply(buffer.toString('base64'));
-            } else {
-                return event.reply("99887777");
-            }
-           
+            
+            return event.reply(buffer.toString('base64'));
+          
+            return event.reply("99887777");
            
             return output_message(event);
         case 'location':
