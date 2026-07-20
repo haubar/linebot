@@ -13,14 +13,14 @@ const bot = linebot({
 bot.on('message', async (event) => {
     switch (event.message.type) {
         case 'text':
-            return await output_message(event);
+            return output_message(event);
         case 'video':
             return output_message(event);
         case 'audio':
             return output_message(event);
         case 'image': 
-            let buffer = await bot.getMessageContent(event.message.id);
-            
+            let buffer = bot.getMessageContent(event.message.id);
+            return event.reply(JSON.stringify(buffer));
             return event.reply(buffer.toString('base64'));
           
             return event.reply("99887777");
