@@ -19,12 +19,12 @@ bot.on('message', async (event) => {
         case 'audio':
             return output_message(event);
         case 'image': 
-            let buffer = bot.getMessageContent(event.message.id);
-            return event.reply(JSON.stringify(buffer));
-            return event.reply(buffer.toString('base64'));
+            // let buffer = bot.getMessageContent(event.message.id);
+            // return event.reply(JSON.stringify(buffer));
+            // return event.reply(buffer.toString('base64'));
           
-            return event.reply("99887777");
-            
+            // return event.reply("99887777");
+
             return output_message(event);
         case 'location':
             return event.reply('No yet support map');
