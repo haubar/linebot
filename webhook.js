@@ -13,7 +13,7 @@ const bot = linebot({
 bot.on('message', async (event) => {
     switch (event.message.type) {
         case 'text':
-            return output_message(event);
+            return await output_message(event);
         case 'video':
             return output_message(event);
         case 'audio':
@@ -24,7 +24,7 @@ bot.on('message', async (event) => {
             return event.reply(buffer.toString('base64'));
           
             return event.reply("99887777");
-           
+            
             return output_message(event);
         case 'location':
             return event.reply('No yet support map');
