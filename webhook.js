@@ -1,5 +1,5 @@
 const linebot = require('./index.js');
-const { output_message }  = require('./lib/message');
+const { output_message, getContent }  = require('./lib/message');
 
 
 const bot = linebot({
