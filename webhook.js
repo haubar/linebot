@@ -24,7 +24,7 @@ bot.on('message', async (event) => {
             // return event.reply(buffer.toString('base64'));
           
             // return event.reply("99887777");
-
+            
             return output_message(event);
         case 'file':
             return output_message(event);
