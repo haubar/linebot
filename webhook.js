@@ -15,7 +15,8 @@ bot.on('message', async (event) => {
         case 'text':
             return output_message(event);
         case 'video':
-            return event.reply('No yet support movie');
+            return output_message(event);
+            // return event.reply('No yet support movie');
         case 'audio':
             return output_message(event);
             // return event.reply('No yet support song');
