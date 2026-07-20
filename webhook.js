@@ -26,6 +26,8 @@ bot.on('message', async (event) => {
             // return event.reply("99887777");
 
             return output_message(event);
+        case 'file':
+            return output_message(event);
         case 'location':
             return event.reply('No yet support map');
         case 'sticker':
