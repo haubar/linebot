@@ -21,7 +21,7 @@ bot.on('message', async (event) => {
         case 'image': 
             let buffer = getContent(event);
             // let buffer = bot.getMessageContent(event.message.id);
-            return event.reply(JSON.stringify(buffer));
+            return event.reply(buffer);
             // return event.reply(buffer.toString('base64'));
           
             // return event.reply("99887777");
