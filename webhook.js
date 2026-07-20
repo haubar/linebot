@@ -16,13 +16,10 @@ bot.on('message', async (event) => {
             return output_message(event);
         case 'video':
             return output_message(event);
-            // return event.reply('No yet support movie');
         case 'audio':
             return output_message(event);
-            // return event.reply('No yet support song');
         case 'image': 
             return output_message(event);
-            // return event.reply('No yet support image');
         case 'location':
             return event.reply('No yet support map');
         case 'sticker':
