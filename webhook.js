@@ -1,4 +1,5 @@
 const linebot = require('./index.js');
+const storage = require('./lib/storage');
 
 const bot = linebot({
     channelId: process.env.channelId,
@@ -59,3 +60,8 @@ bot.on('postback', event => event.reply(`postback: ${event.postback.data}`));
 bot.listen('/webhook', process.env.PORT || 3333, () => {
     console.log('Example app listening on port 3333!')
 })
+
+// 定期清理 tmp/ 裡超過 7 天的媒體檔案，避免磁碟被塞滿
+const ONE_DAY_MS = 24 * 60 * 60 * 1000;
+storage.cleanupOldMedia();
+setInterval(() => storage.cleanupOldMedia(), ONE_DAY_MS);
