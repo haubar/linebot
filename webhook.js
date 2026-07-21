@@ -1,5 +1,5 @@
 const linebot = require('./index.js');
-const { output_message, getContent }  = require('./lib/message');
+const { output_message }  = require('./lib/message');
 
 
 const bot = linebot({
@@ -18,14 +18,7 @@ bot.on('message', async (event) => {
             return output_message(event);
         case 'audio':
             return output_message(event);
-        case 'image': 
-            let buffer = getContent(event);
-            // let buffer = bot.getMessageContent(event.message.id);
-            return event.reply(buffer);
-            // return event.reply(buffer.toString('base64'));
-          
-            // return event.reply("99887777");
-            
+        case 'image':
             return output_message(event);
         case 'file':
             return output_message(event);
