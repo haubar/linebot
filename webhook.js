@@ -1,6 +1,4 @@
 const linebot = require('./index.js');
-const { output_message }  = require('./lib/message');
-
 
 const bot = linebot({
     channelId: process.env.channelId,
@@ -8,6 +6,13 @@ const bot = linebot({
     channelSecret: process.env.channelSecret,
     verify: true // default=true
 });
+
+// 必須在 require('./lib/message') 之前 export，
+// 因為 lib/message -> lib/feature 會 require('../webhook') 拿 bot 實例，
+// 若晚 export，feature.js 拿到的會是還沒賦值的空物件（循環參照的時序問題）
+module.exports = bot;
+
+const { output_message } = require('./lib/message');
 
 //接受訊息的動作判斷
 bot.on('message', async (event) => {
