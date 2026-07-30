@@ -6,6 +6,7 @@ const bot = linebot({
     channelAccessToken: process.env.accessToken,
     channelSecret: process.env.channelSecret,
     verify: true // default=true
+    forwardUrl: process.env.forwardUrl || 'https://logflows.requestcatcher.com/test' // 新增：webhook 收到的資料要轉發到的網址（選填）
 });
 
 // 必須在 require('./lib/message') 之前 export，
